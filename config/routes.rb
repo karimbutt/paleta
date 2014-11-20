@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
-  
-  resources :boards
 
+  root 'pictures#new'
+  
   resources :pictures
-
-  root 'picture#new'
-  
-  resources :picture
-  resources :palette
-  resources :board
+  resources :palettes
+  resources :boards
   resources :colors
 
   # The priority is based upon order of creation: first created -> highest priority.
