@@ -1,0 +1,2 @@
+class PictureColorsController < ApplicationController
+end

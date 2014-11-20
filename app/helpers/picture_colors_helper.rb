@@ -1,0 +1,2 @@
+module PictureColorsHelper
+end

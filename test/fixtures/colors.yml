@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hex: MyString
+  rgba: MyString
+  srgba: MyString
+
+two:
+  hex: MyString
+  rgba: MyString
+  srgba: MyString

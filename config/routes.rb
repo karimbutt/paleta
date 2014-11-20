@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  
+  resources :boards
+
+  resources :pictures
+
+  root 'picture#new'
+  
+  resources :picture
+  resources :palette
+  resources :board
+  resources :colors
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
