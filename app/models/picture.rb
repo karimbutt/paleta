@@ -2,6 +2,7 @@ class Picture < ActiveRecord::Base
 	has_many :picture_colors
 	belongs_to :board
 	has_many :colors, through: :picture_colors
+  mount_uploader :image, ImageUploader
 
   def parse_colors(image_path, colors=256, depth=8)
     output = `convert #{image_path} -resize 400x400 -format %c -dither None -quantize YIQ -colors #{colors} -depth #{depth} histogram:info:-`
