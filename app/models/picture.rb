@@ -6,7 +6,12 @@ class Picture < ActiveRecord::Base
 
   def parse_colors(image_path, colors=256, depth=8)
     output = `convert #{image_path} -resize 400x400 -format %c -dither None -quantize YIQ -colors #{colors} -depth #{depth} histogram:info:-`
+    binding.pry
     @lines = output.lines.sort.reverse.map(&:strip).reject(&:empty?)
+    colors
+    color_counts
+    scores
+    create_colors
   end
 
   # Returns an array of colors in descending order of occurances.
@@ -25,7 +30,6 @@ class Picture < ActiveRecord::Base
     @colors_array = scores.zip(colors)
   end
 
-  # Added
   def create_colors
     @colors_array.each do |color_info|
       Color.new(color_info)

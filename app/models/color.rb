@@ -4,26 +4,32 @@ class Color < ActiveRecord::Base
 
   def initialize(color_info)
     color_info = @color_info
+    parse_color_info
+    count
+    rgba
+    hex
+    srgba
+    delete_transparent
   end
 
   def parse_color_info
-    value_array = @color_info.gsub(': ', '-').gsub(') ', ')-').gsub(' srgba', '-').split('-')
+    @value_array = @color_info.gsub(': ', '-').gsub(') ', ')-').gsub(' srgba', '-').split('-')
   end
 
   def count
-    count = value_array[0].to_i
+    self.count = @value_array[0].to_i
   end
 
   def rgba
-    rgba = value_array[1]
+    self.rgba = @value_array[1]
   end
 
   def hex
-    hex = value_array[2]
+    self.hex = @value_array[2]
   end
 
   def srgba
-    srgba = value_array[3]
+    self.srgba = @value_array[3]
   end
 
   def delete_transparent
