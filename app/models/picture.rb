@@ -5,27 +5,28 @@ class Picture < ActiveRecord::Base
   	mount_uploader :image, ImageUploader
 
 
-  def parse_colors(image_path, colors=256, depth=8)
+  def parse_colors(image_path)
 
     img =  Magick::Image.read(image_path).first
-	pixels_and_counts = img.quantize.color_histogram
+  	pixels_and_counts = img.quantize.color_histogram
 
-	hex_hashes = Hash.new
+  	hex_hashes = Hash.new
 
-	pixels_and_counts.each do |key, value|
-		fake_hex = key.to_color(Magick::AllCompliance, false, Magick::QuantumDepth, true)
-		real_hex = "##{fake_hex[1..2]}#{fake_hex[5..6]}#{fake_hex[9..10]}"
-		hex_hashes[real_hex] = value
-	end
+  	pixels_and_counts.each do |key, value|
+  		fake_hex = key.to_color(Magick::AllCompliance, false, Magick::QuantumDepth, true)
+  		real_hex = "##{fake_hex[1..2]}#{fake_hex[5..6]}#{fake_hex[9..10]}"
+  		hex_hashes[real_hex] = value
+  	end
 
-	sorted_hex = hex_hashes.sort_by {|key, value| value}.reverse
-	
-	create_color_objects(sorted_hex)
+  	sorted_hex = hex_hashes.sort_by {|key, value| value}.reverse
+
+  	create_color_objects(sorted_hex)
   end
 
   def create_color_objects(sorted_hex)
+
   	sorted_hex.each do |color_array|
-  		color_name = color_array[0]
+  		color_name = color_array[0] 
   		color = Color.find_or_create_by(hex: color_name)
   		
   		PictureColor.new.tap do |c|
@@ -34,6 +35,7 @@ class Picture < ActiveRecord::Base
   			c.pixels_count = color_array[1]
   			c.save
   		end
+
   	end
   end
 
