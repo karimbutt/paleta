@@ -24,7 +24,8 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.create(picture_params)
+    binding.pry
+    @picture = Picture.new(picture_params)
     # Hard coded path for testing
     # Add URL as picture attribute
     @picture.parse_colors("./public/uploads/1/pic.png")

@@ -40,4 +40,4 @@ gem 'spring',        group: :development
 
 gem 'carrierwave'
 gem 'pry'
-	
+gem 'rmagick'
