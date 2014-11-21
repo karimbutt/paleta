@@ -1,4 +1,23 @@
-<p id="notice"><%= notice %></p>
-<h1>Colors</h1>
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<style>
+  .bar-chart div {
+    font: 10px sans-serif;
+    background-color: black;
+    text-align: right;
+    padding: 3px;
+    margin: 1px;
+    color: white;
+  }
+</style>
+
+<script>
+    
+    var dataset = 
+    [
+      {"color":"blue", "value":  4},
+      {"color":"orange", "value":  100},
+      {"color":"turquoise", "value":  432}
+    ];
+</script>
+
+<p>Hi</p>
+<div class="bar-chart"></div>

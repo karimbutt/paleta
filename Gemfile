@@ -40,4 +40,5 @@ gem 'spring',        group: :development
 
 gem 'carrierwave'
 gem 'pry'
+gem 'd3-rails'
 	
