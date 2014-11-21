@@ -5,9 +5,9 @@ class Board < ActiveRecord::Base
 
 	def format(objects)
 		objects.collect do |object|
-			rgb = Color.find(object.color_id).hex
+			hex = Color.find(object.color_id).hex
 			prevalence = object.pixels_count.to_i
-			value = [rgb, prevalence]
+			value = [hex, prevalence]
 		
 		end
 	end
