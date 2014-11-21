@@ -1262,3 +1262,297 @@ Started GET "/assets/pictures.js?body=1" for 127.0.0.1 at 2014-11-20 16:53:45 -0
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 16:53:45 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#new as HTML
+  Rendered pictures/_form.html.erb (16.2ms)
+  Rendered pictures/new.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 129ms (Views: 114.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/boards.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/pictures.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/picture_colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/boards.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/picture_colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/pictures.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:01 -0500
+
+
+Started POST "/pictures" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ng+7FUkiY/xhEyg6/4iqnehL2k8RIgSW/tmSO5oAaAo=", "picture"=>{"image_cache"=>""}, "commit"=>"Create Picture"}
+Unpermitted parameters: image_cache
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "pictures" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-11-20 22:03:35.622109"], ["updated_at", "2014-11-20 22:03:35.622109"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/pictures/2
+Completed 302 Found in 7ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/pictures/2" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures"  WHERE "pictures"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered pictures/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 58ms (Views: 55.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/boards.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/picture_colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/pictures.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/boards.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/picture_colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/pictures.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:35 -0500
+
+
+Started POST "/pictures" for 127.0.0.1 at 2014-11-20 17:03:46 -0500
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ng+7FUkiY/xhEyg6/4iqnehL2k8RIgSW/tmSO5oAaAo=", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe01803b498 @tempfile=#<Tempfile:/var/folders/0j/jp89k3_52l35nx_j7z_h98nh0000gn/T/RackMultipart20141120-44122-1o14key>, @original_filename="my pic.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"my pic.png\"\r\nContent-Type: image/png\r\n">, "image_cache"=>""}, "commit"=>"Create Picture"}
+Unpermitted parameters: image_cache
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "pictures" ("created_at", "image", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-11-20 22:03:46.951865"], ["image", "my_pic.png"], ["updated_at", "2014-11-20 22:03:46.951865"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/pictures/3
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/pictures/3" for 127.0.0.1 at 2014-11-20 17:03:46 -0500
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPicture Load (0.1ms)[0m  [1mSELECT  "pictures".* FROM "pictures"  WHERE "pictures"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pictures/show.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 59ms (Views: 58.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/boards.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/pictures.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/picture_colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/boards.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/picture_colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/pictures.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 17:03:47 -0500
+
+
+Started POST "/pictures" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ng+7FUkiY/xhEyg6/4iqnehL2k8RIgSW/tmSO5oAaAo=", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe014217018 @tempfile=#<Tempfile:/var/folders/0j/jp89k3_52l35nx_j7z_h98nh0000gn/T/RackMultipart20141120-44122-b8mz5g>, @original_filename="my pic.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"my pic.png\"\r\nContent-Type: image/png\r\n">, "image_cache"=>""}, "commit"=>"Create Picture"}
+Unpermitted parameters: image_cache
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "pictures" ("created_at", "image", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-11-20 22:05:02.216539"], ["image", "my_pic.png"], ["updated_at", "2014-11-20 22:05:02.216539"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/pictures/4
+Completed 302 Found in 12ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/pictures/4" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPicture Load (0.1ms)[0m  [1mSELECT  "pictures".* FROM "pictures"  WHERE "pictures"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered pictures/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 57ms (Views: 56.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/boards.css?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/picture_colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/pictures.css?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/boards.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/picture_colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/pictures.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 17:05:02 -0500
+
+
+Started POST "/pictures" for 127.0.0.1 at 2014-11-20 17:06:24 -0500
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ng+7FUkiY/xhEyg6/4iqnehL2k8RIgSW/tmSO5oAaAo=", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe014146620 @tempfile=#<Tempfile:/var/folders/0j/jp89k3_52l35nx_j7z_h98nh0000gn/T/RackMultipart20141120-44122-wa5opl>, @original_filename="pic.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"pic.png\"\r\nContent-Type: image/png\r\n">, "image_cache"=>""}, "commit"=>"Create Picture"}
+Unpermitted parameters: image_cache
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "pictures" ("created_at", "image", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-11-20 22:06:25.022913"], ["image", "pic.png"], ["updated_at", "2014-11-20 22:06:25.022913"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/pictures/5
+Completed 302 Found in 17ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/pictures/5" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures"  WHERE "pictures"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered pictures/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 62ms (Views: 60.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/boards.css?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/picture_colors.css?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/pictures.css?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/boards.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/pictures.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/picture_colors.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 17:06:25 -0500
