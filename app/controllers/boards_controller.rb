@@ -4,13 +4,28 @@ class BoardsController < ApplicationController
   def show    
     @board = Board.last
     @picture = Picture.last
-    binding.pry
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
     end.reverse
 
     @array_for_api = @board.format(@sorted_picture_colors)
 
+  end
+
+  def query
+    @board = Board.last
+    @picture = Picture.last
+    @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
+       x.pixels_count.to_i
+    end.reverse
+
+    @array_for_api = @board.format(@sorted_picture_colors)
+    # @mini_set = @array_for_api[0..49]
+    # @second_set = @array_for_api[50..100]
+
+    respond_to do |format|
+      format.json { render :json => { dataset: @array_for_api } }
+    end
   end
 
   def new

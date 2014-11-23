@@ -3,7 +3,6 @@ $(document).ready(function(){
 		$(".picture_submit_button").hide();
 		
 		var html = "<span class='spinner'><i class='icon-spin icon-refresh'></i></span>";
-		debugger;
 	});
 });
 
