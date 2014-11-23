@@ -26,7 +26,5 @@ $(document).ready(function(){
 
   		$('#styled-choose-button').replaceWith(html)
 	})
-
-
-  			
+ 			
 })
