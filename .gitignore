@@ -6,3 +6,4 @@ tmp/cache/assets/development/sprockets/2f5173deea6c795b8fdde723bb4b63af
 tmp/cache tmp/pids tmp/sessions tmp/sockets
 log/development.log
 db/development.sqlite3
+tmp/cache/assets

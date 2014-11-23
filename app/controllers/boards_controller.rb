@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   def show    
     @board = Board.last
     @picture = Picture.last
-    binding.pry
+
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
     end.reverse

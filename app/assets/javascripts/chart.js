@@ -11,8 +11,7 @@ $(document).ready(function(){
   });
 
 function buildCart(response){
-  debugger
-  // Define dimensions of svg
+
   var h = 500,
       w = 1000;
 
