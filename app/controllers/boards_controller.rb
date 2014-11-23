@@ -4,11 +4,13 @@ class BoardsController < ApplicationController
   def show    
     @board = Board.last
     @picture = Picture.last
+
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
     end.reverse
 
     @array_for_api = @board.format(@sorted_picture_colors)
+    @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
 
   end
 
@@ -32,7 +34,6 @@ class BoardsController < ApplicationController
     @board = Board.create
     redirect_to board_path(@board)
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

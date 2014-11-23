@@ -1,3 +1,5 @@
+
+
 class Picture < ActiveRecord::Base
 	has_many :picture_colors
 	belongs_to :board
@@ -27,17 +29,34 @@ class Picture < ActiveRecord::Base
 
   	sorted_hex.each do |color_array|
   		color_name = color_array[0] 
-  		color = Color.find_or_create_by(hex: color_name)
   		
+      if Color.find_by(hex: color_name)
+        color = Color.find_by(hex: color_name)
+      else
+        color = Color.create(hex:color_name)
+        color.rgb = hex_to_rgb(color.hex)
+        #color.cmyk = ColorConverter.cmyk(color.hex)
+        color.save
+      end
+  
+
   		PictureColor.new.tap do |c|
   			c.color_id = color.id
   			c.picture_id = self.id
   			c.pixels_count = color_array[1]
   			c.save
   		end
-
   	end
   end
 
-  
+  def hex_to_rgb(hex)
+      cleaned = hex.gsub("#","")
+      
+      red = cleaned[0..1].hex
+      green = cleaned[2..3].hex
+      blue = cleaned[4..5].hex
+
+      rgb = "(#{red},#{green},#{blue})"
+  end
+
 end

@@ -42,3 +42,7 @@ gem 'carrierwave'
 gem 'pry'
 gem 'd3-rails'
 gem 'rmagick'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+

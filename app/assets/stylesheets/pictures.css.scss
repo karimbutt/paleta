@@ -1,3 +1,274 @@
 // Place all the styles related to the pictures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*body {
+	background-image: image-url("blue-paint-texture-background.jpg");
+}*/
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+
+
+div#site-title{
+	color: white;
+	font-weight: 800;
+	font-family: 'Cardo', serif;
+	font-family: 'Abril Fatface', cursive;
+	margin-top: 35%;
+	margin-bottom: 70px;
+	font-size: 100px;
+}
+
+div#site-subtitle{
+	color: white;
+	font-weight: 800;
+	font-size: 20px;
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 20px;
+}
+
+button#styled-choose-button{
+	background-color: #fcfaf2;
+	margin-left: 25%;
+	width: 50%;
+
+}
+button#styled-choose-button:hover{
+	background-color: #0398EA;
+	border-color: white;
+	color: white;
+}
+
+
+
+
+
+
+.container-3 {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  top: 0px;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation-name: animation-1;
+  animation-timing-function: linear;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: animation-1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: animation-1;
+  -moz-animation-timing-function: linear;
+  -moz-animation-duration: 5s;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: animation-1;
+  -ms-animation-timing-function: linear;
+  -ms-animation-duration: 5s;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-name: animation-1;
+  -o-animation-timing-function: linear;
+  -o-animation-duration: 5s;
+  -o-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+
+.container-3 .item-1 {
+  -moz-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  -webkit-transform: rotate(60deg);
+  transform: rotate(60deg);
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.container-3 .item-1 span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #2ecc71;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+.container-3 .item-2 {
+  -moz-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  -webkit-transform: rotate(120deg);
+  transform: rotate(120deg);
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.container-3 .item-2 span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #3498db;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+.container-3 .item-3 {
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.container-3 .item-3 span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #9b59b6;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+.container-3 .item-4 {
+  -moz-transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  -webkit-transform: rotate(240deg);
+  transform: rotate(240deg);
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.container-3 .item-4 span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #e67e22;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+.container-3 .item-5 {
+  -moz-transform: rotate(300deg);
+  -ms-transform: rotate(300deg);
+  -webkit-transform: rotate(300deg);
+  transform: rotate(300deg);
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.container-3 .item-5 span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #c0392b;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+.container-3 .item-6 {
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.container-3 .item-6 span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #e74c3c;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+
+
+
+@-webkit-keyframes animation-1 {
+  from {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(3600deg);
+    -ms-transform: rotate(3600deg);
+    -webkit-transform: rotate(3600deg);
+    transform: rotate(3600deg);
+  }
+}
+@-moz-keyframes animation-1 {
+  from {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(3600deg);
+    -ms-transform: rotate(3600deg);
+    -webkit-transform: rotate(3600deg);
+    transform: rotate(3600deg);
+  }
+}
+@-ms-keyframes animation-1 {
+  from {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(3600deg);
+    -ms-transform: rotate(3600deg);
+    -webkit-transform: rotate(3600deg);
+    transform: rotate(3600deg);
+  }
+}
+@keyframes animation-1 {
+  from {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(3600deg);
+    -ms-transform: rotate(3600deg);
+    -webkit-transform: rotate(3600deg);
+    transform: rotate(3600deg);
+  }
+}

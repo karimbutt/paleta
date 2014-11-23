@@ -4,8 +4,4 @@ tmp/cache/assets/development/sprockets/f7cbd26ba1d28d48de824f0e94586655
 tmp/cache/assets/development/sprockets/cffd775d018f68ce5dba1ee0d951a994
 tmp/cache/assets/development/sprockets/2f5173deea6c795b8fdde723bb4b63af
 tmp/cache tmp/pids tmp/sessions tmp/sockets
-log/development.log
-db/development.sqlite3
-tmp/cache tmp/pids tmp/sessions tmp/sockets
-tmp/cache tmp/pids tmp/sessions tmp/sockets
-tmp/cache tmp/pids tmp/sessions tmp/sockets
+tmp/cache/assets
