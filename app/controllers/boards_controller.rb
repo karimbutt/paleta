@@ -22,11 +22,10 @@ class BoardsController < ApplicationController
     end.reverse
 
     @array_for_api = @board.format(@sorted_picture_colors)
-    # @mini_set = @array_for_api[0..49]
-    # @second_set = @array_for_api[50..100]
+    @full_array = @array_for_api[0..250]
 
     respond_to do |format|
-      format.json { render :json => { dataset: @array_for_api } }
+      format.json { render :json => { dataset: @full_array } }
     end
   end
 

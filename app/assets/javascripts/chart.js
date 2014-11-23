@@ -27,12 +27,12 @@ $(document).ready(function(){
                   .attr('height', h)
                   .style('border', '1px solid black');
 
-    var chartPadding = 50,
+    var chartPadding = 12,
         chartBottom = h - chartPadding,
         chartRight = w - chartPadding;
 
     // y value scale domain
-    var maxValue = d3.max(dataset,function(d){ return d[1]; });
+    var maxValue = d3.max(dataset,function(d){ return d[2]; });
     var yScale = d3.scale
                  .linear()
                  .domain( [0,maxValue] );
@@ -71,11 +71,11 @@ $(document).ready(function(){
                    return xScale(d[0]); 
                },
                'y': function(d) {
-                   return h - yScale(d[1]);
+                   return h - yScale(d[2]);
                },
                'width': xScale.rangeBand(), // Gives bar width with space calculation built in
                'height': function(d) {
-                   return yScale(d[1]) - chartPadding;
+                   return yScale(d[2]) - chartPadding;
                }
          })
         // Attach event listener to each bar for mouseover
@@ -165,10 +165,10 @@ $(document).ready(function(){
 
     // var showValue = function(d) {
     //   chart.append('text')
-    //        .text(d[1])
+    //        .text(d[2])
     //        .attr({
-    //             'x': xScale(d[1]) + xScale.rangeBand() / 2,
-    //             'y': yScale(d[1]) + 15,
+    //             'x': xScale(d[2]) + xScale.rangeBand() / 2,
+    //             'y': yScale(d[2]) + 15,
     //             'class': 'value'
     //        });
     // }
@@ -195,7 +195,7 @@ $(document).ready(function(){
 
     //      .attr({
     //           'x': function(d){return xScale(d[0]) + xScale.rangeBand() / 2},
-    //           'y': function(d){ return h - yScale(d[1]) },
+    //           'y': function(d){ return h - yScale(d[2]) },
 
     //           'font-family': 'sans-serif',
     //           'font-size': '10px',
@@ -224,7 +224,7 @@ $(document).ready(function(){
         chartBottom = h - chartPadding,
         chartRight = w - chartPadding;
 
-    var maxValue = d3.max(dataset,function(d){ return d[1]; });
+    var maxValue = d3.max(dataset,function(d){ return d[2]; });
     var yScale = d3.scale
                  .linear()
                  .domain( [0,maxValue] );
@@ -259,11 +259,11 @@ $(document).ready(function(){
                    return xScale(d[0]); 
                },
                'y': function(d) {
-                   return h - yScale(d[1]);
+                   return h - yScale(d[2]);
                },
                'width': xScale.rangeBand(), 
                'height': function(d) {
-                   return yScale(d[1]) - chartPadding;
+                   return yScale(d[2]) - chartPadding;
                }
          })
          .on('mouseover', tip.show)
@@ -290,7 +290,7 @@ $(document).ready(function(){
         chartBottom = h - chartPadding,
         chartRight = w - chartPadding;
 
-    var maxValue = d3.max(dataset,function(d){ return d[1]; });
+    var maxValue = d3.max(dataset,function(d){ return d[2]; });
     var yScale = d3.scale
                  .linear()
                  .domain( [0,maxValue] );
@@ -323,11 +323,11 @@ $(document).ready(function(){
                    return xScale(d[0]); 
                },
                'y': function(d) {
-                   return h - yScale(d[1]);
+                   return h - yScale(d[2]);
                },
                'width': xScale.rangeBand(), 
                'height': function(d) {
-                   return yScale(d[1]) - chartPadding;
+                   return yScale(d[2]) - chartPadding;
                }
          })
          .on('mouseover', tip.show)
