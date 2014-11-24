@@ -15,6 +15,9 @@ class BoardsController < ApplicationController
 
     @colour_lover_pallet = @board.colourlovers(@array_for_api)
 
+    @tint = @colour_lover_pallet.first
+    @tinted = @board.set_tint(@tint)
+    binding.pry
   end
 
   def query
