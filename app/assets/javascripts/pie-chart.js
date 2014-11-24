@@ -33,10 +33,10 @@ $(document).ready(function(){
                     .outerRadius(oRadius);
 
     // Sample data        
-    var dataset = [{color: "cyan", value: 5}, 
-                   {color: "magenta", value: 5}, 
-                   {color: "yellow", value: 80},
-                   {color: "black", value: 10}
+    var dataset = [{color: "cyan", value: 50}, 
+                   {color: "magenta", value: 10}, 
+                   {color: "yellow", value: 10},
+                   {color: "black", value: 30}
                   ];
 
     // Declare pie() function

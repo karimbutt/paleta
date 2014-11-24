@@ -5,7 +5,7 @@ $(document).ready(function(){
     url: '/query',
     dataType: "json",
     success: function(response){
-      var dataset = response.dataset;
+      var dataset = response.dataset[0];
       var start = 0;
       var end = 49;
       buildChart(dataset);
@@ -159,10 +159,8 @@ $(document).ready(function(){
          });
   }
 
-
   $('.selected-colors').on('click', '#delete', function(){
     $(this).parent().remove();
-
   });
 
 
