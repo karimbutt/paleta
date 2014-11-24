@@ -8,6 +8,7 @@ $(document).ready(function(){
       var dataset = response.dataset[0];
       var start = 0;
       var end = 50;
+      // var suggested_palette = response.dataset[2]
       buildChart(dataset);
       buildMiniChart(dataset, start, end);
     }
@@ -298,5 +299,44 @@ $(document).ready(function(){
     });
   })
 
+  // Add colors from suggested to custom... no worky
+  $('#1').on('click', function(d){
+    $('.selected-colors').append(
+      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
+      + " Hex: " + suggested_palette[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+      )
+  });
+
+  $('#2').on('click', function(d){
+    $('.selected-colors').append(
+      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
+      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+      )
+  });
+
+  $('#3').on('click', function(d){
+    $('.selected-colors').append(
+      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
+      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+      )
+  });
+
+  $('#4').on('click', function(d){
+    $('.selected-colors').append(
+      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
+      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+      )
+  });
+
+  $('#5').on('click', function(d){
+    $('.selected-colors').append(
+      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
+      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+      )
+  });
+
+  $('.selected-colors').on('click', '#delete', function(){
+    $(this).parent().remove();
+  });
 });
 

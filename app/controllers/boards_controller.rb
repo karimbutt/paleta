@@ -9,9 +9,8 @@ class BoardsController < ApplicationController
        x.pixels_count.to_i
     end.reverse
   
-    @array_for_api = @board.format(@sorted_picture_colors)
-
-    @colour_lovers_pallet = @board.colourlovers(@array_for_api)
+    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
+    @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
   end
 
   def query
@@ -23,9 +22,10 @@ class BoardsController < ApplicationController
 
     @array_of_individual_hexes = @board.format(@sorted_picture_colors)
     @aggregate_rgb_cmyk= @board.average_rgb_and_cmyk(@array_of_individual_hexes)
-  
+    # @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
+
     @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
-   
+    
     respond_to do |format|
       format.json { render :json => { dataset: @full_array_for_d3} }
     end
