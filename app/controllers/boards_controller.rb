@@ -11,8 +11,7 @@ class BoardsController < ApplicationController
   
     @array_for_api = @board.format(@sorted_picture_colors)
 
-    # @colour_lover_pallet = @board.colourlovers(@array_for_api)
-
+    @colour_lovers_pallet = @board.colourlovers(@array_for_api)
   end
 
   def query

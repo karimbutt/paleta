@@ -7,7 +7,10 @@
 <button id="third">Third Set</button>
 <button id="fourth">Fourth Set</button>
 <button id="fifth">Fifth Set</button>
+
 <div class="cmyk-pie-chart"></div>
 <div class="rgb-pie-chart"></div>
 
-<%= @colour_lover_pallet %>
+<% @colour_lovers_pallet.each do |color| %>
+  <div style="width: 50px; height: 50px; background: #<%= color %>; float: left"></div>
+<% end %>

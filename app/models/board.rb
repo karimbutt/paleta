@@ -61,13 +61,13 @@ class Board < ActiveRecord::Base
 	  counter = 0
 	  url_colors = []
 	  pallets = []
-	  while counter < 20
+	  while counter < 10
 	    counter += 1
 	    current_color = colors[counter][0]
 	    current_color.gsub!('#', '')
 	    url_colors << current_color
 	    uri = "http://www.colourlovers.com/api/palettes?hex=#{url_colors.join(',')}&orderCol=numViews&sortBy=DESC&format=json"
-	    puts uri
+	    # puts uri
 	    encoded_uri = URI::encode(uri)
 	    colour_lovers_pallets = JSON.parse(open(encoded_uri).read)
 	    if colour_lovers_pallets.empty?
@@ -75,7 +75,6 @@ class Board < ActiveRecord::Base
 	      next
 	    else
 	      pallets = colour_lovers_pallets[0]["colors"]
-	      # puts pallets.inspect
 	    end
 	  end
 	  pallets
