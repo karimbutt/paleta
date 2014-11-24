@@ -7,3 +7,5 @@ tmp/cache tmp/pids tmp/sessions tmp/sockets
 log/development.log
 db/development.sqlite3
 tmp/cache/assets
+db/development.sqlite3 db/migrate db/schema.rb db/seeds.rb db/test.sqlite3
+log/development.log
