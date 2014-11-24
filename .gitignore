@@ -8,3 +8,5 @@ tmp/cache/assets
 db/development.sqlite3 db/schema.rb db/seeds.rb db/test.sqlite3
 public/404.html public/422.html public/500.html public/favicon.ico public/robots.txt public/uploads
 
+npm-debug.log
+db/test.sqlite3

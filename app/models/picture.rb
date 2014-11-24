@@ -1,5 +1,3 @@
-
-
 class Picture < ActiveRecord::Base
 	has_many :picture_colors
 	belongs_to :board
@@ -32,13 +30,13 @@ class Picture < ActiveRecord::Base
   		
       if Color.find_by(hex: color_name)
         color = Color.find_by(hex: color_name)
-      elsif
+      else
         color = Color.create(hex: color_name)
         color.rgb = hex_to_rgb(color.hex)
-        #color.cmyk = ColorConverter.cmyk(color.hex)
+        color.cmyk = rgb_to_cmyk(color.rgb)
         color.save
       end
-  
+
 
   		PictureColor.new.tap do |c|
   			c.color_id = color.id
@@ -57,6 +55,25 @@ class Picture < ActiveRecord::Base
       blue = cleaned[4..5].hex
 
       rgb = "(#{red},#{green},#{blue})"
+  end
+
+  def rgb_to_cmyk(rgb)
+    split_rgbarray = rgb.gsub("(","").gsub(")","").split(",")
+    red = split_rgbarray[0]
+    green = split_rgbarray[1]
+    blue = split_rgbarray[2]
+
+    cmyk_red = red.to_f/255
+    cmyk_green = green.to_f/255
+    cmyk_blue = blue.to_f/255
+
+    k = 1 - [cmyk_red, cmyk_green, cmyk_blue].max
+    c = (1-cmyk_red-k)/(1-k)
+    m = (1-cmyk_green-k)/(1-k)
+    y = (1-cmyk_blue-k)/(1-k)
+
+    cmyk = "(#{c.round(2)},#{m.round(2)},#{y.round(2)},#{k.round(2)})"
+    
   end
 
 end

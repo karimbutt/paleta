@@ -23,7 +23,7 @@ $(document).ready(function(){
       // console.log(cmyk_dataset[2].color, cmyk_dataset[2].value)
       // console.log(cmyk_dataset[3].color, cmyk_dataset[3].value)
       buildCMYKPieChart(cmyk_dataset);
-      // buildRGBPieChart(rgb_dataset);
+      buildRGBPieChart(rgb_dataset);
     }
   });
 
