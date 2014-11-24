@@ -14,6 +14,21 @@ class BoardsController < ApplicationController
    
   end
 
+  def query
+    @board = Board.last
+    @picture = Picture.last
+    @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
+       x.pixels_count.to_i
+    end.reverse
+
+    @array_for_api = @board.format(@sorted_picture_colors)
+    @full_array = @array_for_api[0..250]
+
+    respond_to do |format|
+      format.json { render :json => { dataset: @full_array } }
+    end
+  end
+
   def new
     @board = Board.create
     redirect_to board_path(@board)
