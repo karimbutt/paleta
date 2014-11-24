@@ -1,18 +1,18 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
 
-  def show    
+  def show
     @board = Board.last
     @picture = Picture.last
 
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
     end.reverse
+  
+    @array_for_api = @board.format(@sorted_picture_colors)
 
-    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
-    @aggregate_rgb_cmyk= @board.average_rgb_and_cmyk(@array_of_individual_hexes)
+    @colour_lover_pallet = @board.colourlovers(@array_for_api)
 
-   
   end
 
   def query
