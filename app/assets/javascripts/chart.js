@@ -9,9 +9,8 @@ $(document).ready(function(){
       var dataset = response.dataset[0];
       var start = 0;
       var end = 50;
-      // var suggested_palette = response.dataset[2]
-      // buildChart(dataset);
-      // buildMiniChart(dataset, start, end);
+      buildChart(dataset);
+      buildMiniChart(dataset, start, end);
     }
   });
 
