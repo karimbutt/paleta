@@ -17,7 +17,12 @@ class BoardsController < ApplicationController
 
   def query
     @board = Board.last
-    @picture = Picture.last
+    @board.set_board_picture
+    @board.save
+
+    @picture = @board.pictures.first
+   
+
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
     end.reverse
@@ -26,16 +31,12 @@ class BoardsController < ApplicationController
     @aggregate_rgb_cmyk= @board.average_rgb_and_cmyk(@array_of_individual_hexes)
   
     @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
-   
+    binding.pry
     respond_to do |format|
       format.json { render :json => { dataset: @full_array_for_d3} }
     end
   end
 
-  def new
-    @board = Board.create
-    redirect_to board_path(@board)
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

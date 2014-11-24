@@ -11,7 +11,12 @@ class PicturesController < ApplicationController
     url = "public/uploads/#{@picture.id}/#{@picture.image.filename}"
     @picture.parse_colors(url)
 
-    redirect_to new_board_path
+    @board = Board.new
+    @picture.board = @board
+    @picture.save
+
+    redirect_to board_path(@board)
+    # redirect_to new_board_path
   end
 
 

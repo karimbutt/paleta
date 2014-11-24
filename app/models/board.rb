@@ -13,7 +13,14 @@ class Board < ActiveRecord::Base
 		end
 	end
 
+	def set_board_picture
+		Picture.last.board_id = self.id
+		Picture.last.save
+		self.save
+	end
+
 	def average_rgb_and_cmyk(data_array)
+
 		overall_red = 0
 		overall_green = 0
 		overall_blue = 0
