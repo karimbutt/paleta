@@ -56,9 +56,17 @@ class Board < ActiveRecord::Base
 		c = (1-cmyk_red-k)/(1-k)
 		m = (1-cmyk_green-k)/(1-k)
 		y = (1-cmyk_blue-k)/(1-k)
+
+		total_cmyk = c + m + y + k
+
+		c_percentage = c / total_cmyk
+		m_percentage = m / total_cmyk
+		y_percentage = y / total_cmyk
+		k_percentage = k / total_cmyk
+
 	
 		#Hash to return for d3
-		hash_for_d3 = [[{color: "red", value: red_percent}, {color: "green", value: green_percent}, {color: "blue", value: blue_percent}],[{color: "cyan", value: c},{color: "magenta", value: m},{color: "yellow", value: y},{color: "black", value: k}]]
+		hash_for_d3 = [[{color: "red", value: red_percent}, {color: "green", value: green_percent}, {color: "blue", value: blue_percent}],[{color: "cyan", value: c_percentage},{color: "magenta", value: m_percentage},{color: "yellow", value: y_percentage},{color: "black", value: k_percentage}]]
 		
 	end
 

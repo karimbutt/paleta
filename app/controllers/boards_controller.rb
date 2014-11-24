@@ -30,7 +30,7 @@ class BoardsController < ApplicationController
     # @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
 
     @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
-
+   
     respond_to do |format|
       format.json { render :json => { dataset: @full_array_for_d3} }
     end
