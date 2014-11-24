@@ -37,7 +37,6 @@ class Picture < ActiveRecord::Base
         color.save
       end
 
-
   		PictureColor.new.tap do |c|
   			c.color_id = color.id
   			c.picture_id = self.id
