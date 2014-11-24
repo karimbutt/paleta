@@ -32,7 +32,7 @@ class Picture < ActiveRecord::Base
   		
       if Color.find_by(hex: color_name)
         color = Color.find_by(hex: color_name)
-      elsif color_name != "#FFFFFF"
+      elsif 
         color = Color.create(hex: color_name)
         color.rgb = hex_to_rgb(color.hex)
         #color.cmyk = ColorConverter.cmyk(color.hex)
