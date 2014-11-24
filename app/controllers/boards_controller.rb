@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
 
-  def show    
+  def show
     @board = Board.last
     @picture = Picture.last
 
@@ -10,7 +10,10 @@ class BoardsController < ApplicationController
     end.reverse
 
     @array_for_api = @board.format(@sorted_picture_colors)
+
     @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
+
+    @colour_lover_pallet = @board.colourlovers(@array_for_api)
 
   end
 

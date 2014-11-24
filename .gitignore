@@ -1,7 +1,20 @@
 db/development.sqlite3
 log/development.log
-tmp/cache/assets/development/sprockets/f7cbd26ba1d28d48de824f0e94586655
-tmp/cache/assets/development/sprockets/cffd775d018f68ce5dba1ee0d951a994
-tmp/cache/assets/development/sprockets/2f5173deea6c795b8fdde723bb4b63af
+tmp/cache/assets/development/sprockets/*
+public/uploads/*
+tmp/pids/*
 tmp/cache tmp/pids tmp/sessions tmp/sockets
 tmp/cache/assets
+
+tmp/cache/assets/development/sprockets/0d0e17d73e9670ec6fca4de64e159af7
+tmp/cache/assets/development/sprockets/13fe41fee1fe35b49d145bcc06610705
+tmp/cache/assets/development/sprockets/1979fba685c40298fcfb8244d91a1952
+tmp/cache/assets/development/sprockets/2f5173deea6c795b8fdde723bb4b63af
+tmp/cache/assets/development/sprockets/357970feca3ac29060c1e3861e2c0953
+tmp/cache/assets/development/sprockets/379a875f9714d7982307780a4e9c629b
+tmp/cache/assets/development/sprockets/a238c772d2a8ee4551837884e8698b9d
+tmp/cache/assets/development/sprockets/cffd775d018f68ce5dba1ee0d951a994
+tmp/cache/assets/development/sprockets/d70036bdaca05be231b3797d61474c0a
+tmp/cache/assets/development/sprockets/d771ace226fc8215a3572e0aa35bb0d6
+tmp/cache/assets/development/sprockets/e60cb48d7bd7db33caec4a49232d99fc
+tmp/cache/assets/development/sprockets/f7cbd26ba1d28d48de824f0e94586655
