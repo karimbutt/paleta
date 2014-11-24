@@ -7,18 +7,19 @@ $(document).ready(function(){
     success: function(response){
       var dataset = response.dataset[1];
       var rgb_dataset = dataset[0]
-      console.log(rgb_dataset[0].color, rgb_dataset[0].value)
-      console.log(rgb_dataset[1].color, rgb_dataset[1].value)
-      console.log(rgb_dataset[2].color, rgb_dataset[2].value)
-      // var cmyk_dataset = dataset[1]
-      // buildCMYKPieChart(dataset);
-      // buildRGBPieChart(rgb_dataset);
+      var cmyk_dataset = dataset[1]
+      // console.log(cmyk_dataset)
+      // console.log(rgb_dataset[0].color, rgb_dataset[0].value)
+      // console.log(rgb_dataset[1].color, rgb_dataset[1].value)
+      // console.log(rgb_dataset[2].color, rgb_dataset[2].value)
+      buildCMYKPieChart(cmyk_dataset);
+      buildRGBPieChart(rgb_dataset);
     }
   });
 
 
 // CMYK PIE CHART
-  function buildCMYKPieChart(dataset){
+  function buildCMYKPieChart(cmyk_dataset){
 
     var pie_chart = d3.select('.cmyk-pie-chart')
                       .append('svg')
@@ -38,11 +39,11 @@ $(document).ready(function(){
                     .outerRadius(oRadius);
 
     // Sample data        
-    var dataset = [{color: "cyan", value: 50}, 
-                   {color: "magenta", value: 10}, 
-                   {color: "yellow", value: 10},
-                   {color: "black", value: 30}
-                  ];
+    // var dataset = [{color: "cyan", value: 50}, 
+    //                {color: "magenta", value: 10}, 
+    //                {color: "yellow", value: 10},
+    //                {color: "black", value: 30}
+    //               ];
 
     // Declare pie() function
     var pie = d3.layout.pie().value(function(d){return d.value});
@@ -60,7 +61,7 @@ $(document).ready(function(){
 
     // Use svg group elements for pie wedges
     var wedges = pieChart.selectAll('g')
-                         .data(pie(dataset))
+                         .data(pie(cmyk_dataset))
                          .enter()
                          .append('g')
                          .attr({
