@@ -9,8 +9,9 @@ class BoardsController < ApplicationController
        x.pixels_count.to_i
     end.reverse
 
-    @array_for_api = @board.format(@sorted_picture_colors)
-    @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
+    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
+    @aggregate_rgb_cmyk= @board.average_rgb_and_cmyk(@array_of_individual_hexes)
+
    
   end
 
@@ -21,11 +22,13 @@ class BoardsController < ApplicationController
        x.pixels_count.to_i
     end.reverse
 
-    @array_for_api = @board.format(@sorted_picture_colors)
-    @full_array = @array_for_api[0..250]
-
+    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
+    @aggregate_rgb_cmyk= @board.average_rgb_and_cmyk(@array_of_individual_hexes)
+  
+    @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
+   
     respond_to do |format|
-      format.json { render :json => { dataset: @full_array } }
+      format.json { render :json => { dataset: @full_array_for_d3} }
     end
   end
 

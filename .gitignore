@@ -7,3 +7,4 @@ tmp/cache tmp/pids tmp/sessions tmp/sockets
 tmp/cache/assets
 db/development.sqlite3 db/migrate db/schema.rb db/seeds.rb db/test.sqlite3
 log/development.log
+public/404.html public/422.html public/500.html public/favicon.ico public/robots.txt public/uploads
