@@ -5,9 +5,14 @@ $(document).ready(function(){
     url: '/query',
     dataType: "json",
     success: function(response){
-      var dataset = response.dataset;
-      buildCMYKPieChart(dataset);
-      buildRGBPieChart(dataset);
+      var dataset = response.dataset[1];
+      var rgb_dataset = dataset[0]
+      console.log(rgb_dataset[0].color, rgb_dataset[0].value)
+      console.log(rgb_dataset[1].color, rgb_dataset[1].value)
+      console.log(rgb_dataset[2].color, rgb_dataset[2].value)
+      // var cmyk_dataset = dataset[1]
+      // buildCMYKPieChart(dataset);
+      // buildRGBPieChart(rgb_dataset);
     }
   });
 
@@ -79,7 +84,7 @@ $(document).ready(function(){
   }
 
 // RGB PIE CHART
-  function buildRGBPieChart(dataset){
+  function buildRGBPieChart(rgb_dataset){
 
     var pie_chart = d3.select('.rgb-pie-chart')
                       .append('svg')
@@ -103,10 +108,10 @@ $(document).ready(function(){
     // var green = "#00cc00"
     // var blue = "#0000ff"
 
-    var dataset = [{color: "#e50000", value: 30}, 
-                   {color: "#00cc00", value: 20}, 
-                   {color: "#0000ff", value: 50},
-                  ];
+    // var dataset = [{color: "#e50000", value: 30}, 
+    //                {color: "#00cc00", value: 20}, 
+    //                {color: "#0000ff", value: 50},
+    //               ];
 
     // Declare pie() function
     var pie = d3.layout.pie().value(function(d){return d.value});
@@ -118,13 +123,17 @@ $(document).ready(function(){
                           'width' : w,
                           'height' : h
                           });
-   
+    
+    var red = rgb_dataset[0].color
+    var green = rgb_dataset[1].color
+    var blue = rgb_dataset[2].color
+
     // var color = d3.scale.category10(); // Creates an ordinal scale of 10 different category colors
-    var color = d3.scale.ordinal().domain(function(d){return d.value}).range(["#e50000", "#00cc00", "#0000ff"])
+    var color = d3.scale.ordinal().domain(function(d){return d.value}).range(["red", "green", "blue"])
 
     // Use svg group elements for pie wedges
     var wedges = pieChart.selectAll('g')
-                         .data(pie(dataset))
+                         .data(pie(rgb_dataset))
                          .enter()
                          .append('g')
                          .attr({

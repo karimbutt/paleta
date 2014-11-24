@@ -7,7 +7,7 @@ $(document).ready(function(){
     success: function(response){
       var dataset = response.dataset[0];
       var start = 0;
-      var end = 49;
+      var end = 50;
       buildChart(dataset);
       buildMiniChart(dataset, start, end);
     }
@@ -56,7 +56,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return d[0]; });
+      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1]; });
 
     chart.call(tip);
 
@@ -83,8 +83,8 @@ $(document).ready(function(){
          .on('mouseout', tip.hide)
          .on('click', function(d){
            $('.selected-colors').append(
-             '<svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + d[0] + '<br>'
+             '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
+             + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
              )
          });
   }
@@ -154,7 +154,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete">X</span><br></span>'
+             + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
              )
          });
   }
@@ -234,7 +234,7 @@ $(document).ready(function(){
       url: '/query',
       dataType: "json",
       success: function(response){
-        var dataset = response.dataset;
+        var dataset = response.dataset[0];
         var start = 0;
         var end = 50;
         updateMiniChart(dataset, start, end);
@@ -248,7 +248,7 @@ $(document).ready(function(){
       url: '/query',
       dataType: "json",
       success: function(response){
-        var dataset = response.dataset;
+        var dataset = response.dataset[0];
         var start = 51;
         var end = 101;
         updateMiniChart(dataset, start, end);
@@ -262,7 +262,7 @@ $(document).ready(function(){
       url: '/query',
       dataType: "json",
       success: function(response){
-        var dataset = response.dataset;
+        var dataset = response.dataset[0];
         var start = 102;
         var end = 152;
         updateMiniChart(dataset, start, end);
@@ -276,7 +276,7 @@ $(document).ready(function(){
       url: '/query',
       dataType: "json",
       success: function(response){
-        var dataset = response.dataset;
+        var dataset = response.dataset[0];
         var start = 153;
         var end = 203;
         updateMiniChart(dataset, start, end);
@@ -290,7 +290,7 @@ $(document).ready(function(){
       url: '/query',
       dataType: "json",
       success: function(response){
-        var dataset = response.dataset;
+        var dataset = response.dataset[0];
         var start = 204;
         var end = 255;
         updateMiniChart(dataset, start, end);
