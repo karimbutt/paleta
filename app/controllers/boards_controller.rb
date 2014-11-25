@@ -50,13 +50,14 @@ class BoardsController < ApplicationController
     end
   end
 
-  def tint
+  def tint_shade
     @board = Board.last
     @hex = params[:color].keys.first.gsub('#', '')
-    @tinted_colors = @board.set_tint(@hex)
+    @tints = @board.set_tint(@hex)
+    @shades = @board.set_shade(@hex)
 
     respond_to do |format|
-      format.json { render :json => { dataset: @tinted_colors} }
+      format.json { render :json => { dataset: [@tints, @shades] } }
     end
   end
 

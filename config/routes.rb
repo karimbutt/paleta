@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # Example of regular route:
     get 'query' => 'boards#query'
     post 'tint' => 'boards#tint'
-    get 'tint' => 'boards#tint'
+    post 'tint_shade' => 'boards#tint_shade'
     post 'convert_colors' => 'boards#convert_colors'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

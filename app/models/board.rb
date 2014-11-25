@@ -129,47 +129,6 @@ class Board < ActiveRecord::Base
 	  @all_tints
 	end
 
-
-	def set_shade(color_to_shade)
-	  color = color_to_shade
-
-	  if color.size == 3
-	    c = color.split('').collect! do |item|
-	      item + item
-	    end
-	    color = c.join('')
-	  end
-
-	  @all_tints =[]
-	  @all_tints << color
-
-	  counter = 0
-	  while counter < 10
-	    counter += 1
-	    red = color[0..1].to_i(16)
-	    green = color[2..3].to_i(16)
-	    blue = color[4..5].to_i(16)
-
-	    @red_tint = red * 0.25
-	    @green_tint = green * 0.25
-	    @blue_tint = blue * 0.25
-	    tinted = ""
-	    tinted << @red_tint.to_i.to_s(16)
-	    tinted << @green_tint.to_i.to_s(16)
-	    tinted << @blue_tint.to_i.to_s(16)
-	    color = tinted
-
-	    if color.size == 3
-	      ci = color.split('').collect! do |item|
-	        item + item
-	      end
-	      color = ci.join('')
-	    end
-	    @all_tints << color
-	  end
-	  @all_tints
-	end
-
 #### board methods below
 
 	def set_shade(color_to_shade)

@@ -90,11 +90,17 @@ $(document).ready(function(){
            var hex = d[0]
            $.ajax({
              type: 'POST',
-             url: '/tint',
+             url: '/tint_shade',
              data: 'color[' + hex + ']', 
              success: function(response){
+              // debugger;
                $('.tints').html("");
-               response.dataset.forEach(function(color){
+               response.dataset[0].forEach(function(color){
+                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+               });
+
+               $('.shades').html("");
+               response.dataset[1].forEach(function(color){
                  $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
                });
             } 
@@ -172,7 +178,7 @@ $(document).ready(function(){
            var hex = d[0]
            $.ajax({
              type: 'POST',
-             url: '/tint',
+             url: '/tint_shade',
              data: 'color[' + hex + ']', 
              success: function(response){
                $('.tints').html("");
@@ -253,7 +259,7 @@ $(document).ready(function(){
            var hex = d[0]
            $.ajax({
              type: 'POST',
-             url: '/tint',
+             url: '/tint_shade',
              data: 'color[' + hex + ']', 
              success: function(response){
                $('.tints').html("");
