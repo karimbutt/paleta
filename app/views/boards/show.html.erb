@@ -5,7 +5,10 @@
 <p id="second">Second Set</p>
 <p id="third">Third Set</p>
 
-<%= @colour_lover_pallet %>
+<% @colour_lover_pallet %>
+
+<% @tinted.each do |tint| %>
+<div style="width:70px; height:70px; position:relative; float:left; background-color: #<%= tint %>"></div>
+<% end %>
 
 
-<div style="width:70; height:70px; position:relative; float:left; background-color: #<%= @tinted %> "></div>

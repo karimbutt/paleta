@@ -15,8 +15,12 @@ class BoardsController < ApplicationController
 
     @colour_lover_pallet = @board.colourlovers(@array_for_api)
 
-    @tint = @colour_lover_pallet.first
-    @tinted = @board.set_tint(@tint)
+    @last_color = @colour_lover_pallet.last
+
+    @tinted = @board.set_tint(@last_color)
+
+    # @shaded = @board.set_shade(@last_color)
+
 
   end
 

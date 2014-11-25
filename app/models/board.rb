@@ -65,34 +65,28 @@ class Board < ActiveRecord::Base
 #http://stackoverflow.com/questions/6615002/given-an-rgb-value-how-do-i-create-a-tint-or-shade
 	def set_tint(color)
 		@color = color
-		red = @color[0..1].to_i(16)
-		green = @color[2..3].to_i(16)
-		blue = @color[4..5].to_i(16)
+	  @all_tints =[]
+		@all_tints << @color
 
+	  counter = 0
+	  while counter < 10
+	    counter += 1
+	    red = @color[0..1].to_i(16)
+	    green = @color[2..3].to_i(16)
+	    blue = @color[4..5].to_i(16)
 
-# counter = 0
-
-# while counter < 10
-
-		@red_tint = red + (0.25 * (255 - red))
-		@green_tint = green + (0.25 * (255 - green))
-		@blue_tint = blue + (0.25 * (255 - blue))
-
-		# @red_tint = @red_tint.to_s(16)
-		# @green_tint = @green_tint.to_s(16)
-		# @blue_tint = @blue_tint.to_s(16)
-
-		tinted = ""
-		tinted << @blue_tint.to_i.to_s(16)
-		tinted << @green_tint.to_i.to_s(16)
-		tinted << @red_tint.to_i.to_s(16)
-		tinted
-
-		# red_tint = red_tint.to_s(16)
-		# green_tint = green_tint.to_s(16)
-		# blue_tint = blue_tint.to_s(16)
+	    @red_tint = red + (0.25 * (255 - red))
+	    @green_tint = green + (0.25 * (255 - green))
+	    @blue_tint = blue + (0.25 * (255 - blue))
+	    tinted = ""
+	    tinted << @red_tint.to_i.to_s(16)
+	    tinted << @green_tint.to_i.to_s(16)
+	    tinted << @blue_tint.to_i.to_s(16)
+	    @color = tinted
+	    @all_tints << tinted
+	  end
+	  @all_tints
 	end
-
 
 end
 
