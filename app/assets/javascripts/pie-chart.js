@@ -8,12 +8,6 @@ $(document).ready(function(){
       var dataset = response.dataset[1];
       var rgb_dataset = dataset[0]
       var cmyk_dataset = dataset[1]
-      // var cmyk_dataset = [
-      //   {"color": "cyan", "value": 20},
-      //   {"color": "magenta", "value": 50},
-      //   {"color": "yellow", "value": 10},
-      //   {"color": "black", "value": 20}
-      // ]
       // console.log(cmyk_dataset)
       // console.log(rgb_dataset[0].color, rgb_dataset[0].value)
       // console.log(rgb_dataset[1].color, rgb_dataset[1].value)
