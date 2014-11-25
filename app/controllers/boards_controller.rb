@@ -54,9 +54,23 @@ class BoardsController < ApplicationController
     @board = Board.last
     @hex = params[:color].keys.first.gsub('#', '')
     @tinted_colors = @board.set_tint(@hex)
-    
+
     respond_to do |format|
       format.json { render :json => { dataset: @tinted_colors} }
+    end
+  end
+
+  def convert_colors
+    # binding.pry
+    @hex = params[:color].keys.first
+    @board = Board.last
+    @picture = @board.pictures.first
+
+    @rgb = @picture.hex_to_rgb(@hex)
+    @cmyk = @picture.rgb_to_cmyk(@rgb)
+
+    respond_to do |format|
+      format.json { render :json => { dataset: [@rgb, @cmyk] } }
     end
   end
 
