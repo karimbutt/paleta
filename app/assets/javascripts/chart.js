@@ -21,7 +21,7 @@ $(document).ready(function(){
     var h = 300,
         w = 600;
 
-    // Create svg element
+    // Creates svg element
     var chart = d3.select('.bar-chart')
                   .append('svg') // Parent svg element will contain the chart
                   .attr('width', w)
@@ -49,7 +49,7 @@ $(document).ready(function(){
           });
 
     var xScale = d3.scale.ordinal()
-                 .domain(barLabels) // Pass in a list of discreet 'labels' or categories
+                 .domain(barLabels) // Passes in a list of discreet 'labels' or categories
                  // RangeBands divide passed in interval by the length of the domain (calculates %spacing if passed in)
                  // RangeRoundBands rounds calculation to the nearest whole pixel
                  .rangeRoundBands([chartPadding,chartRight], 0.1); // Divides bands equally, with 10% spacing
@@ -60,7 +60,7 @@ $(document).ready(function(){
 
     chart.call(tip);
 
-    // Create bars
+    // Creates bars
     chart.selectAll('rect')  // Returns empty selection
          .data(dataset)      // Parses & counts data
          .enter()            // Binds data to placeholders
@@ -78,7 +78,7 @@ $(document).ready(function(){
                    return yScale(d[2]) - chartPadding;
                }
          })
-        // Attach event listener to each bar for mouseover
+        // Attaches an event listener to each bar for mouseover
          .on('mouseover', tip.show)
          .on('mouseout', tip.hide)
          .on('click', function(d){
@@ -92,8 +92,9 @@ $(document).ready(function(){
              url: '/tint',
              data: 'color[' + hex + ']', 
              success: function(response){
+               $('.tints').html("");
                response.dataset.forEach(function(color){
-                 $('.tints').html('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>')
+                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -142,7 +143,7 @@ $(document).ready(function(){
 
     chart.call(tip);
 
-    // Create bars
+    // Creates bars
     chart.selectAll('rect')  
          .data(dataset)      
          .enter()           
@@ -167,6 +168,18 @@ $(document).ready(function(){
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
              + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
+           var hex = d[0]
+           $.ajax({
+             type: 'POST',
+             url: '/tint',
+             data: 'color[' + hex + ']', 
+             success: function(response){
+               $('.tints').html("");
+               response.dataset.forEach(function(color){
+                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+               });
+            } 
+           })
          });
   }
 
@@ -213,7 +226,7 @@ $(document).ready(function(){
 
     chart.call(tip);
 
-    // Create bars
+    // Creates bars
     chart.selectAll('rect')  
          .data(dataset)   
          .style('fill', function(d){return d[0];})
@@ -233,12 +246,25 @@ $(document).ready(function(){
          .on('mouseout', tip.hide)
          .on('click', function(d){
            $('.selected-colors').append(
-             '<svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + d[0] + '<br>'
+             '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
+             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
+           var hex = d[0]
+           $.ajax({
+             type: 'POST',
+             url: '/tint',
+             data: 'color[' + hex + ']', 
+             success: function(response){
+               $('.tints').html("");
+               response.dataset.forEach(function(color){
+                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+               });
+            } 
+           })
          });
   }
 
+  // Handles toggling between sets of 50 colors
   $('#first').click(function(){
     $.ajax({
       type: 'GET',
@@ -309,16 +335,27 @@ $(document).ready(function(){
     });
   })
 
-  // Add colors from suggested to custom
+  // Adds colors from suggested to custom
   $('.suggested-colors').on('click', function(d){
-    $('.selected-colors').append(
-      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + $(this).data('color') + '" /></svg>' 
-      + " Hex: " + $(this).data('color') + '"<span id="delete"> X</span><br></span>'
-      )
+    var hex = $(this).data('color');
+    $.ajax({
+      type: 'POST',
+      url: '/convert_colors',
+      data: 'color[' + hex + ']',
+      success: function(response){
+        var RGB = response.dataset[0];
+        var CMYK = response.dataset[1];
+        $('.selected-colors').append(
+          '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + $(this).data('color') + '" /></svg>' 
+          + " Hex: " + hex + ", RGB: " + RGB + ", CMYK: " + CMYK + '<span id="delete"> X</span><br></span>'
+          )
+      }
+    })
   });
 
+  // Removes selected colors from custom palette
   $('.selected-colors').on('click', '#delete', function(){
     $(this).parent().remove();
   });
-});
 
+});

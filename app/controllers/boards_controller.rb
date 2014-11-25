@@ -8,9 +8,9 @@ class BoardsController < ApplicationController
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
     end.reverse
-  
-    # @array_of_individual_hexes = @board.format(@sorted_picture_colors)
-    # @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
+
+    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
+    @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
 
     @array_for_api = @board.format(@sorted_picture_colors)
 
@@ -55,9 +55,24 @@ class BoardsController < ApplicationController
     @board = Board.last
     @hex = params[:color].keys.first.gsub('#', '')
     @tinted_colors = @board.set_tint(@hex)
-    
+
     respond_to do |format|
       format.json { render :json => { dataset: @tinted_colors} }
+    end
+  end
+
+
+  def convert_colors
+    # binding.pry
+    @hex = params[:color].keys.first
+    @board = Board.last
+    @picture = @board.pictures.first
+
+    @rgb = @picture.hex_to_rgb(@hex)
+    @cmyk = @picture.rgb_to_cmyk(@rgb)
+
+    respond_to do |format|
+      format.json { render :json => { dataset: [@rgb, @cmyk] } }
     end
   end
 
