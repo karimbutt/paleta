@@ -1,3 +1,53 @@
 // Place all the styles related to the boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div#board-show-title{
+	color: black;
+	font-weight: 300;
+	font-family: 'Baskerville', serif;
+	/*font-family: 'Baskerville', cursive;*/
+	margin-top: 2%;
+	margin-bottom: 2%;
+	font-size: 40px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 20px;
+}
+
+
+div.bar-chart{
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+
+div.selected-colors {
+	font-size: 12px;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+
+#selected-colors-div{
+	height: 356px;
+	overflow: auto;
+}
+
+.set-selection{
+	width:100%;
+	margin-bottom: 7px;
+}
+
+.cmyk-pie-chart{
+	padding-top: 12px;
+	padding-bottom: 10px;
+}
+
+.pie-charts-content{
+	height: 347px;
+}
+
+.palette-styling{
+	margin-bottom: 10px;
+}

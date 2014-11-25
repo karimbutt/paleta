@@ -25,8 +25,7 @@ $(document).ready(function(){
     var chart = d3.select('.bar-chart')
                   .append('svg') // Parent svg element will contain the chart
                   .attr('width', w)
-                  .attr('height', h)
-                  .style('border', '1px solid black');
+                  .attr('height', h);
 
     var chartPadding = 12,
         chartBottom = h - chartPadding,
@@ -112,8 +111,8 @@ $(document).ready(function(){
     var chart = d3.select('.mini-set-bar-chart')
                   .append('svg') 
                   .attr('width', w)
-                  .attr('height', h)
-                  .style('border', '1px solid black');
+                  .attr('height', h);
+                  
 
     var chartPadding = 50,
         chartBottom = h - chartPadding,

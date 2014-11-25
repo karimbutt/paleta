@@ -26,12 +26,12 @@ $(document).ready(function(){
   function buildCMYKPieChart(cmyk_dataset){
 
     var pie_chart = d3.select('.cmyk-pie-chart')
-                      .append('svg')
+                      //.append('svg')
                       .attr('width', w)
                       .attr('height', h);
 
-    var h = 200,
-        w = 200;
+    var h = 130,
+        w = 130;
 
     // Define inner and outer radius
     var oRadius = w / 2;
@@ -85,12 +85,12 @@ $(document).ready(function(){
   function buildRGBPieChart(rgb_dataset){
 
     var pie_chart = d3.select('.rgb-pie-chart')
-                      .append('svg')
+                      //.append('svg')
                       .attr('width', w)
                       .attr('height', h);
 
-    var h = 200,
-        w = 200;
+    var h = 130,
+        w = 130;
 
     // Define inner and outer radius
     var oRadius = w / 2;
