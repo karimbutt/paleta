@@ -31,33 +31,35 @@ img.bg {
 
 
 div#site-title{
-	color: white;
-	font-weight: 800;
-	font-family: 'Cardo', serif;
-	font-family: 'Abril Fatface', cursive;
+	color: black;
+	font-weight: 400;
+	font-family: 'Baskerville', serif;
+	/*font-family: 'Baskerville', cursive;*/
 	margin-top: 35%;
 	margin-bottom: 70px;
 	font-size: 100px;
 }
 
 div#site-subtitle{
-	color: white;
-	font-weight: 800;
+	color: black;
+	font-weight: 400;
 	font-size: 20px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Din', sans-serif;
 	margin-bottom: 20px;
 }
 
 button#styled-choose-button{
-	background-color: #fcfaf2;
+	background-color: black;
+  color: gray;
+  font-family: 'Din', sans-serif;
 	margin-left: 25%;
 	width: 50%;
 
 }
 button#styled-choose-button:hover{
-	background-color: #0398EA;
-	border-color: white;
-	color: white;
+	background-color: beige;
+  color: gray;
+	/*border-color: white;*/
 }
 
 

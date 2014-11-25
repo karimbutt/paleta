@@ -5,10 +5,10 @@ $(document).ready(function(){
     url: '/query',
     dataType: "json",
     success: function(response){
+      console.log(response)
       var dataset = response.dataset[0];
       var start = 0;
       var end = 50;
-      // var suggested_palette = response.dataset[2]
       buildChart(dataset);
       buildMiniChart(dataset, start, end);
     }
@@ -57,7 +57,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
+      .html(function(d) { return 'Hex: ' + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
 
     chart.call(tip);
 
@@ -85,9 +85,14 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
-         });
+           $.ajax({
+             type: 'POST',
+             url: '/tint',
+             data: 'd[0]'
+            }
+          });
   }
 
   // ZOOMED IN BAR CHART
@@ -128,7 +133,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1]; });
+      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
 
     chart.call(tip);
 
@@ -155,7 +160,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
          });
   }
@@ -299,39 +304,11 @@ $(document).ready(function(){
     });
   })
 
-  // Add colors from suggested to custom... no worky
-  $('#1').on('click', function(d){
+  // Add colors from suggested to custom
+  $('.suggested-colors').on('click', function(d){
     $('.selected-colors').append(
-      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-      + " Hex: " + suggested_palette[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
-      )
-  });
-
-  $('#2').on('click', function(d){
-    $('.selected-colors').append(
-      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
-      )
-  });
-
-  $('#3').on('click', function(d){
-    $('.selected-colors').append(
-      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
-      )
-  });
-
-  $('#4').on('click', function(d){
-    $('.selected-colors').append(
-      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
-      )
-  });
-
-  $('#5').on('click', function(d){
-    $('.selected-colors').append(
-      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-      + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+      '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + $(this).data('color') + '" /></svg>' 
+      + " Hex: " + $(this).data('color') + '"<span id="delete"> X</span><br></span>'
       )
   });
 
