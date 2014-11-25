@@ -175,8 +175,9 @@ $(document).ready(function(){
              url: '/tint',
              data: 'color[' + hex + ']', 
              success: function(response){
+               $('.tints').html("");
                response.dataset.forEach(function(color){
-                 $('.tints').html('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>')
+                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -255,8 +256,9 @@ $(document).ready(function(){
              url: '/tint',
              data: 'color[' + hex + ']', 
              success: function(response){
+               $('.tints').html("");
                response.dataset.forEach(function(color){
-                 $('.tints').html('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>')
+                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -356,5 +358,5 @@ $(document).ready(function(){
   $('.selected-colors').on('click', '#delete', function(){
     $(this).parent().remove();
   });
-});
 
+});
