@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.last
-    @picture = Picture.last
+    @picture = @board.pictures.first
 
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
@@ -11,15 +11,15 @@ class BoardsController < ApplicationController
 
     @array_for_api = @board.format(@sorted_picture_colors)
 
-    @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
+    @colour_lovers_palette = @board.colourlovers(@array_for_api)
 
-    @colour_lover_pallete = @board.colourlovers(@array_for_api)
-
-    @last_color = @colour_lover_pallet.last
+    
+    
+    @last_color = @colour_lovers_palette.last
 
     @tinted = @board.set_tint(@last_color)
 
-    # @shaded = @board.set_shade(@last_color)
+   # @shaded = @board.set_shade(@last_color)
 
 
 
@@ -48,6 +48,12 @@ class BoardsController < ApplicationController
     respond_to do |format|
       format.json { render :json => { dataset: @full_array_for_d3} }
     end
+  end
+
+  def tint
+    @board = Board.last
+    color_to_tint = params[##############]
+    @tinted = @board.set_tint(@last_color)
   end
 
 
