@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
 
     @array_for_api = @board.format(@sorted_picture_colors)
 
-    @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
+    # @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
 
     @colour_lover_pallete = @board.colourlovers(@array_for_api)
 
