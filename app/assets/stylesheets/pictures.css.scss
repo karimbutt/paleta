@@ -50,14 +50,16 @@ div#site-subtitle{
 
 button#styled-choose-button{
 	background-color: black;
+  color: gray;
+  font-family: 'Din', sans-serif;
 	margin-left: 25%;
 	width: 50%;
 
 }
 button#styled-choose-button:hover{
-	background-color: gray;
-	border-color: white;
-	color: white;
+	background-color: beige;
+  color: gray;
+	/*border-color: white;*/
 }
 
 

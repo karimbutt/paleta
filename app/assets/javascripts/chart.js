@@ -85,7 +85,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
          });
   }
@@ -128,7 +128,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1]; });
+      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
 
     chart.call(tip);
 
@@ -155,7 +155,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + '<span id="delete"> X</span><br></span>'
+             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
          });
   }

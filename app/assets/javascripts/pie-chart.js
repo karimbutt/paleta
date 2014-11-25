@@ -36,8 +36,8 @@ $(document).ready(function(){
                       .attr('width', w)
                       .attr('height', h);
 
-    var h = 300,
-        w = 300;
+    var h = 200,
+        w = 200;
 
     // Define inner and outer radius
     var oRadius = w / 2;
@@ -95,8 +95,8 @@ $(document).ready(function(){
                       .attr('width', w)
                       .attr('height', h);
 
-    var h = 300,
-        w = 300;
+    var h = 200,
+        w = 200;
 
     // Define inner and outer radius
     var oRadius = w / 2;
