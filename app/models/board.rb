@@ -170,6 +170,61 @@ class Board < ActiveRecord::Base
 	  @all_tints
 	end
 
+#### board methods below
+
+	def set_shade(color_to_shade)
+	  color = sanatize_hex(color_to_shade)
+
+	  @all_tints =[]
+	  @all_tints << color
+
+	  10.times do
+	    color = sanatize_hex(color)
+	    rgb_colors = convert_to_rgb(color)
+	    tint = tint(rgb_colors)
+	    color = rgb_to_hex(tint).join('')
+	    @all_tints << color
+	  end
+	  p @all_tints
+	end
+
+	def sanatize_hex(color)
+	  if color.size == 3
+	    return color.split('').collect { |color| color + color }.join
+	  end
+	  color
+	end
+
+	def to_true_hex(hex)
+	  if hex.size > 2
+	    return "ff"
+	  elsif hex.size == 1
+	    return hex.prepend "0"
+	  else
+	    return hex
+	  end
+	end
+
+	def rgb_to_hex(tint_values)
+	  tint_values.map do |tint|
+	    hex = tint.to_i.to_s(16)
+	    to_true_hex(hex)
+	  end
+	end
+
+	def tint(rgb_values)
+	  rgb_values.map do |value|
+	    value * 0.50
+	  end
+	end
+
+	def convert_to_rgb(color)
+	  red = color[0..1].to_i(16)
+	  green = color[2..3].to_i(16)
+	  blue = color[4..5].to_i(16)
+	  [red, green, blue]
+	end
+
 	# def set_shade(color_to_shade)
 	# 	color = color_to_shade
 
@@ -195,6 +250,8 @@ class Board < ActiveRecord::Base
 	#   end
 	#   @all_tints
 	# end
+
+
 
 end
 
