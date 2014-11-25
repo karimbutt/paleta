@@ -9,8 +9,8 @@ class BoardsController < ApplicationController
        x.pixels_count.to_i
     end.reverse
   
-    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
-    @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
+    # @array_of_individual_hexes = @board.format(@sorted_picture_colors)
+    # @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
   end
 
   def query

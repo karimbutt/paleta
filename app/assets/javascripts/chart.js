@@ -57,7 +57,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[4]; });
+      .html(function(d) { return 'Hex: ' + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
 
     chart.call(tip);
 
