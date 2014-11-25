@@ -12,6 +12,10 @@ $(document).ready(function(){
       // console.log(rgb_dataset[0].color, rgb_dataset[0].value)
       // console.log(rgb_dataset[1].color, rgb_dataset[1].value)
       // console.log(rgb_dataset[2].color, rgb_dataset[2].value)
+      // console.log(cmyk_dataset[0].color, cmyk_dataset[0].value)
+      // console.log(cmyk_dataset[1].color, cmyk_dataset[1].value)
+      // console.log(cmyk_dataset[2].color, cmyk_dataset[2].value)
+      // console.log(cmyk_dataset[3].color, cmyk_dataset[3].value)
       buildCMYKPieChart(cmyk_dataset);
       buildRGBPieChart(rgb_dataset);
     }
@@ -26,8 +30,8 @@ $(document).ready(function(){
                       .attr('width', w)
                       .attr('height', h);
 
-    var h = 300,
-        w = 300;
+    var h = 200,
+        w = 200;
 
     // Define inner and outer radius
     var oRadius = w / 2;
@@ -37,13 +41,6 @@ $(document).ready(function(){
     var arc = d3.svg.arc() 
                     .innerRadius(iRadius)
                     .outerRadius(oRadius);
-
-    // Sample data        
-    // var dataset = [{color: "cyan", value: 50}, 
-    //                {color: "magenta", value: 10}, 
-    //                {color: "yellow", value: 10},
-    //                {color: "black", value: 30}
-    //               ];
 
     // Declare pie() function
     var pie = d3.layout.pie().value(function(d){return d.value});
@@ -92,8 +89,8 @@ $(document).ready(function(){
                       .attr('width', w)
                       .attr('height', h);
 
-    var h = 300,
-        w = 300;
+    var h = 200,
+        w = 200;
 
     // Define inner and outer radius
     var oRadius = w / 2;
