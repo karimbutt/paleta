@@ -1,23 +1,78 @@
-<div class="bar-chart"></div>
-<div class="mini-set-bar-chart"></div>
-<div class="selected-colors"></div>
-
-<div class="toggle" style="float: left">
-  <button id="first">First Set</button>
-  <button id="second">Second Set</button>
-  <button id="third">Third Set</button>
-  <button id="fourth">Fourth Set</button>
-  <button id="fifth">Fifth Set</button>
+<div class="row">
+	<div id="board-show-title">
+		<center>Your Picture Profile</center>
+	</div>
 </div>
-<br><br>
-<% @colour_lovers_palette.each do |color| %>
-  <div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left"></div>
-<% end %>
+
+
+<div class="row">
+	<div class="col-sm-6 palette-styling">
+		<% @colour_lovers_palette.each do |color| %>
+	  		<div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left"></div>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-7">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		        <i class="fa fa-bar-chart-o fa-fw"></i> All colors
+		    </div>
+			<center><div class="bar-chart"></div></center>
+		</div>
+	</div>
+
+
+	<div class="col-sm-5">
+		<div class="panel panel-default" id="selected-colors-div">
+			<div class="panel-heading">
+		        <i class="fa fa-bar-chart-o fa-fw"></i> Your selected colors
+		    </div>
+			<div class="selected-colors"></div>
+		</div>
+	</div>
+
+</div>
+
+
+<div class="row">
+	<div class="col-sm-2">
+		<div class="toggle" style="float: left">
+		  <button class="set-selection" id="first">First Set</button>
+		  <button class="set-selection" id="second">Second Set</button>
+		  <button class="set-selection" id="third">Third Set</button>
+		  <button class="set-selection" id="fourth">Fourth Set</button>
+		  <button class="set-selection" id="fifth">Fifth Set</button>
+		</div>
+	</div>
+
+	<div class="col-sm-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> Selected colors in picture
+			</div>
+			<div class="mini-set-bar-chart"></div>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="panel panel-default pie-charts-content">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> CMYK & RGB Breakdown
+			</div>
+			<center><div class="cmyk-pie-chart"></div></center>
+			<center><div class="rgb-pie-chart"></div></center>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+<br>
 
 <div class="tints"></div>
 <div class="shades"></div>
-
-<div class="cmyk-pie-chart"></div>
-<div class="rgb-pie-chart"></div>
-
 

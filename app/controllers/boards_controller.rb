@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.last
-    @picture = Picture.last
+    @picture = @board.pictures.first
 
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
@@ -14,15 +14,16 @@ class BoardsController < ApplicationController
 
     @array_for_api = @board.format(@sorted_picture_colors)
 
-    # @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
-
     @colour_lovers_palette = @board.colourlovers(@array_for_api)
 
+    
     @last_color = @colour_lovers_palette.last
 
     @tinted = @board.set_tint(@last_color)
 
-    # @shaded = @board.set_shade(@last_color)
+   # @shaded = @board.set_shade(@last_color)
+
+
   end
 
   def query
@@ -61,6 +62,7 @@ class BoardsController < ApplicationController
     end
   end
 
+
   def convert_colors
     # binding.pry
     @hex = params[:color].keys.first
@@ -74,6 +76,7 @@ class BoardsController < ApplicationController
       format.json { render :json => { dataset: [@rgb, @cmyk] } }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
