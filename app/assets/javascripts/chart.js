@@ -87,12 +87,18 @@ $(document).ready(function(){
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
              + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
+           var hex = d[0]
            $.ajax({
              type: 'POST',
              url: '/tint',
-             data: 'd[0]'
-            }
-          });
+             data: 'color[' + hex + ']', 
+             success: function(response){
+               response.dataset.forEach(function(color){
+                 $('.tints').html('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>')
+               });
+            } 
+           })
+         });
   }
 
   // ZOOMED IN BAR CHART

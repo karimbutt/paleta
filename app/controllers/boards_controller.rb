@@ -14,11 +14,11 @@ class BoardsController < ApplicationController
 
     @array_for_api = @board.format(@sorted_picture_colors)
 
-    @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
+    # @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
 
-    @colour_lover_pallete = @board.colourlovers(@array_for_api)
+    @colour_lovers_palette = @board.colourlovers(@array_for_api)
 
-    @last_color = @colour_lover_pallet.last
+    @last_color = @colour_lovers_palette.last
 
     @tinted = @board.set_tint(@last_color)
 
@@ -50,6 +50,15 @@ class BoardsController < ApplicationController
     end
   end
 
+  def tint
+    @board = Board.last
+    @hex = params[:color].keys.first.gsub('#', '')
+    @tinted_colors = @board.set_tint(@hex)
+    
+    respond_to do |format|
+      format.json { render :json => { dataset: @tinted_colors} }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
