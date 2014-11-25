@@ -9,57 +9,98 @@ class Board < ActiveRecord::Base
 			hex = found_color.hex
 			rgb = found_color.rgb
 			prevalence = object.pixels_count.to_i
-			value = [hex, rgb, prevalence]
+			cmyk = found_color.cmyk
+			value = [hex, rgb, prevalence, cmyk]
 		end
 	end
 
-	def average_rgb(data_array)
-		overall_red = 0
-		overall_green = 0
-		overall_blue = 0
+	def set_board_picture
+		Picture.last.board_id = self.id
+		Picture.last.save
+		self.save
+	end
 
-		data_array.each do |data|
-			split_colors = data.split(",").flatten[1].gsub("(","").gsub(")","").split(",")
-			overall_red += split_colors[0].to_i
-			overall_green += split_colors[1].to_i
-			overall_blue += split_colors[2].to_i
+	def aggregate_rgb(data_array)
+		total_elements = data_array.count
+
+		values = data_array.collect do |row|
+			row[1]
 		end
 
-		overall_red = overall_red.to_f
-		overall_green = overall_green.to_f
-		overall_blue = overall_blue.to_f
+		overall_red = 0.0
+		overall_green = 0.0
+		overall_blue = 0.0
 
+		values.each do |value|
+			split_colors = value.gsub("(","").gsub(")","").split(",")
+			overall_red += split_colors[0].to_f
+			overall_green += split_colors[1].to_f
+			overall_blue += split_colors[2].to_f	
+		end
+		
 		total_colors = overall_red + overall_green + overall_blue
-		red_percent = (overall_red/total_colors)*100
-		green_percent = (overall_green/total_colors)*100
-		blue_percent = (overall_blue / total_colors)*100
+		percent_red = overall_red / total_colors
+		percent_green = overall_green / total_colors
+		percent_blue = overall_blue / total_colors
 
-		hash_for_d3 = [{color: "red", value: red_percent}, {color: "green", value: green_percent}, {color: "blue", value: blue_percent}]
+		[{color: "red", value: percent_red}, {color: "green", value: percent_green}, {color: "blue", value: percent_blue}]
+	end
+
+	def aggregate_cmyk(data_array)
+		total_elements = data_array.count
+
+		values = data_array.collect do |row|
+			row[3]
+		end
+
+		overall_cyan = 0.0
+		overall_magenta = 0.0
+		overall_yellow = 0.0
+		overall_black = 0.0
+
+		values.each do |value|
+			split_colors = value.gsub("(","").gsub(")","").split(",")
+			overall_cyan += split_colors[0].to_f
+			overall_magenta += split_colors[1].to_f
+			overall_yellow += split_colors[2].to_f	
+			overall_black += split_colors[3].to_f
+		end
+
+		total_colors = overall_cyan + overall_magenta + overall_yellow + overall_black
+		percent_cyan = overall_cyan/total_colors
+		percent_magenta = overall_magenta/total_colors
+		percent_yellow = overall_yellow/total_colors
+		percent_black = overall_black/total_colors
+
+		[{color: "cyan", value: percent_cyan},{color: "magenta", value: percent_magenta},{color: "yellow", value: percent_yellow},{color: "black", value: percent_black}]
+	end
+
+	def aggregate_data(data_array)
+		[aggregate_rgb(data_array),aggregate_cmyk(data_array)]
 	end
 
 	def colourlovers(colors)
 	  # colors[0]=""
 	  counter = 0
 	  url_colors = []
-	  pallets = []
-	  while counter < 20
+	  palettes = []
+	  while counter < 10
 	    counter += 1
 	    current_color = colors[counter][0]
 	    current_color.gsub!('#', '')
 	    url_colors << current_color
 	    uri = "http://www.colourlovers.com/api/palettes?hex=#{url_colors.join(',')}&orderCol=numViews&sortBy=DESC&format=json"
-	    puts uri
+	    # puts uri
 	    encoded_uri = URI::encode(uri)
-	    colour_lovers_pallets = JSON.parse(open(encoded_uri).read)
-	    if colour_lovers_pallets.empty?
+	    colour_lovers_palettes = JSON.parse(open(encoded_uri).read)
+	    if colour_lovers_palettes.empty?
 	      url_colors.pop
 	      next
 	    else
-	      pallets = colour_lovers_pallets[0]["colors"]
-	      # puts pallets.inspect
+	      palettes = colour_lovers_palettes[0]["colors"]
 	    end
 	  end
-	  pallets
+	  palettes
 	end
 
 #http://stackoverflow.com/questions/6615002/given-an-rgb-value-how-do-i-create-a-tint-or-shade
