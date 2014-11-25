@@ -35,9 +35,9 @@ class Board < ActiveRecord::Base
 			split_colors = value.gsub("(","").gsub(")","").split(",")
 			overall_red += split_colors[0].to_f
 			overall_green += split_colors[1].to_f
-			overall_blue += split_colors[2].to_f	
+			overall_blue += split_colors[2].to_f
 		end
-		
+
 		total_colors = overall_red + overall_green + overall_blue
 		percent_red = overall_red / total_colors
 		percent_green = overall_green / total_colors
@@ -62,7 +62,7 @@ class Board < ActiveRecord::Base
 			split_colors = value.gsub("(","").gsub(")","").split(",")
 			overall_cyan += split_colors[0].to_f
 			overall_magenta += split_colors[1].to_f
-			overall_yellow += split_colors[2].to_f	
+			overall_yellow += split_colors[2].to_f
 			overall_black += split_colors[3].to_f
 		end
 
@@ -129,11 +129,19 @@ class Board < ActiveRecord::Base
 	  @all_tints
 	end
 
+
 	def set_shade(color_to_shade)
-		color = color_to_shade
+	  color = color_to_shade
+
+	  if color.size == 3
+	    c = color.split('').collect! do |item|
+	      item + item
+	    end
+	    color = c.join('')
+	  end
 
 	  @all_tints =[]
-		@all_tints << color
+	  @all_tints << color
 
 	  counter = 0
 	  while counter < 10
@@ -150,10 +158,100 @@ class Board < ActiveRecord::Base
 	    tinted << @green_tint.to_i.to_s(16)
 	    tinted << @blue_tint.to_i.to_s(16)
 	    color = tinted
-	    @all_tints << tinted
+
+	    if color.size == 3
+	      ci = color.split('').collect! do |item|
+	        item + item
+	      end
+	      color = ci.join('')
+	    end
+	    @all_tints << color
 	  end
 	  @all_tints
 	end
+
+#### board methods below
+
+	def set_shade(color_to_shade)
+	  color = sanatize_hex(color_to_shade)
+
+	  @all_tints =[]
+	  @all_tints << color
+
+	  10.times do
+	    color = sanatize_hex(color)
+	    rgb_colors = convert_to_rgb(color)
+	    tint = tint(rgb_colors)
+	    color = rgb_to_hex(tint).join('')
+	    @all_tints << color
+	  end
+	  p @all_tints
+	end
+
+	def sanatize_hex(color)
+	  if color.size == 3
+	    return color.split('').collect { |color| color + color }.join
+	  end
+	  color
+	end
+
+	def to_true_hex(hex)
+	  if hex.size > 2
+	    return "ff"
+	  elsif hex.size == 1
+	    return hex.prepend "0"
+	  else
+	    return hex
+	  end
+	end
+
+	def rgb_to_hex(tint_values)
+	  tint_values.map do |tint|
+	    hex = tint.to_i.to_s(16)
+	    to_true_hex(hex)
+	  end
+	end
+
+	def tint(rgb_values)
+	  rgb_values.map do |value|
+	    value * 0.50
+	  end
+	end
+
+	def convert_to_rgb(color)
+	  red = color[0..1].to_i(16)
+	  green = color[2..3].to_i(16)
+	  blue = color[4..5].to_i(16)
+	  [red, green, blue]
+	end
+
+	# def set_shade(color_to_shade)
+	# 	color = color_to_shade
+
+	#   @all_tints =[]
+	# 	@all_tints << color
+
+	#   counter = 0
+	#   while counter < 10
+	#     counter += 1
+	#     red = color[0..1].to_i(16)
+	#     green = color[2..3].to_i(16)
+	#     blue = color[4..5].to_i(16)
+
+	#     @red_tint = red * 0.25
+	#     @green_tint = green * 0.25
+	#     @blue_tint = blue * 0.25
+	#     tinted = ""
+	#     tinted << @red_tint.to_i.to_s(16)
+	#     tinted << @green_tint.to_i.to_s(16)
+	#     tinted << @blue_tint.to_i.to_s(16)
+	#     color = tinted
+	#     @all_tints << tinted
+	#   end
+	#   @all_tints
+	# end
+
+
 
 end
 
