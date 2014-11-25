@@ -17,7 +17,6 @@ class BoardsController < ApplicationController
     @colour_lovers_palette = @board.colourlovers(@array_for_api)
 
     
-    
     @last_color = @colour_lovers_palette.last
 
     @tinted = @board.set_tint(@last_color)
@@ -54,8 +53,12 @@ class BoardsController < ApplicationController
 
   def tint
     @board = Board.last
-    color_to_tint = params[##############]
-    @tinted = @board.set_tint(@last_color)
+    @hex = params[:color].keys.first.gsub('#', '')
+    @tinted_colors = @board.set_tint(@hex)
+    
+    respond_to do |format|
+      format.json { render :json => { dataset: @tinted_colors} }
+    end
   end
 
 
