@@ -38,6 +38,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'pry-nav'
+
 gem 'carrierwave'
 gem 'pry'
 gem 'd3-rails'

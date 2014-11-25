@@ -103,5 +103,57 @@ class Board < ActiveRecord::Base
 	  palettes
 	end
 
+#http://stackoverflow.com/questions/6615002/given-an-rgb-value-how-do-i-create-a-tint-or-shade
+	def set_tint(color_to_tint)
+		color = color_to_tint
+	  @all_tints =[]
+		@all_tints << color
+
+	  counter = 0
+	  while counter < 10
+	    counter += 1
+	    red = color[0..1].to_i(16)
+	    green = color[2..3].to_i(16)
+	    blue = color[4..5].to_i(16)
+
+	    @red_tint = red + (0.25 * (255 - red))
+	    @green_tint = green + (0.25 * (255 - green))
+	    @blue_tint = blue + (0.25 * (255 - blue))
+	    tinted = ""
+	    tinted << @red_tint.to_i.to_s(16)
+	    tinted << @green_tint.to_i.to_s(16)
+	    tinted << @blue_tint.to_i.to_s(16)
+	    color = tinted
+	    @all_tints << tinted
+	  end
+	  @all_tints
+	end
+
+	def set_shade(color_to_shade)
+		color = color_to_shade
+
+	  @all_tints =[]
+		@all_tints << color
+
+	  counter = 0
+	  while counter < 10
+	    counter += 1
+	    red = color[0..1].to_i(16)
+	    green = color[2..3].to_i(16)
+	    blue = color[4..5].to_i(16)
+
+	    @red_tint = red * 0.25
+	    @green_tint = green * 0.25
+	    @blue_tint = blue * 0.25
+	    tinted = ""
+	    tinted << @red_tint.to_i.to_s(16)
+	    tinted << @green_tint.to_i.to_s(16)
+	    tinted << @blue_tint.to_i.to_s(16)
+	    color = tinted
+	    @all_tints << tinted
+	  end
+	  @all_tints
+	end
+
 end
 

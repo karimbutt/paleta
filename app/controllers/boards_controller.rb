@@ -11,6 +11,18 @@ class BoardsController < ApplicationController
   
     # @array_of_individual_hexes = @board.format(@sorted_picture_colors)
     # @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
+
+    @array_for_api = @board.format(@sorted_picture_colors)
+
+    @rgb_avgpercent_d3 = @board.average_rgb(@array_for_api)
+
+    @colour_lover_pallete = @board.colourlovers(@array_for_api)
+
+    @last_color = @colour_lover_pallet.last
+
+    @tinted = @board.set_tint(@last_color)
+
+    # @shaded = @board.set_shade(@last_color)
   end
 
   def query
@@ -19,7 +31,7 @@ class BoardsController < ApplicationController
     @board.save
 
     @picture = @board.pictures.first
-   
+
 
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
