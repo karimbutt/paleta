@@ -10,9 +10,16 @@ div#board-show-title{
 	/*font-family: 'Baskerville', cursive;*/
 	margin-top: 2%;
 	margin-bottom: 2%;
-	font-size: 30px;
+	font-size: 32px;
 	border-bottom: 1px solid #eee;
 	padding-bottom: 20px;
+}
+
+div#board-show-subtitle{
+	font-family: 'Baskerville', serif;
+	font-size: 18px;
+	font-stylele: italic;
+	color: gray;
 }
 
 

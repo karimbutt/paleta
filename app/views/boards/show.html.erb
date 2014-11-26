@@ -2,6 +2,9 @@
 	<div id="board-show-title">
 		<left>PALETA</left>
 	</div>
+  <div id="board-show-subtitle">
+    <left></left>
+  </div>
 </div>
 
 <div class="row">
@@ -61,15 +64,6 @@
 </div>
 
 
-<div class="row">
-  <div class="col-sm-6 palette-styling">
-    <% @colour_lovers_palette.each do |color| %>
-        <div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left"></div>
-    <% end %>
-  </div>
-</div>
 
-<div class="shades"></div>
-<div class="tints"></div>
 
 
