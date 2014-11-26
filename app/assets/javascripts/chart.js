@@ -86,6 +86,12 @@ $(document).ready(function(){
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
              + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
+           //Adding in click event for complementary color
+
+          $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
+          $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>') 
+           //end complementary color click event
+
            var hex = d[0]
            $.ajax({
              type: 'POST',
@@ -174,6 +180,13 @@ $(document).ready(function(){
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
              + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
              )
+
+          //Adding in click event for complementary color
+
+          $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
+          $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
+           //end complementary color click event
+
            var hex = d[0]
            $.ajax({
              type: 'POST',

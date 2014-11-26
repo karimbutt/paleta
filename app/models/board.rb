@@ -10,7 +10,8 @@ class Board < ActiveRecord::Base
 			rgb = found_color.rgb
 			prevalence = object.pixels_count.to_i
 			cmyk = found_color.cmyk
-			value = [hex, rgb, prevalence, cmyk]
+			complementary = found_color.matching
+			value = [hex, rgb, prevalence, cmyk, complementary]
 		end
 	end
 
