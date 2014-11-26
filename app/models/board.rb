@@ -86,8 +86,8 @@ class Board < ActiveRecord::Base
 	  url_colors = []
 	  palettes = []
 	  while counter < 10
-	    counter += 1
 	    current_color = colors[counter][0]
+	    counter += 1
 	    current_color.gsub!('#', '')
 	    url_colors << current_color
 	    uri = "http://www.colourlovers.com/api/palettes?hex=#{url_colors.join(',')}&orderCol=numViews&sortBy=DESC&format=json"
@@ -97,12 +97,61 @@ class Board < ActiveRecord::Base
 	    if colour_lovers_palettes.empty?
 	      url_colors.pop
 	      next
-	    else
-	      palettes = colour_lovers_palettes[0]["colors"]
+	    elsif colour_lovers_palettes.size == 1
+	      palettes << colour_lovers_palettes[0]["colors"]
+	      next
+	    elsif colour_lovers_palettes.size == 2
+	    	palettes << colour_lovers_palettes[0]["colors"]
+	    	palettes << colour_lovers_palettes[1]["colors"]
+	    	next
+    	elsif colour_lovers_palettes.size == 3
+    		palettes << colour_lovers_palettes[0]["colors"]
+    		palettes << colour_lovers_palettes[1]["colors"]
+    		palettes << colour_lovers_palettes[3]["colors"]
+    		next
+  		elsif colour_lovers_palettes.size >= 4
+  			palettes << colour_lovers_palettes[0]["colors"]
+  			palettes << colour_lovers_palettes[1]["colors"]
+  			palettes << colour_lovers_palettes[3]["colors"]
+  			next
+    	else
+    		palettes << colour_lovers_palettes[0]["colors"]
 	    end
 	  end
-	  palettes
+	  palettes.reverse
 	end
+
+	# def colourlovers(colors)
+	#   # colors[0]=""
+	#   counter = 0
+	#   url_colors = []
+	#   palettes = []
+	#   all_pallets = {}
+	#   while counter < 10
+	#     counter += 1
+	#     current_color = colors[counter][0]
+	#     current_color.gsub!('#', '')
+	#     url_colors << current_color
+	#     uri = "http://www.colourlovers.com/api/palettes?hex={url_colors.join(',')}&orderCol=numViews&sortBy=DESC&format=json"
+	#     # puts uri
+	#     encoded_uri = URI::encode(uri)
+	#     colour_lovers_palettes = JSON.parse(open(encoded_uri).read)
+	#     if colour_lovers_palettes.empty?
+	#       url_colors.pop
+	#       next
+	#     else
+	#     	all_pallets[:one] = [1]["colors"]
+	#     	all_pallets[:two] = [2]["colors"]
+	#       all_pallets[:match] = colour_lovers_palettes[0]["colors"]
+	#       pallets = colour_lovers_palettes[0]["colors"]
+
+	#     end
+	#   end
+	#   palettes
+	# end
+
+
+
 
 #http://stackoverflow.com/questions/6615002/given-an-rgb-value-how-do-i-create-a-tint-or-shade
 	def set_tint(color_to_tint)
