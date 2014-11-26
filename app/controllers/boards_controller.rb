@@ -10,11 +10,10 @@ class BoardsController < ApplicationController
     end.reverse
 
     @array_of_individual_hexes = @board.format(@sorted_picture_colors)
+
     @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
 
     @array_for_api = @board.format(@sorted_picture_colors)
-
-    @colour_lovers_palette = @board.colourlovers(@array_for_api)
 
     # @last_color = @colour_lovers_palette.last
 

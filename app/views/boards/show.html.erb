@@ -63,9 +63,13 @@
 
 <div class="row">
   <div class="col-sm-6 palette-styling">
-    <% @colour_lovers_palette.each do |color| %>
-        <div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left"></div>
+<% @colour_lovers_palette.each do |palette| %>
+	<div style="margin-right:10px; position:realtive">
+    <% palette.each do |color| %>
+        <div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left; "></div>
     <% end %>
+	</div>
+  <% end %>
   </div>
 </div>
 
