@@ -34,6 +34,7 @@ class Picture < ActiveRecord::Base
         color = Color.create(hex: color_name)
         color.rgb = hex_to_rgb(color.hex)
         color.cmyk = rgb_to_cmyk(color.rgb)
+        color.matching = "##{color.find_complementary(color.rgb).hex}"
         color.save
       end
 

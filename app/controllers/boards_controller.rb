@@ -38,6 +38,7 @@ class BoardsController < ApplicationController
     end.reverse
 
     @array_of_individual_hexes = @board.format(@sorted_picture_colors)
+
     @aggregate_rgb_cmyk = @board.aggregate_data(@array_of_individual_hexes)
 
     @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
