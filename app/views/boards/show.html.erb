@@ -1,6 +1,6 @@
 <div class="row">
 	<div id="board-show-title">
-		<left>PALETA</left>
+		<left></left>
 	</div>
   <div id="board-show-subtitle">
     <left></left>
@@ -105,16 +105,23 @@
 </div>
 
 
+
 <div class="row">
-  <div class="col-sm-6 palette-styling">
+  <div class="col-sm-12 palette-styling">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Suggested Palettes
+      </div>
 <% @colour_lovers_palette.each do |palette| %>
-	<div style="margin-right:10px; position:realtive">
+	<div style="margin-right:40px; position:realtive; display:inline-block; padding:30px; ">
     <% palette.each do |color| %>
         <div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left; "></div>
     <% end %>
 	</div>
   <% end %>
+      </div>
   </div>
+  
 </div>
 
 <div class="row">
@@ -126,13 +133,38 @@
     </div>
   </div>
 
-  <div class="col-sm-1">
+  <div class="col-sm-12">
     <div id="complementary-color">
     </div>
   </div>
 </div>
 
-<div class="shades"></div>
-<div class="tints"></div>
+<div class="row">
+<div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Shades
+      </div>
+      <div class="wrapper" style="position:relative; padding:40px; left: 130px; height:150px">
+      <div class="shades"></div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+<br><br>
+
+<div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Tints
+      </div>
+      <div class="wrapper" style="position:relative; padding:40px; left: 130px; height:150px">
+      <div class="tints"></div>
+      </div>
+
+    </div>
+  </div>  <br>
+  </div>
 
 
