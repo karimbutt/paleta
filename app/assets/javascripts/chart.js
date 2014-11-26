@@ -100,7 +100,7 @@ $(document).ready(function(){
 
                $('.shades').html("");
                response.dataset[1].forEach(function(color){
-                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -188,7 +188,7 @@ $(document).ready(function(){
 
                $('.shades').html("");
                response.dataset[1].forEach(function(color){
-                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -275,7 +275,7 @@ $(document).ready(function(){
 
                $('.shades').html("");
                response.dataset[1].forEach(function(color){
-                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
                });
             } 
            })

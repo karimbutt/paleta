@@ -135,7 +135,7 @@ class Board < ActiveRecord::Base
 	  color = sanatize_hex(color_to_shade)
 
 	  @all_tints =[]
-	  @all_tints << color
+	  # @all_tints << color
 
 	  10.times do
 	    color = sanatize_hex(color)
@@ -173,7 +173,7 @@ class Board < ActiveRecord::Base
 
 	def tint(rgb_values)
 	  rgb_values.map do |value|
-	    value * 0.50
+	    value * 0.85
 	  end
 	end
 

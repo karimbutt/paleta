@@ -29,23 +29,29 @@ img.bg {
 }
 
 
-div#pic-new{
-  -webkit-box-shadow: 0 0 5px #fff,
+.glow{
+/*  -webkit-box-shadow: 0 0 5px #fff,
                       0 0 10px #fff,
                       0 0 15px #fff,
-                      0 0 20px #2a9fd6,
-                      0 0 35px #2a9fd6,
-                      0 0 40px #2a9fd6,
-                      0 0 50px #2a9fd6,
-                      0 0 75px #2a9fd6;
-  box-shadow: 0 0 5px #fff,
+                      0 0 20px #fff,
+                      0 0 35px #fff,
+                      0 0 40px #fff,
+                      0 0 50px #fff,
+                      0 0 75px #fff;*/
+  box-shadow: 
+              0 0 5px #fff,
               0 0 10px #fff,
               0 0 15px #fff,
-              0 0 20px #2a9fd6,
-              0 0 35px #2a9fd6,
-              0 0 40px #2a9fd6,
-              0 0 50px #2a9fd6,
-              0 0 75px #2a9fd6;
+              0 0 20px #fff,
+              0 0 35px #fff,
+              0 0 40px #fff,
+              0 0 50px #fff,
+              0 0 75px #fff;
+}
+
+.custom-panel{
+  margin-top: 100px;
+  background: rgba(255,255,255,0.5)
 }
 
 div#site-title{
@@ -53,8 +59,10 @@ div#site-title{
 	font-weight: 400;
 	font-family: 'Baskerville', serif;
 	/*font-family: 'Baskerville', cursive;*/
-	margin-top: 35%;
-	margin-bottom: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-right: 20px;
+  padding-left: 20px;
 	font-size: 100px;
 }
 

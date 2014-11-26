@@ -1,15 +1,6 @@
 <div class="row">
 	<div id="board-show-title">
-		<center>Your Picture Profile</center>
-	</div>
-</div>
-
-
-<div class="row">
-	<div class="col-sm-6 palette-styling">
-		<% @colour_lovers_palette.each do |color| %>
-	  		<div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left"></div>
-		<% end %>
+		<left>PALETA</left>
 	</div>
 </div>
 
@@ -35,7 +26,6 @@
 
 </div>
 
-
 <div class="row">
 	<div class="col-sm-2">
 		<div class="toggle" style="float: left">
@@ -60,19 +50,26 @@
 		<div class="panel panel-default pie-charts-content">
 			<div class="panel-heading">
 				<i class="fa fa-bar-chart-o fa-fw"></i> CMYK & RGB Breakdown
-			</div>
-			<center><div class="cmyk-pie-chart"></div></center>
-			<center><div class="rgb-pie-chart"></div></center>
-		</div>
-	</div>
+
+      </div>
+      <center><div class="cmyk-pie-chart"></div></center>
+      <center><div class="rgb-pie-chart"></div></center>
+    </div>
+  </div>
 
 
 </div>
 
 
+<div class="row">
+  <div class="col-sm-6 palette-styling">
+    <% @colour_lovers_palette.each do |color| %>
+        <div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left"></div>
+    <% end %>
+  </div>
+</div>
 
-<br>
-
-<div class="tints"></div>
 <div class="shades"></div>
+<div class="tints"></div>
+
 

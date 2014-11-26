@@ -16,12 +16,11 @@ class BoardsController < ApplicationController
 
     @colour_lovers_palette = @board.colourlovers(@array_for_api)
 
-    
-    @last_color = @colour_lovers_palette.last
+    # @last_color = @colour_lovers_palette.last
 
-    @tinted = @board.set_tint(@last_color)
+    # @tinted = @board.set_tint(@last_color)
 
-   # @shaded = @board.set_shade(@last_color)
+    # @shaded = @board.set_shade(@last_color)
 
 
   end
@@ -41,9 +40,6 @@ class BoardsController < ApplicationController
     @array_of_individual_hexes = @board.format(@sorted_picture_colors)
     @aggregate_rgb_cmyk = @board.aggregate_data(@array_of_individual_hexes)
 
-
-    # @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
-
     @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
 
     respond_to do |format|
@@ -55,7 +51,8 @@ class BoardsController < ApplicationController
     @board = Board.last
     @hex = params[:color].keys.first.gsub('#', '')
     @tints = @board.set_tint(@hex)
-    @shades = @board.set_shade(@hex)
+    @full_shades = @board.set_shade(@hex)
+    @shades = @full_shades.reverse
 
     respond_to do |format|
       format.json { render :json => { dataset: [@tints, @shades] } }
@@ -64,7 +61,6 @@ class BoardsController < ApplicationController
 
 
   def convert_colors
-    # binding.pry
     @hex = params[:color].keys.first
     @board = Board.last
     @picture = @board.pictures.first
