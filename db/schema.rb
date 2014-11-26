@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123214325) do
+ActiveRecord::Schema.define(version: 20141126170120) do
 
   create_table "boards", force: true do |t|
     t.datetime "created_at"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141123214325) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cmyk"
+    t.string   "matching"
   end
 
   create_table "picture_colors", force: true do |t|
