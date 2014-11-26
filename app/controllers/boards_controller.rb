@@ -51,11 +51,21 @@ class BoardsController < ApplicationController
     @board = Board.last
     @hex = params[:color].keys.first.gsub('#', '')
     @tints = @board.set_tint(@hex)
-    @full_shades = @board.set_shade(@hex)
-    @shades = @full_shades.reverse
+    @shades = @board.set_shade(@hex).reverse
 
     respond_to do |format|
       format.json { render :json => { dataset: [@tints, @shades] } }
+    end
+  end
+
+  def default_tint_shade
+    @board = Board.last
+    @default_hex = @board.pictures.first.colors.first.hex.gsub('#', '')
+    @default_tints = @board.set_tint(@default_hex)
+    @default_shades = @board.set_shade(@default_hex).reverse
+
+    respond_to do |format|
+      format.json { render :json => { dataset: [@default_tints, @default_shades] } }
     end
   end
 

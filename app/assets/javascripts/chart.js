@@ -5,7 +5,7 @@ $(document).ready(function(){
     url: '/query',
     dataType: "json",
     success: function(response){
-      console.log(response)
+      // console.log(response)
       var dataset = response.dataset[0];
       var start = 0;
       var end = 50;
@@ -84,7 +84,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
              )
            var hex = d[0]
            $.ajax({
@@ -92,7 +92,6 @@ $(document).ready(function(){
              url: '/tint_shade',
              data: 'color[' + hex + ']', 
              success: function(response){
-              // debugger;
                $('.tints').html("");
                response.dataset[0].forEach(function(color){
                  $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
@@ -172,7 +171,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
              )
            var hex = d[0]
            $.ajax({
@@ -234,7 +233,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return d[0]; });
+      .html(function(d) { return 'Hex: ' + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
 
     chart.call(tip);
 
@@ -259,7 +258,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex: " + d[0] + ", RGB: " + d[1] + ", CMYK: " + d[3] + '<span id="delete"> X</span><br></span>'
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
              )
            var hex = d[0]
            $.ajax({
@@ -353,6 +352,7 @@ $(document).ready(function(){
     });
   })
 
+
   // Adds colors from suggested to custom
   $('.suggested-colors').on('click', function(d){
     var hex = $(this).data('color');
@@ -364,16 +364,40 @@ $(document).ready(function(){
         var RGB = response.dataset[0];
         var CMYK = response.dataset[1];
         $('.selected-colors').append(
-          '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + $(this).data('color') + '" /></svg>' 
-          + " Hex: " + hex + ", RGB: " + RGB + ", CMYK: " + CMYK + '<span id="delete"> X</span><br></span>'
+          '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + hex + '" /></svg>' 
+          + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '<br>' + '<span id="delete"> X</span><br></span>'
           )
       }
     })
   });
 
+
   // Removes selected colors from custom palette
   $('.selected-colors').on('click', '#delete', function(){
     $(this).parent().remove();
   });
+
+
+  // Adds default set of tints/shades based on most prevalent color
+  $.ajax({
+    type: 'GET',
+    url: '/default_tint_shade',
+    dataType: "json",
+    success: function(response){
+      var defaultTints = response.dataset[0]
+      var defaultShades = response.dataset[1]
+      setDefaultTintsShades(defaultTints, defaultShades)
+    }
+  });
+
+  function setDefaultTintsShades(defaultTints, defaultShades){
+    defaultTints.forEach(function(color){
+      $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+    });
+
+    defaultShades.forEach(function(color){
+      $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+    });
+  }
 
 });
