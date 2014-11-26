@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body{
+	background: white !important;
+}
 
 div#board-show-title{
 	color: black;
@@ -18,7 +21,7 @@ div#board-show-title{
 div#board-show-subtitle{
 	font-family: 'Baskerville', serif;
 	font-size: 18px;
-	font-stylele: italic;
+	font-style: italic;
 	color: gray;
 }
 
@@ -58,3 +61,48 @@ div.selected-colors {
 .palette-styling{
 	margin-bottom: 10px;
 }
+
+/* New styling */
+.toggle-buttons{
+	width: 600px;
+		div{
+			width: 20%;
+			float: left;
+			button{
+				margin: 0;
+				border: none !important;
+				padding: none !important;
+			}
+		}
+}
+
+svg{
+	margin: 0;
+	padding: 0;
+}
+
+.selected-color{
+	height: 50px;
+}
+
+.swatch{
+	width: 50px; 
+	height: 100%; 
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box; 
+  padding: 5px;
+  div{
+  	width: 100%; 
+  	height: 100%; 
+  	border-radius: 5px;
+  }
+}
+
+.mini-set-bar-chart svg {
+position: relative;
+left: -15px;
+}
+
+
+

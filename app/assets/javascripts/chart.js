@@ -27,7 +27,7 @@ $(document).ready(function(){
                   .attr('width', w)
                   .attr('height', h);
 
-    var chartPadding = 12,
+    var chartPadding = 10,
         chartBottom = h - chartPadding,
         chartRight = w - chartPadding;
 
@@ -53,6 +53,7 @@ $(document).ready(function(){
                  // RangeBands divide passed in interval by the length of the domain (calculates %spacing if passed in)
                  // RangeRoundBands rounds calculation to the nearest whole pixel
                  .rangeRoundBands([chartPadding,chartRight], 0.1); // Divides bands equally, with 10% spacing
+                 // .rangeRoundBands([-50,700], 0.1);
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
