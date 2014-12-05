@@ -31,7 +31,6 @@ class BoardsController < ApplicationController
 
     @picture = @board.pictures.first
 
-
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
        x.pixels_count.to_i
     end.reverse
@@ -69,6 +68,13 @@ class BoardsController < ApplicationController
     end
   end
 
+  # def default_complementary_pair
+
+
+  #   respond_to do |format|
+  #     format.json { render :json => { dataset:   } }
+  #   end
+  # end
 
   def convert_colors
     @hex = params[:color].keys.first

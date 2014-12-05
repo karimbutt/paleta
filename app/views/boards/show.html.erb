@@ -6,6 +6,124 @@
     <left></left>
   </div>
 </div>
+
+<div class="row">
+
+  <div class="col-sm-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">a</div>
+      <div class="mini-chart">
+        <div class="col-sm-6">
+          <div class="mini-set-bar-chart"></div>
+        </div>
+      </div>
+
+      <div class="bar-chart"></div>
+      <div class="toggle-buttons">
+        <div><button class="set-selection" id="first"><%= image_tag("bracket.png", width: "100%") %></button></div>
+        <div><button class="set-selection" id="second"><%= image_tag("bracket.png", width: "100%") %></button></div>
+        <div><button class="set-selection" id="third"><%= image_tag("bracket.png", width: "100%") %></button></div>
+        <div><button class="set-selection" id="fourth"><%= image_tag("bracket.png", width: "100%") %></button></div>
+        <div><button class="set-selection" id="fifth"><%= image_tag("bracket.png", width: "100%") %></button></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="panel panel-default pie-charts-content">
+      <div class="panel-heading">b</div>
+      <center><div class="cmyk-pie-chart"></div></center>
+      <div class="panel-heading">c</div>
+      <center><div class="rgb-pie-chart"></div></center>
+    </div>
+  </div>
+
+  <div>
+    <div id="floating-palette" class="col-sm-2 col-sm-offset-9">
+      <div id="selected-colors-div">
+  			<div class="panel-heading">Selected colors</div>
+  			<div class="selected-colors"></div>
+  		</div>
+  	</div>
+  </div>
+
+</div>
+
+
+
+
+
+<div class="row">
+
+  <div class="col-sm-10 palette-styling">
+      <div class="panel panel-default">
+      <div class="panel-heading">d</div>
+      <% @colour_lovers_palette.each do |palette| %>
+	      <div class="suggested-palette">
+          <% palette.each do |color| %>
+            <div class="suggested-color" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left; "></div>
+          <% end %>
+	      </div>
+      <% end %>
+      </div>
+  </div>
+  
+</div>
+
+<div class="row">
+  <!-- <div class="col-sm-10"></div> -->
+
+  <div class="col-sm-1">
+    <div class="panel-heading">e</div>
+    <div id="chosen-color">
+    </div>
+  </div>
+
+  <div class="col-sm-2">
+    <div class="panel-heading">f</div>
+    <div id="complementary-color"></div>
+  </div>
+
+  <div class="col-sm-8 text-key">
+    <div>
+      <p>a. Most prevalent colors</p>
+      <p>b. Aggregate CMYK</p>
+      <p>c. Aggregate RGB</p>
+      <p>d. Suggested palettes</p>
+      <p>e. Base color</p>
+      <p>f. Complementary color</p>
+      <p>g. Shades and tints</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-12">
+    <div class="panel-heading">g</div>
+    <div class="panel panel-default">
+    <div class="shades"></div><div class="tints"></div>
+    <div class="clearfix"></div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Tints</div>
+      <div class="wrapper" style="position:relative; padding:40px; left: 130px; height:150px">
+      <div class="tints"></div>
+      </div>
+
+    </div>
+  </div>  <br> -->
+
+
 <!-- 
 <div class="row">
   <div class="col-md-8" style="background: red;">
@@ -44,127 +162,3 @@
 <div class="row">
 </div>
  -->
-
-<!-- old layout -->
-  
-<div class="row">
-  <div class="col-sm-7">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-            <i class="fa fa-bar-chart-o fa-fw"></i> All colors
-        </div>
-      <center><div class="bar-chart"></div></center>
-    </div>
-  </div>
-
-
-  <div class="col-sm-5">
-    <div class="panel panel-default" id="selected-colors-div">
-
-			<div class="panel-heading">
-		        <i class="fa fa-bar-chart-o fa-fw"></i> Your selected colors
-		    </div>
-			<div class="selected-colors"></div>
-		</div>
-	</div>
-
-</div>
-
-<div class="row">
-	<div class="col-sm-2">
-		<div class="toggle" style="float: left">
-		  <button class="set-selection" id="first">First Set</button>
-		  <button class="set-selection" id="second">Second Set</button>
-		  <button class="set-selection" id="third">Third Set</button>
-		  <button class="set-selection" id="fourth">Fourth Set</button>
-		  <button class="set-selection" id="fifth">Fifth Set</button>
-		</div>
-	</div>
-
-	<div class="col-sm-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<i class="fa fa-bar-chart-o fa-fw"></i> Selected colors in picture
-			</div>
-			<div class="mini-set-bar-chart"></div>
-		</div>
-	</div>
-
-	<div class="col-sm-4">
-		<div class="panel panel-default pie-charts-content">
-			<div class="panel-heading">
-				<i class="fa fa-bar-chart-o fa-fw"></i> CMYK & RGB Breakdown
-
-      </div>
-      <center><div class="cmyk-pie-chart"></div></center>
-      <center><div class="rgb-pie-chart"></div></center>
-    </div>
-  </div>
-
-
-</div>
-
-
-
-<div class="row">
-  <div class="col-sm-12 palette-styling">
-      <div class="panel panel-default">
-      <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Suggested Palettes
-      </div>
-<% @colour_lovers_palette.each do |palette| %>
-	<div style="margin-right:40px; position:realtive; display:inline-block; padding:30px; ">
-    <% palette.each do |color| %>
-        <div class="suggested-colors" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left; "></div>
-    <% end %>
-	</div>
-  <% end %>
-      </div>
-  </div>
-  
-</div>
-
-<div class="row">
-  <div class="col-sm-10">
-  </div>
-
-  <div class="col-sm-1">
-    <div id="chosen-color">
-    </div>
-  </div>
-
-  <div class="col-sm-12">
-    <div id="complementary-color">
-    </div>
-  </div>
-</div>
-
-<div class="row">
-<div class="col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Shades
-      </div>
-      <div class="wrapper" style="position:relative; padding:40px; left: 130px; height:150px">
-      <div class="shades"></div>
-      </div>
-
-    </div>
-  </div>
-  <br>
-<br><br>
-
-<div class="col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Tints
-      </div>
-      <div class="wrapper" style="position:relative; padding:40px; left: 130px; height:150px">
-      <div class="tints"></div>
-      </div>
-
-    </div>
-  </div>  <br>
-  </div>
-
-
