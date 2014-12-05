@@ -10,7 +10,6 @@ div#board-show-title{
 	color: black;
 	font-weight: 300;
 	font-family: 'Baskerville', serif;
-	/*font-family: 'Baskerville', cursive;*/
 	margin-top: 2%;
 	margin-bottom: 2%;
 	font-size: 32px;
@@ -26,28 +25,41 @@ div#board-show-subtitle{
 }
 
 
+
+/*Bar Chart*/
+
 div.bar-chart{
 	margin-bottom: 5px;
 	margin-top: 5px;
 }
 
+.toggle-buttons{
+	width: 600px;
+		div{
+			width: 20%;
+			float: left;
+			button{
+				margin: 0;
+				border: none !important;
+				padding: none !important;
+				background: white;
+			}
+		}
+}
 
-div.selected-colors {
-	font-size: 12px;
-	padding-left: 5px;
-	padding-top: 5px;
+.mini-set-bar-chart svg {
+	position: relative;
+	left: -15px;
+}
+
+.mini-chart {
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 
-#selected-colors-div{
-	height: 356px;
-	overflow: auto;
-}
-
-.set-selection{
-	width:100%;
-	margin-bottom: 7px;
-}
+/*Pie Charts*/
 
 .cmyk-pie-chart{
 	padding-top: 12px;
@@ -62,21 +74,51 @@ div.selected-colors {
 	margin-bottom: 10px;
 }
 
-/* New styling */
-.toggle-buttons{
-	width: 600px;
-		div{
-			width: 20%;
-			float: left;
-			button{
-				margin: 0;
-				border: none !important;
-				padding: none !important;
-			}
-		}
+
+/*Panels*/
+
+.panel, .panel div {
+	border: none !important;
 }
 
-svg{
+.panel-heading {
+	background: white !important;
+}
+
+
+/*Custom Palette*/
+
+#floating-palette {
+	position: fixed;
+	z-index: 1000;
+	.panel, .panel-heading {
+		background: rgba(0,255,255,.7);
+	}
+}
+
+/*.suggested-palette {
+	position: realtive; 
+	display: inline-block; 
+	margin-right: 30px;
+}*/
+
+div.selected-colors {
+	font-size: 10px;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+#selected-colors-div{
+	height: 356px;
+	overflow: auto;
+}
+
+.set-selection{
+	width:100%;
+	margin-bottom: 7px;
+}
+
+svg {
 	margin: 0;
 	padding: 0;
 }
@@ -85,29 +127,39 @@ svg{
 	height: 50px;
 }
 
-.swatch{
-	width: 50px; 
-	height: 100%; 
-	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-         box-sizing: border-box; 
-  padding: 5px;
-  div{
-  	width: 100%; 
-  	height: 100%; 
-  	border-radius: 5px;
-  }
+.color-row {
+	border-bottom: 1px solid black;
+	.color-info {
+		float: left;
+		width: 130px;
+		height: 40px;
+		overflow: hidden;
+	}
+	.color-box{
+		width: 40px; 
+		height: 40px; 
+	  padding: 5px;
+	  border-radius: 5px;
+	  float: left;
+	}
 }
 
-.mini-set-bar-chart svg {
-position: relative;
-left: -15px;
+span#delete {
+	font-size: 24px !important;
 }
+
+/*Shades/Tints*/
 
 .shades, .tints {
-margin-left: 30px;
-/* padding-bottom: 30px; */
+	float: left;
+	width: 50%;
 }
+
+
+
+
+
+
 
 
 

@@ -8,14 +8,6 @@ $(document).ready(function(){
       var dataset = response.dataset[1];
       var rgb_dataset = dataset[0]
       var cmyk_dataset = dataset[1]
-      // console.log(cmyk_dataset)
-      // console.log(rgb_dataset[0].color, rgb_dataset[0].value)
-      // console.log(rgb_dataset[1].color, rgb_dataset[1].value)
-      // console.log(rgb_dataset[2].color, rgb_dataset[2].value)
-      // console.log(cmyk_dataset[0].color, cmyk_dataset[0].value)
-      // console.log(cmyk_dataset[1].color, cmyk_dataset[1].value)
-      // console.log(cmyk_dataset[2].color, cmyk_dataset[2].value)
-      // console.log(cmyk_dataset[3].color, cmyk_dataset[3].value)
       buildCMYKPieChart(cmyk_dataset);
       buildRGBPieChart(rgb_dataset);
     }

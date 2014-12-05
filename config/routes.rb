@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     # post 'tint' => 'boards#tint'
     post 'tint_shade' => 'boards#tint_shade'
     get 'default_tint_shade' => 'boards#default_tint_shade'
+    get 'default_complementary_pair' => 'boards#default_complementary_pair'
     post 'convert_colors' => 'boards#convert_colors'
 
 

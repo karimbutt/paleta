@@ -91,7 +91,6 @@ class Board < ActiveRecord::Base
 	    current_color.gsub!('#', '')
 	    url_colors << current_color
 	    uri = "http://www.colourlovers.com/api/palettes?hex=#{url_colors.join(',')}&orderCol=numViews&sortBy=DESC&format=json"
-	    # puts uri
 	    encoded_uri = URI::encode(uri)
 	    colour_lovers_palettes = JSON.parse(open(encoded_uri).read)
 	    if colour_lovers_palettes.empty?

@@ -5,7 +5,6 @@ $(document).ready(function(){
     url: '/query',
     dataType: "json",
     success: function(response){
-      // console.log(response)
       var dataset = response.dataset[0];
       var start = 0;
       var end = 50;
@@ -14,12 +13,13 @@ $(document).ready(function(){
     }
   });
 
+
   // FULL BAR CHART
   function buildChart(dataset){
 
     // Define dimensions of svg
-    var h = 300,
-        w = 600;
+    var h = 450,
+        w = 800;
 
     // Creates svg element
     var chart = d3.select('.bar-chart')
@@ -27,7 +27,7 @@ $(document).ready(function(){
                   .attr('width', w)
                   .attr('height', h);
 
-    var chartPadding = 10,
+    var chartPadding = 0, // 10
         chartBottom = h - chartPadding,
         chartRight = w - chartPadding;
 
@@ -35,17 +35,12 @@ $(document).ready(function(){
     var maxValue = d3.max(dataset,function(d){ return d[2]; });
     var yScale = d3.scale
                  .linear()
-                 .domain( [0,maxValue] );
-
-    // y value scale range
-    var yScale = d3.scale
-                 .linear()
                  .domain( [0,maxValue] )
                  .range( [chartPadding, chartBottom] );
 
     // x value scale (ordinal)
-    var barLabels = dataset.map(function(datum){
-              return datum[0];
+    var barLabels = dataset.map(function(d){
+              return d[0];
           });
 
     var xScale = d3.scale.ordinal()
@@ -84,16 +79,17 @@ $(document).ready(function(){
          .on('mouseout', tip.hide)
          .on('click', function(d){
            $('.selected-colors').append(
-             '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
+             '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
              )
-           //Adding in click event for complementary color
 
+           //Click event for complementary color
           $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
           $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>') 
-           //end complementary color click event
 
            var hex = d[0]
+
+           // Updates tints/shades based on selected color
            $.ajax({
              type: 'POST',
              url: '/tint_shade',
@@ -101,12 +97,12 @@ $(document).ready(function(){
              success: function(response){
                $('.tints').html("");
                response.dataset[0].forEach(function(color){
-                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                $('.tints').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
 
                $('.shades').html("");
                response.dataset[1].forEach(function(color){
-                 $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.shades').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -116,8 +112,8 @@ $(document).ready(function(){
   // ZOOMED IN BAR CHART
   function buildMiniChart(dataset, start, end){
 
-    var h = 300,
-        w = 600;
+    var h = 150,
+        w = 300;
 
     var dataset = dataset.slice(start, end);
 
@@ -127,7 +123,7 @@ $(document).ready(function(){
                   .attr('height', h);
                   
 
-    var chartPadding = 50,
+    var chartPadding = 0, // 50
         chartBottom = h - chartPadding,
         chartRight = w - chartPadding;
 
@@ -181,27 +177,27 @@ $(document).ready(function(){
              + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
              )
 
-          //Adding in click event for complementary color
-
+          // Adds complementary colors
           $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
           $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
-           //end complementary color click event
 
+
+           // Updates tints/shades based on selected color
            var hex = d[0]
+
            $.ajax({
              type: 'POST',
              url: '/tint_shade',
              data: 'color[' + hex + ']', 
              success: function(response){
-              // debugger;
                $('.tints').html("");
                response.dataset[0].forEach(function(color){
-                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.tints').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
 
                $('.shades').html("");
                response.dataset[1].forEach(function(color){
-                 $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.shades').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -251,7 +247,6 @@ $(document).ready(function(){
 
     chart.call(tip);
 
-    // Creates bars
     chart.selectAll('rect')  
          .data(dataset)   
          .style('fill', function(d){return d[0];})
@@ -275,25 +270,27 @@ $(document).ready(function(){
              + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
              )
            var hex = d[0]
+
+           // Updates tints/shades based on selected color
            $.ajax({
              type: 'POST',
              url: '/tint_shade',
              data: 'color[' + hex + ']', 
              success: function(response){
-              // debugger;
                $('.tints').html("");
                response.dataset[0].forEach(function(color){
-                 $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.tints').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
 
                $('.shades').html("");
                response.dataset[1].forEach(function(color){
-                 $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+                 $('.shades').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
             } 
            })
          });
   }
+
 
   // Handles toggling between sets of 50 colors
   $('#first').click(function(){
@@ -367,8 +364,8 @@ $(document).ready(function(){
   })
 
 
-  // Adds colors from suggested to custom
-  $('.suggested-colors').on('click', function(d){
+  // Adds colors from suggested palettes to custom palette
+  $('.suggested-color').on('click', function(d){
     var hex = $(this).data('color');
     $.ajax({
       type: 'POST',
@@ -386,7 +383,7 @@ $(document).ready(function(){
   });
 
 
-  // Removes selected colors from custom palette
+  // Removes colors from custom palette
   $('.selected-colors').on('click', '#delete', function(){
     $(this).parent().remove();
   });
@@ -406,12 +403,32 @@ $(document).ready(function(){
 
   function setDefaultTintsShades(defaultTints, defaultShades){
     defaultTints.forEach(function(color){
-      $('.tints').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+      $('.tints').append('<div style="width: 10%; height: 70px; position:relative; float:left; background-color: #' + color + '"></div>');
     });
 
     defaultShades.forEach(function(color){
-      $('.shades').append('<div style="width:70px; height:70px; position:relative; float:left; background-color: #' + color + '"></div>');
+      $('.shades').append('<div style="width: 10%; height: 70px; position:relative; float:left; background-color: #' + color + '"></div>');
     });
   }
+
+
+  // Adds default complementary color pair based on most prevalent color
+  $.ajax({
+    type: 'GET',
+    url: '/query',
+    dataType: "json",
+    success: function(response){
+      var defaultStartColor = response.dataset[0][0][0]
+      var defaultComplementaryColor = response.dataset[0][0][4]
+      setDefaultComplementaryPair(defaultStartColor, defaultComplementaryColor)
+      console.log(defaultStartColor)
+    }
+  });
+
+  function setDefaultComplementaryPair(defaultStartColor, defaultComplementaryColor){
+    $('div#chosen-color').append('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + defaultStartColor + '" /></svg>');
+
+    $('div#complementary-color').append('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + defaultComplementaryColor + '" /></svg>');
+  };
 
 });
