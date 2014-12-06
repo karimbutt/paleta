@@ -74,18 +74,19 @@ $(document).ready(function(){
                    return yScale(d[2]) - chartPadding;
                }
          })
-        // Attaches an event listener to each bar for mouseover
+         // Attaches an event listener to each bar for mouseover
          .on('mouseover', tip.show)
          .on('mouseout', tip.hide)
+         // Adds clicked color to custom palette
          .on('click', function(d){
            $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
              + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
              )
 
-           //Click event for complementary color
+           // Click event for complementary color
           $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
-          $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>') 
+          $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
 
            var hex = d[0]
 
@@ -173,8 +174,8 @@ $(document).ready(function(){
          .on('mouseout', tip.hide)
          .on('click', function(d){
            $('.selected-colors').append(
-             '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
+             '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
              )
 
           // Adds complementary colors
@@ -266,9 +267,10 @@ $(document).ready(function(){
          .on('mouseout', tip.hide)
          .on('click', function(d){
            $('.selected-colors').append(
-             '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + d[0] + '" /></svg>' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '<br>' + '<span id="delete"> X</span><br></span>'
+             '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
              )
+
            var hex = d[0]
 
            // Updates tints/shades based on selected color
@@ -363,7 +365,7 @@ $(document).ready(function(){
     });
   })
 
-
+           
   // Adds colors from suggested palettes to custom palette
   $('.suggested-color').on('click', function(d){
     var hex = $(this).data('color');
@@ -375,13 +377,49 @@ $(document).ready(function(){
         var RGB = response.dataset[0];
         var CMYK = response.dataset[1];
         $('.selected-colors').append(
-          '<span><svg height="20" width="20"><circle cx="10" cy="10" r="10" fill="' + hex + '" /></svg>' 
-          + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '<br>' + '<span id="delete"> X</span><br></span>'
-          )
+             '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
+             + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+             )
       }
     })
   });
 
+  // NEED A POST REQUEST TOO
+  // Adds base color of complementary color pair to custom palette
+  $('div#chosen-color').on('click', function(d){
+    $.ajax({
+      type: 'GET',
+      url: '/query',
+      dataType: "json",
+      success: function(response){
+        var hex = response.dataset[0][0][0]
+        var RGB = response.dataset[0][0][1]
+        var CMYK = response.dataset[0][0][3]
+          $('.selected-colors').append(
+               '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
+               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+               )
+      }
+    })
+  });
+
+  // Adds complementary color of complementary color pair to custom palette
+  $('div#complementary-color').on('click', function(d){
+    $.ajax({
+      type: 'GET',
+      url: '/query',
+      dataType: "json",
+      success: function(response){
+        var hex = response.dataset[0][0][0]
+        var RGB = response.dataset[0][0][1]
+        var CMYK = response.dataset[0][0][3]
+          $('.selected-colors').append(
+               '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
+               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+               )
+      }
+    })
+  });
 
   // Removes colors from custom palette
   $('.selected-colors').on('click', '#delete', function(){
@@ -421,7 +459,6 @@ $(document).ready(function(){
       var defaultStartColor = response.dataset[0][0][0]
       var defaultComplementaryColor = response.dataset[0][0][4]
       setDefaultComplementaryPair(defaultStartColor, defaultComplementaryColor)
-      console.log(defaultStartColor)
     }
   });
 
