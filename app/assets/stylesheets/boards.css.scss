@@ -25,134 +25,14 @@ div#board-show-subtitle{
 }
 
 
-
-/*Bar Chart*/
-
-div.bar-chart{
-	margin-bottom: 5px;
-	margin-top: 5px;
-}
-
-.toggle-buttons{
-	width: 600px;
-		div{
-			width: 20%;
-			float: left;
-			button{
-				margin: 0;
-				border: none !important;
-				padding: none !important;
-				background: white;
-			}
-		}
-}
-
-.mini-set-bar-chart svg {
-	position: relative;
-	left: -15px;
-}
-
-.mini-chart {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-
-/*Pie Charts*/
-
-.cmyk-pie-chart{
-	padding-top: 12px;
-	padding-bottom: 10px;
-}
-
-.pie-charts-content{
-	height: 347px;
-}
-
-.palette-styling{
-	margin-bottom: 10px;
-}
-
-
 /*Panels*/
 
 .panel, .panel div {
-	border: none !important;
+  border: none !important;
 }
 
 .panel-heading {
-	background: white !important;
-}
-
-
-/*Custom Palette*/
-
-#floating-palette {
-	position: fixed;
-	z-index: 1000;
-	.panel, .panel-heading {
-		background: rgba(0,255,255,.7);
-	}
-}
-
-/*.suggested-palette {
-	position: realtive; 
-	display: inline-block; 
-	margin-right: 30px;
-}*/
-
-div.selected-colors {
-	font-size: 10px;
-	padding-left: 5px;
-	padding-top: 5px;
-}
-
-#selected-colors-div{
-	height: 356px;
-	overflow: auto;
-}
-
-.set-selection{
-	width:100%;
-	margin-bottom: 7px;
-}
-
-svg {
-	margin: 0;
-	padding: 0;
-}
-
-.selected-color{
-	height: 50px;
-}
-
-.color-row {
-	border-bottom: 1px solid black;
-	.color-info {
-		float: left;
-		width: 130px;
-		height: 40px;
-		overflow: hidden;
-	}
-	.color-box{
-		width: 40px; 
-		height: 40px; 
-	  padding: 5px;
-	  border-radius: 5px;
-	  float: left;
-	}
-}
-
-span#delete {
-	font-size: 24px !important;
-}
-
-/*Shades/Tints*/
-
-.shades, .tints {
-	float: left;
-	width: 50%;
+  background: white !important;
 }
 
 

@@ -1,0 +1,34 @@
+/* Main Bar Chart*/
+
+div.bar-chart{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.toggle-buttons{
+  width: 600px;
+    div{
+      width: 20%;
+      float: left;
+      button{
+        margin: 0;
+        border: none !important;
+        padding: none !important;
+        background: white;
+      }
+    }
+}
+
+
+/* Mini Bar Chart*/
+
+.mini-set-bar-chart svg {
+  position: relative;
+  left: -15px;
+}
+
+.mini-chart {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

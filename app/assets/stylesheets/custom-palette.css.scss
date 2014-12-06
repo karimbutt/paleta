@@ -1,0 +1,61 @@
+/*Custom Palette*/
+
+#floating-palette {
+  position: fixed;
+  z-index: 1000;
+  .panel, .panel-heading {
+    background: rgba(0,255,255,.7);
+  }
+}
+
+.suggested-palette {
+  position: realtive; 
+  display: inline-block; 
+  margin-right: 30px;
+}
+
+div.selected-colors {
+  font-size: 10px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+#selected-colors-div{
+  height: 356px;
+  overflow: auto;
+}
+
+.set-selection{
+  width:100%;
+  margin-bottom: 7px;
+}
+
+svg {
+  margin: 0;
+  padding: 0;
+}
+
+.selected-color{
+  height: 50px;
+}
+
+.color-row {
+  border-bottom: 1px solid black;
+  .color-info {
+    float: left;
+    width: 130px;
+    height: 40px;
+    overflow: hidden;
+  }
+  .color-box{
+    width: 40px; 
+    height: 40px; 
+    padding: 5px;
+    border-radius: 5px;
+    float: left;
+  }
+}
+
+span#delete {
+  font-size: 24px !important;
+}
