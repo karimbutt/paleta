@@ -1,9 +1,9 @@
 <div class="row">
 	<div id="board-show-title">
-		<left></left>
+		<left>Your Color Profile</left>
 	</div>
   <div id="board-show-subtitle">
-    <left></left>
+    <left>Click on colors to add them to your custom palette</left>
   </div>
 </div>
 
@@ -14,7 +14,6 @@
       <div class="mini-chart">
         <div class="col-sm-6">
           <div class="mini-set-bar-chart"></div>
-          <div class="panel-heading">b</div>
         </div>
       </div>
 
@@ -27,45 +26,48 @@
         <div><button class="set-selection" id="fifth"><%= image_tag("bracket.png", width: "100%") %></button></div>
       </div>
       <div class="clearfix"></div>
-      <div class="panel-heading">a</div>
+      <div class="panel-heading">a. Most prevalent colors</div>
     </div>
   </div>
 
-  <div>
-    <div id="floating-palette" class="col-sm-2 col-sm-offset-9">
-      <div id="selected-colors-div">
-  			<div class="panel-heading">Selected colors</div>
-  			<div class="selected-colors"></div>
-  		</div>
-  	</div>
+  <div class="col-sm-4 palette-styling">
+    <div class="panel panel-default">
+    <div class="panel-heading">d. Suggested palettes</div>
+    <% @colour_lovers_palette.each do |palette| %>
+      <div class="suggested-palette">
+        <% palette.each do |color| %>
+          <div class="suggested-color" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left; "></div>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+
+    <div>
+      <div id="floating-palette" class="col-sm-2">
+        <div id="selected-colors-div">
+    			<div class="panel-heading">Custom Palette</div>
+    			<div class="selected-colors"></div>
+    		</div>
+    	</div>
+    </div>
   </div>
 
 </div>
 
 <div class="row">
 
-  <div class="col-sm-6">
-    <!-- <div class="panel panel-default pie-charts-content"> -->
-      <div class="panel-heading-c">c</div>
-      <!-- <center><div class="cmyk-pie-chart"></div></center> -->
-      <div class="cmyk-pie-chart"></div>
-      <div class="panel-heading-d">d</div>
+  <div class="col-sm-2">
+  <!-- <div class="panel panel-default pie-charts-content"> -->
+    <div class="panel-heading-c">b. Aggregate CMYK</div>
+    <!-- <center><div class="cmyk-pie-chart"></div></center> -->
+    <div class="cmyk-pie-chart"></div>
+  </div>
+
+  <div class="col-sm-2">
+      <div class="panel-heading-d">c. Aggregate RGB</div>
       <!-- <center><div class="rgb-pie-chart"></div></center> -->
       <div class="rgb-pie-chart"></div>
     <!-- </div> -->
-  </div>
-
-  <div class="col-sm-6 palette-styling">
-      <div class="panel panel-default">
-      <div class="panel-heading">d</div>
-      <% @colour_lovers_palette.each do |palette| %>
-        <div class="suggested-palette">
-          <% palette.each do |color| %>
-            <div class="suggested-color" data-color="#<%= color %>" style="width: 50px; height: 50px; background: #<%= color %>; float: left; "></div>
-          <% end %>
-        </div>
-      <% end %>
-      </div>
   </div>
 
 </div>
@@ -74,17 +76,17 @@
   <!-- <div class="col-sm-10"></div> -->
 
   <div class="col-sm-1">
-    <div class="panel-heading">e</div>
+    <div class="panel-heading">e. Base</div>
     <div id="chosen-color">
     </div>
   </div>
 
-  <div class="col-sm-2">
-    <div class="panel-heading">f</div>
+  <div class="col-sm-1">
+    <div class="panel-heading">f. Complementary</div>
     <div id="complementary-color"></div>
   </div>
 
-  <div class="col-sm-8 text-key">
+<!--   <div class="col-sm-8 text-key">
     <div>
       <p>a. Most prevalent colors</p>
       <p>b. Aggregate CMYK</p>
@@ -94,14 +96,14 @@
       <p>f. Complementary color</p>
       <p>g. Shades and tints</p>
     </div>
-  </div>
+  </div> -->
 
 </div>
 
 <div class="row">
 
   <div class="col-sm-12">
-    <div class="panel-heading">g</div>
+    <div class="panel-heading">Shades & Tints</div>
     <div class="panel panel-default">
     <div class="shades"></div><div class="tints"></div>
     <div class="clearfix"></div>

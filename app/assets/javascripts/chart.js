@@ -18,7 +18,7 @@ $(document).ready(function(){
   function buildChart(dataset){
 
     // Define dimensions of svg
-    var h = 450,
+    var h = 400,
         w = 800;
 
     // Creates svg element

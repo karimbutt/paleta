@@ -14,7 +14,7 @@ div#board-show-title{
 	margin-bottom: 2%;
 	font-size: 32px;
 	border-bottom: 1px solid #eee;
-	padding-bottom: 20px;
+	padding-bottom: 5px;
 }
 
 div#board-show-subtitle{
@@ -22,6 +22,7 @@ div#board-show-subtitle{
 	font-size: 18px;
 	font-style: italic;
 	color: gray;
+	padding-bottom: 20px;
 }
 
 
@@ -34,6 +35,10 @@ div#board-show-subtitle{
 .panel-heading {
   background: white !important;
   padding: none !important;
+}
+
+.d3-tip {
+	background: white;
 }
 
 
