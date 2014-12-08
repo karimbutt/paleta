@@ -3,6 +3,13 @@
 .cmyk-pie-chart{
   padding-top: 12px;
   padding-bottom: 10px;
+  float: left;
+  margin-right: 20px;
+}
+
+.rgb-pie-chart{
+  position: relative;
+  top: -4px;
 }
 
 .pie-charts-content{
@@ -11,4 +18,8 @@
 
 .palette-styling{
   margin-bottom: 10px;
+}
+
+.panel-heading-d {
+
 }
