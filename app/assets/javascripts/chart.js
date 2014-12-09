@@ -8,7 +8,6 @@ $(document).ready(function(){
       var dataset = response.dataset[0];
       var start = 0;
       var end = 50;
-      console.log(dataset)
       buildChart(dataset);
       buildMiniChart(dataset, start, end);
     }
@@ -63,7 +62,7 @@ $(document).ready(function(){
          .data(dataset)      // Parses & counts data
          .enter()            // Binds data to placeholders
          .append('rect')     // Creates a rect svg element for every datum
-         .style('stroke', '#000')    
+         // .style('stroke', '#000')    
          .style('fill', function(d){return d[0];})
          .attr({
                'x': function(d) {
@@ -99,9 +98,10 @@ $(document).ready(function(){
              url: '/tint_shade',
              data: 'color[' + hex + ']', 
              success: function(response){
+              console.log(response)
                $('.tints').html("");
                response.dataset[0].forEach(function(color){
-                $('.tints').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
+                $('.tints').append('<div class="tint" style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>')
                });
 
                $('.shades').html("");
@@ -110,6 +110,15 @@ $(document).ready(function(){
                });
             } 
            })
+
+           // Adds selected shades/tints to custom palette
+           // $.ajax({
+           //  type: 'GET'
+           //  url:
+
+
+           // })
+
          });
   }
 

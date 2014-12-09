@@ -3,30 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
 div#board-show-title{
 	color: black;
-	font-weight: 300;
+	font-weight: 400;
 	font-family: 'Baskerville', serif;
 	margin-top: 2%;
-	margin-bottom: 2%;
-	font-size: 32px;
-	border-bottom: 1px solid #eee;
-	padding-bottom: 5px;
+	/*margin-bottom: 1%;*/
+	font-size: 34px;
+	/*border-bottom: 1px solid #eee;*/
+	/*padding-bottom: 5px;*/
+	padding-left: 20px;
 }
 
 div#board-show-subtitle{
 	font-family: 'Baskerville', serif;
-	font-size: 18px;
+	font-size: 19px;
 	font-style: italic;
 	color: #939393;
-	padding-bottom: 20px;
+	padding-bottom: 25px;
+	padding-left: 20px;
 }
 
 .subtitle {
 	font-family: 'Baskerville', serif;
-	font-size: 15px;
-	color: #939393;
+}
+
+.subtitle#suggested {
+	font-size: 18px;
+	color: #545454;
+}
+
+.subtitle#custom {
+	font-size: 18px;
+	color: #545454;
 }
 
 .instructions {
@@ -35,6 +44,26 @@ div#board-show-subtitle{
 	color: #939393;
 	font-style: italic;
 }
+
+.instructions.brackets {
+	padding-left: 15px;
+}
+
+.subtitle.aggregate {
+	font-size: 16px;
+	color: #939393;
+}
+
+.subtitle.complementary {
+	font-size: 16px;
+	color: #939393;
+}
+
+.subtitle.shades-tints {
+	font-size: 16px;
+	color: #939393;
+}
+
 
 /*Panels*/
 
