@@ -19,10 +19,22 @@ div#board-show-subtitle{
 	font-family: 'Baskerville', serif;
 	font-size: 18px;
 	font-style: italic;
-	color: gray;
+	color: #939393;
 	padding-bottom: 20px;
 }
 
+.subtitle {
+	font-family: 'Baskerville', serif;
+	font-size: 15px;
+	color: #939393;
+}
+
+.instructions {
+	font-family: 'Baskerville', serif;
+	font-size: 16px;
+	color: #939393;
+	font-style: italic;
+}
 
 /*Panels*/
 
@@ -34,7 +46,7 @@ div#board-show-subtitle{
   background: white !important;
   padding: none !important;
   font-family: 'Baskerville', serif;
-  font-size: 16px;
+  font-size: 1px;
 }
 
 

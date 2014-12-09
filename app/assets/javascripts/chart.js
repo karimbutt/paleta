@@ -53,7 +53,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return 'Hex: ' + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; })
+      .html(function(d) { return 'Hex  ' + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; })
       .style('fill', 'white');
 
     chart.call(tip);
@@ -151,7 +151,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return "Hex: " + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
+      .html(function(d) { return "Hex  " + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; });
 
     chart.call(tip);
 
@@ -248,7 +248,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return 'Hex: ' + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
+      .html(function(d) { return 'Hex  ' + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; });
 
     chart.call(tip);
 
@@ -388,7 +388,6 @@ $(document).ready(function(){
     })
   });
 
-  // NEED A POST REQUEST TOO
   // Adds base color of complementary color pair to custom palette
   $('div#chosen-color').on('click', function(d){
     $.ajax({
@@ -417,8 +416,9 @@ $(document).ready(function(){
         var hex = response.dataset[0][0][0]
         var RGB = response.dataset[0][0][1]
         var CMYK = response.dataset[0][0][3]
+        var complementaryHex = response.dataset[0][0][4]
           $('.selected-colors').append(
-               '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
+               '<div class="color-row"><div class="color-box" style="background: ' + complementaryHex + ';"></div><div class="color-info">' 
                + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
                )
       }

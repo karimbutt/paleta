@@ -1,6 +1,6 @@
 <div class="row">
 	<div id="board-show-title">
-		<left>Your Color Profile</left>
+		<left>Color Profile</left>
 	</div>
   <div id="board-show-subtitle">
     <left>Click on colors to add them to your custom palette</left>
@@ -19,13 +19,7 @@
 
       <div class="bar-chart"></div>
 
-      <div class="toggle-labels">
-        <center><span>1-50</span></center>
-        <center><span>51-100</span></center>
-        <span>101-150</span>
-        <span>151-200</span>
-        <span>201-250</span>
-      </div>
+      <span class="instructions">Click the brackets for a closer look at your most prevalent colors</span>
 
       <div class="toggle-buttons">
         <div><button class="set-selection" id="first"><%= image_tag("bracket.png", width: "100%") %></button></div>
@@ -42,7 +36,7 @@
 
   <div class="col-sm-4 palette-styling">
     <div class="panel panel-default">
-    <div class="panel-heading">d. Suggested palettes</div>
+    <div class="subtitle">Suggested Palettes</div>
     <% @colour_lovers_palette.each do |palette| %>
       <div class="suggested-palette">
         <% palette.each do |color| %>
@@ -55,7 +49,7 @@
     <div>
       <div id="floating-palette" class="col-sm-2">
         <div id="selected-colors-div">
-    			<div class="panel-heading">Custom Palette</div>
+    			<div class="subtitle">Your Custom Palette</div>
     			<div class="selected-colors"></div>
     		</div>
     	</div>
@@ -68,13 +62,13 @@
 
   <div class="col-sm-2">
   <!-- <div class="panel panel-default pie-charts-content"> -->
-    <div class="panel-heading">b. Aggregate CMYK</div>
+    <div class="subtitle">CMYK</div>
     <!-- <center><div class="cmyk-pie-chart"></div></center> -->
     <div class="cmyk-pie-chart"></div>
   </div>
 
   <div class="col-sm-2">
-      <div class="panel-heading">c. Aggregate RGB</div>
+      <div class="subtitle">RGB</div>
       <!-- <center><div class="rgb-pie-chart"></div></center> -->
       <div class="rgb-pie-chart"></div>
     <!-- </div> -->
@@ -86,13 +80,13 @@
   <!-- <div class="col-sm-10"></div> -->
 
   <div class="col-sm-1">
-    <div class="panel-heading">e. Base</div>
+    <div class="subtitle">Base</div>
     <div id="chosen-color">
     </div>
   </div>
 
   <div class="col-sm-1">
-    <div class="panel-heading">f. Complementary</div>
+    <div class="subtitle">Complementary</div>
     <div id="complementary-color"></div>
   </div>
 
@@ -113,7 +107,7 @@
 <div class="row">
 
   <div class="col-sm-12">
-    <div class="panel-heading">Shades & Tints</div>
+    <div class="subtitle">Shades & Tints</div>
     <div class="panel panel-default">
     <div class="shades"></div><div class="tints"></div>
     <div class="clearfix"></div>
@@ -126,7 +120,7 @@
 
 <!-- <div class="col-sm-12">
     <div class="panel panel-default">
-      <div class="panel-heading">Tints</div>
+      <div class="subtitle">Tints</div>
       <div class="wrapper" style="position:relative; padding:40px; left: 130px; height:150px">
       <div class="tints"></div>
       </div>
