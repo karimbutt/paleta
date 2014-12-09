@@ -43,6 +43,7 @@ class BoardsController < ApplicationController
     @hex = params[:color].keys.first.gsub('#', '')
     @tints = @board.set_tint(@hex)
     @shades = @board.set_shade(@hex).reverse
+
     @picture = @board.pictures.first
 
     @tints_color_array = []
@@ -60,7 +61,7 @@ class BoardsController < ApplicationController
       new_shade = [shade,rgb, cmyk]
       @shades_color_array << new_shade
     end
-    
+
     respond_to do |format|
       format.json { render :json => { dataset: [@tints_color_array, @shades_color_array] } }
     end

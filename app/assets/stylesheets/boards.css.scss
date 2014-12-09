@@ -3,25 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-div#board-show-title{
-	color: black;
-	font-weight: 400;
-	font-family: 'Baskerville', serif;
-	margin-top: 2%;
-	/*margin-bottom: 1%;*/
-	font-size: 34px;
-	/*border-bottom: 1px solid #eee;*/
-	/*padding-bottom: 5px;*/
-	padding-left: 20px;
+div#board-show-title {
+color: #000;
+font-weight: 300;
+font-family: 'Baskerville', serif;
+margin-top: 7%;
+font-size: 32px;
+padding-bottom: 5px;
 }
 
-div#board-show-subtitle{
-	font-family: 'Baskerville', serif;
-	font-size: 19px;
-	font-style: italic;
-	color: #939393;
-	padding-bottom: 25px;
-	padding-left: 20px;
+.one-more {
+padding-top: 14px;
+}
+
+div#board-show-subtitle {
+white-space: nowrap;
+font-family: 'Baskerville', serif;
+font-size: 19px;
+font-style: italic;
+color: #939393;
+padding-bottom: 25px;
+/* padding-left: 20px; */
+top: -20px;
+position: relative;
 }
 
 .subtitle {
@@ -77,6 +81,52 @@ div#board-show-subtitle{
   font-family: 'Baskerville', serif;
   font-size: 1px;
 }
+
+
+
+/* rodrigo changes */
+
+.subtitle.aggregate {
+font-size: 19px;
+color: #000;
+left: 42px;
+top: 91px;
+position: relative;
+}
+
+.subtitle.complementary {
+font-size: 19px;
+color: #000;
+font-family: gudea;
+}
+.subtitle.complementary.baseing {
+top: 31px;
+left: 50px;
+}
+
+
+.col-sm-1.col-move {
+position: relative;
+top: 64px;
+margin-right: 60px;
+}
+
+.subtitle.complementary.baseing.one-more {
+top: 33px;
+position: relative;
+}
+
+.subtitle.aggregate.agregate-one {
+left: 48px;
+top: 105px;
+}
+
+.subtitle.aggregate.aggregate-one {
+position: relative;
+top: 95px;
+left: 47px;
+}
+
 
 
 

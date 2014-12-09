@@ -53,7 +53,7 @@ $(document).ready(function(){
     var tip = d3.tip()
       .attr('class', 'd3-tip')
       .html(function(d) { return 'Hex  ' + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; })
-      // .style('fill', 'white');
+      .style('fill', 'white');
 
     chart.call(tip);
 
@@ -100,12 +100,12 @@ $(document).ready(function(){
              success: function(response){
                $('.tints').html("");
                response.dataset[0].forEach(function(d){
-                $('.tints').append('<div class="tint" style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + d[0] + '"></div>')
+                $('.tints').append('<div class="tint" style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>')
                });
 
                $('.shades').html("");
                response.dataset[1].forEach(function(d){
-                 $('.shades').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
+                 $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                });
             } 
            })
@@ -113,13 +113,9 @@ $(document).ready(function(){
            // Adds selected shades/tints to custom palette
            // $.ajax({
            //  type: 'GET'
-           //  url: 'tint_shade'
-           //  dataType: "json",
-           //  success: function(response){
-           //  var tints = response.dataset[0];
-           //  var shades = response.dataset[1]
-           //  console.log()
-           //  }
+           //  url:
+
+
            // })
 
          });
@@ -133,7 +129,7 @@ $(document).ready(function(){
 
     var dataset = dataset.slice(start, end);
 
-    var chart = d3.select('.mini-chart')
+    var chart = d3.select('.mini-set-bar-chart')
                   .append('svg') 
                   .attr('width', w)
                   .attr('height', h);
@@ -212,13 +208,13 @@ $(document).ready(function(){
              data: 'color[' + hex + ']', 
              success: function(response){
                $('.tints').html("");
-               response.dataset[0].forEach(function(color){
-                 $('.tints').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
+               response.dataset[0].forEach(function(d){
+                 $('.tints').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                });
 
                $('.shades').html("");
-               response.dataset[1].forEach(function(color){
-                 $('.shades').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
+               response.dataset[1].forEach(function(d){
+                 $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                });
             } 
            })
@@ -238,7 +234,7 @@ $(document).ready(function(){
 
     var dataset = dataset.slice(start, end);
 
-    var chart = d3.select('.mini-chart svg');
+    var chart = d3.select('.mini-set-bar-chart svg');
                  
     var chartPadding = 0
         chartBottom = h - chartPadding,
@@ -301,12 +297,12 @@ $(document).ready(function(){
              success: function(response){
                $('.tints').html("");
                response.dataset[0].forEach(function(color){
-                 $('.tints').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
+                 $('.tints').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
 
                $('.shades').html("");
                response.dataset[1].forEach(function(color){
-                 $('.shades').append('<div style="width: 10%; height: 70px; position: relative; float: left; background-color: #' + color + '"></div>');
+                 $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + color + '"></div>');
                });
             } 
            })
@@ -453,7 +449,6 @@ $(document).ready(function(){
     url: '/default_tint_shade',
     dataType: "json",
     success: function(response){
-    console.log(response)
       var defaultTints = response.dataset[0]
       var defaultShades = response.dataset[1]
       setDefaultTintsShades(defaultTints, defaultShades)
@@ -462,11 +457,11 @@ $(document).ready(function(){
 
   function setDefaultTintsShades(defaultTints, defaultShades){
     defaultTints.forEach(function(d){
-      $('.tints').append('<div style="width: 10%; height: 70px; position:relative; float:left; background-color: #' + d[0] + '"></div>');
+      $('.tints').append('<div style="width: 10%; height: 40px; position:relative; float:left; background-color: #' + d[0] + '"></div>');
     });
 
     defaultShades.forEach(function(d){
-      $('.shades').append('<div style="width: 10%; height: 70px; position:relative; float:left; background-color: #' + d[0] + '"></div>');
+      $('.shades').append('<div style="width: 10%; height: 40px; position:relative; float:left; background-color: #' + d[0] + '"></div>');
     });
   }
 

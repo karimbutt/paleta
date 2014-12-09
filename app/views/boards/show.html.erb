@@ -1,19 +1,33 @@
 <div class="row">
-	<div id="board-show-title">
-		<left>COLOR PROFILE</left>
-	</div>
-  <div id="board-show-subtitle">
-    <left>Hover and click on values to build your custom palette</left>
+    <div class="col-sm-3 one-more">
+
+  <div id="board-show-title">
+    <span>COLOR PROFILE<span>
   </div>
-</div>
+  <div id="board-show-subtitle">
+    <span>Hover and click on values to build your custom palette</span>
+  </div>
+  </div>
+
+    <div class="col-sm-9" style="padding-right: 100px; padding-left:100px; padding-top: 25px">
+
+      <div class="shades"></div><div class="tints"></div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  
 
 <div class="row">
 
   <div class="col-sm-7">
     <div class="panel panel-default">
-      <div class="bar-chart">
-        <div class="mini-chart"></div>
+      <div class="mini-chart">
+        <div class="col-sm-6">
+          <div class="mini-set-bar-chart"></div>
+        </div>
       </div>
+
+      <div class="bar-chart"></div>
 
       <span class="instructions brackets">Click the brackets for a closer look at your most prevalent colors</span>
 
@@ -45,10 +59,10 @@
     <div>
       <div id="floating-palette" class="col-sm-2">
         <div id="selected-colors-div">
-    			<div class="subtitle" id="custom">Custom Palette</div>
-    			<div class="selected-colors"></div>
-    		</div>
-    	</div>
+          <div class="subtitle" id="custom">Custom Palette</div>
+          <div class="selected-colors"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -64,7 +78,7 @@
   </div>
 
   <div class="col-sm-2">
-      <div class="subtitle aggregate">RGB</div>
+      <div class="subtitle aggregate aggregate-one">RGB</div>
       <!-- <center><div class="rgb-pie-chart"></div></center> -->
       <div class="rgb-pie-chart"></div>
     <!-- </div> -->
@@ -72,14 +86,14 @@
 
    <!-- <div class="col-sm-10"></div> -->
 
-  <div class="col-sm-1">
-    <div class="subtitle complementary">BASE</div>
+  <div class="col-sm-1 col-move">
+    <div class="subtitle complementary baseing one-more">BASE</div>
     <div id="chosen-color">
     </div>
   </div>
 
-  <div class="col-sm-1">
-    <div class="subtitle complementary">COMPLEMENTARY</div>
+  <div class="col-sm-1 col-move">
+    <div class="subtitle complementary baseing one-more">COMPLEMENTARY</div>
     <div id="complementary-color"></div>
 <!--     <div class="panel-heading">Complementary</div>
     <div id="complementary-color"> -->
@@ -93,7 +107,7 @@
 </div>
 
 <!-- <div class="row">
- 
+
 
   <div class="col-sm-8 text-key">
     <div>
@@ -109,18 +123,6 @@
 
 </div> -->
 
-<div class="row">
-
-  <div class="col-sm-12">
-    <div class="subtitle shades-tints">SHADES & TINTS</div>
-    <!-- <div class="panel panel-default"> -->
-    <div class="shades"></div><div class="tints"></div>
-    <div class="clearfix"></div>
-    </div>
-  </div>
-
-</div>
-
 
 
 <!-- <div class="col-sm-12">
@@ -134,7 +136,7 @@
   </div>  <br> -->
 
 
-<!-- 
+<!--
 <div class="row">
   <div class="col-md-8" style="background: red;">
       <div class="bar-chart"></div>
