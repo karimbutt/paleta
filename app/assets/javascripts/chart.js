@@ -217,14 +217,14 @@ $(document).ready(function(){
   // Updates zoomed in chart based on selected range
   function updateMiniChart(dataset, start, end){
 
-    var h = 300,
-        w = 600;
+    var h = 150,
+        w = 300;
 
     var dataset = dataset.slice(start, end);
 
     var chart = d3.select('.mini-set-bar-chart svg');
                  
-    var chartPadding = 50,
+    var chartPadding = 0
         chartBottom = h - chartPadding,
         chartRight = w - chartPadding;
 
