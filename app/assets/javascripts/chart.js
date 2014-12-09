@@ -84,7 +84,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete" ><a href="#">×</a></span><div class="clearfix"></div></div>'
              )
 
            // Click event for complementary color
@@ -179,7 +179,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete"><a href="#">×</a></span><div class="clearfix"></div></div>'
              )
 
           // Adds complementary colors
@@ -276,7 +276,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete"><a href="#">×</a></span><div class="clearfix"></div></div>'
              )
 
            var hex = d[0]
@@ -386,7 +386,7 @@ $(document).ready(function(){
         var CMYK = response.dataset[1];
         $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
-             + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+             + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
              )
       }
     })
@@ -404,7 +404,7 @@ $(document).ready(function(){
         var CMYK = response.dataset[0][0][3]
           $('.selected-colors').append(
                '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
-               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
                )
       }
     })
@@ -423,7 +423,7 @@ $(document).ready(function(){
         var complementaryHex = response.dataset[0][0][4]
           $('.selected-colors').append(
                '<div class="color-row"><div class="color-box" style="background: ' + complementaryHex + ';"></div><div class="color-info">' 
-               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete">×</span><div class="clearfix"></div></div>'
+               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
                )
       }
     })
