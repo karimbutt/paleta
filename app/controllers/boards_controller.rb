@@ -49,9 +49,28 @@ class BoardsController < ApplicationController
     @hex = params[:color].keys.first.gsub('#', '')
     @tints = @board.set_tint(@hex)
     @shades = @board.set_shade(@hex).reverse
+    @picture = @board.pictures.first
+
+    @tints_color_array = []
+    @tints.each do |tint|
+      rgb = @picture.hex_to_rgb(tint)
+      cmyk = @picture.rgb_to_cmyk(rgb)
+      new_tint = [tint,rgb, cmyk]
+      @tints_color_array << new_tint
+    end
+
+    @shades_color_array = []
+    @shades.each do |shade|
+      rgb = @picture.hex_to_rgb(shade)
+      cmyk = @picture.rgb_to_cmyk(rgb)
+      new_shade = [shade,rgb, cmyk]
+      @shades_color_array << new_shade
+    end
+    
     binding.pry
+    
     respond_to do |format|
-      format.json { render :json => { dataset: [@tints, @shades] } }
+      format.json { render :json => { dataset: [@tints_color_array, @shades_color_array] } }
     end
   end
 
@@ -60,9 +79,27 @@ class BoardsController < ApplicationController
     @default_hex = @board.pictures.first.colors.first.hex.gsub('#', '')
     @default_tints = @board.set_tint(@default_hex)
     @default_shades = @board.set_shade(@default_hex).reverse
+    @picture = @board.pictures.first
 
+
+    @tints_color_array = []
+    @default_tints.each do |tint|
+      rgb = @picture.hex_to_rgb(tint)
+      cmyk = @picture.rgb_to_cmyk(rgb)
+      new_tint = [tint,rgb, cmyk]
+      @tints_color_array << new_tint
+    end
+
+    @shades_color_array = []
+    @default_shades.each do |shade|
+      rgb = @picture.hex_to_rgb(shade)
+      cmyk = @picture.rgb_to_cmyk(rgb)
+      new_shade = [shade,rgb, cmyk]
+      @shades_color_array << new_shade
+    end
+    binding.pry
     respond_to do |format|
-      format.json { render :json => { dataset: [@default_tints, @default_shades] } }
+      format.json { render :json => { dataset: [@tints_color_array, @shades_color_array] } }
     end
   end
 
