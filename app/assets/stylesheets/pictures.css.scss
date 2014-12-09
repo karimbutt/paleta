@@ -75,16 +75,17 @@ div#site-subtitle{
 }
 
 button#styled-choose-button{
-	background-color: black;
-  color: gray;
+	background-color: white;
+  border: 1px solid;
   font-family: 'Din', sans-serif;
 	margin-left: 25%;
 	width: 50%;
+  color: black;
 
 }
 button#styled-choose-button:hover{
-	background-color: beige;
-  color: gray;
+	background-color: #ECB354;
+  color: black;
 	/*border-color: white;*/
 }
 
