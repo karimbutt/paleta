@@ -23,16 +23,11 @@ div.bar-chart{
 
 /* Mini Bar Chart*/
 
-.mini-set-bar-chart svg {
-  position: relative;
-  left: 100px;
-  top: 70px;
-}
-
 .mini-chart {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50px;
+  right: 85px;
+  /*float: right;*/
 }
 
 body {
