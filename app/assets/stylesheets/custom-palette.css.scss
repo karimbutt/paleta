@@ -46,9 +46,10 @@ svg {
 
   .color-info {
     float: left;
-    width: 130px;
+    width: 160px;
     height: 50px;
     overflow: hidden;
+    white-space: nowrap;
   }
   .color-box{
     width: 50px;
@@ -60,7 +61,7 @@ svg {
 }
 
 span#delete {
-font-size: 36px !important;
+font-size: 33px !important;
 color: #000;
 top: -3px;
 }
