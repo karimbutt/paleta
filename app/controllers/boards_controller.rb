@@ -12,15 +12,8 @@ class BoardsController < ApplicationController
     @array_of_individual_hexes = @board.format(@sorted_picture_colors)
     @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
     @array_for_api = @board.format(@sorted_picture_colors)
-
-    # @last_color = @colour_lovers_palette.last
-
-    # @tinted = @board.set_tint(@last_color)
-
-    # @shaded = @board.set_shade(@last_color)
-
-
   end
+
 
   def query
     @board = Board.last
@@ -38,11 +31,12 @@ class BoardsController < ApplicationController
     @aggregate_rgb_cmyk = @board.aggregate_data(@array_of_individual_hexes)
 
     @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
-    # binding.pry
+
     respond_to do |format|
       format.json { render :json => { dataset: @full_array_for_d3} }
     end
   end
+
 
   def tint_shade
     @board = Board.last
@@ -55,6 +49,7 @@ class BoardsController < ApplicationController
     end
   end
 
+
   def default_tint_shade
     @board = Board.last
     @default_hex = @board.pictures.first.colors.first.hex.gsub('#', '')
@@ -66,13 +61,6 @@ class BoardsController < ApplicationController
     end
   end
 
-  # def default_complementary_pair
-
-
-  #   respond_to do |format|
-  #     format.json { render :json => { dataset:   } }
-  #   end
-  # end
 
   def convert_colors
     @hex = params[:color].keys.first
