@@ -53,6 +53,7 @@ $(document).ready(function(){
                          .data(pie(cmyk_dataset))
                          .enter()
                          .append('g')
+                         .attr('stroke', '#fff')
                          .attr({
                                 'class' : 'wedge',
                                 // Translate each wedge into the center
@@ -126,6 +127,7 @@ $(document).ready(function(){
                          .data(pie(rgb_dataset))
                          .enter()
                          .append('g')
+                         .attr('stroke', '#fff')
                          .attr({
                                 'class' : 'wedge',
                                 // Translate each wedge into the center
