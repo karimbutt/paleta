@@ -43,7 +43,6 @@ class BoardsController < ApplicationController
     @hex = params[:color].keys.first.gsub('#', '')
     @tints = @board.set_tint(@hex)
     @shades = @board.set_shade(@hex).reverse
-    binding.pry
     respond_to do |format|
       format.json { render :json => { dataset: [@tints, @shades] } }
     end
