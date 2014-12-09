@@ -40,7 +40,7 @@ class BoardsController < ApplicationController
     @aggregate_rgb_cmyk = @board.aggregate_data(@array_of_individual_hexes)
 
     @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
-
+    # binding.pry
     respond_to do |format|
       format.json { render :json => { dataset: @full_array_for_d3} }
     end

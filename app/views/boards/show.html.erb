@@ -18,6 +18,15 @@
       </div>
 
       <div class="bar-chart"></div>
+
+      <div class="toggle-labels">
+        <center><span>1-50</span></center>
+        <center><span>51-100</span></center>
+        <span>101-150</span>
+        <span>151-200</span>
+        <span>201-250</span>
+      </div>
+
       <div class="toggle-buttons">
         <div><button class="set-selection" id="first"><%= image_tag("bracket.png", width: "100%") %></button></div>
         <div><button class="set-selection" id="second"><%= image_tag("bracket.png", width: "100%") %></button></div>
@@ -25,8 +34,9 @@
         <div><button class="set-selection" id="fourth"><%= image_tag("bracket.png", width: "100%") %></button></div>
         <div><button class="set-selection" id="fifth"><%= image_tag("bracket.png", width: "100%") %></button></div>
       </div>
+
       <div class="clearfix"></div>
-      <div class="panel-heading">a. Most prevalent colors</div>
+      <!-- <div class="panel-heading">a. Most prevalent colors</div> -->
     </div>
   </div>
 
@@ -58,13 +68,13 @@
 
   <div class="col-sm-2">
   <!-- <div class="panel panel-default pie-charts-content"> -->
-    <div class="panel-heading-c">b. Aggregate CMYK</div>
+    <div class="panel-heading">b. Aggregate CMYK</div>
     <!-- <center><div class="cmyk-pie-chart"></div></center> -->
     <div class="cmyk-pie-chart"></div>
   </div>
 
   <div class="col-sm-2">
-      <div class="panel-heading-d">c. Aggregate RGB</div>
+      <div class="panel-heading">c. Aggregate RGB</div>
       <!-- <center><div class="rgb-pie-chart"></div></center> -->
       <div class="rgb-pie-chart"></div>
     <!-- </div> -->

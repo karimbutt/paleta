@@ -20,6 +20,12 @@ div.bar-chart{
     }
 }
 
+.toggle-labels {
+  font-family: 'Baskerville', serif;
+  float: left;
+  width: 20%;
+}
+
 
 /* Mini Bar Chart*/
 
@@ -37,6 +43,6 @@ div.bar-chart{
 
 body {
   background-color: black;
-  font-family: "Libre Baskerville", serif;
+  font-family: 'Baskerville', serif;
 
 }

@@ -8,6 +8,7 @@ $(document).ready(function(){
       var dataset = response.dataset[0];
       var start = 0;
       var end = 50;
+      console.log(dataset)
       buildChart(dataset);
       buildMiniChart(dataset, start, end);
     }
@@ -52,7 +53,8 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return 'Hex: ' + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; });
+      .html(function(d) { return 'Hex: ' + d[0] + '<br>RGB: ' + d[1] + '<br>CMYK: ' + d[3]; })
+      .style('fill', 'white');
 
     chart.call(tip);
 
@@ -61,6 +63,7 @@ $(document).ready(function(){
          .data(dataset)      // Parses & counts data
          .enter()            // Binds data to placeholders
          .append('rect')     // Creates a rect svg element for every datum
+         .style('stroke', '#000')    
          .style('fill', function(d){return d[0];})
          .attr({
                'x': function(d) {
@@ -156,7 +159,8 @@ $(document).ready(function(){
     chart.selectAll('rect')  
          .data(dataset)      
          .enter()           
-         .append('rect')     
+         .append('rect') 
+         .style('stroke', '#000')    
          .style('fill', function(d){return d[0];})
          .attr({
                'x': function(d) {
