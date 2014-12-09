@@ -15,13 +15,14 @@
  *= require_self
  */
 
+@import url(http://fonts.googleapis.com/css?family=Gudea:400,700,400italic);
 @import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
 
 
 
 div.main{
 	background-color: white;
-  padding:40px;
+  padding:00px 40px 20px 40px;
 }
 
 

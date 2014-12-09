@@ -91,7 +91,6 @@ class BoardsController < ApplicationController
       new_shade = [shade,rgb, cmyk]
       @shades_color_array << new_shade
     end
-    binding.pry
     respond_to do |format|
       format.json { render :json => { dataset: [@tints_color_array, @shades_color_array] } }
     end
