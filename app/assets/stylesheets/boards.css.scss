@@ -4,28 +4,29 @@
 
 
 div#board-show-title {
-color: #000;
-font-weight: 300;
-font-family: 'Baskerville', serif;
-margin-top: 7%;
-font-size: 32px;
-padding-bottom: 5px;
+	color: #000;
+	font-family: 'Baskerville', serif;
+	font-weight: 300;
+	font-size: 32px; 
+	margin-top: 7%;
+	margin-left: 16px;
+	padding-bottom: 5px;
 }
 
 .one-more {
-padding-top: 14px;
+	padding-top: 14px;
 }
 
 div#board-show-subtitle {
-white-space: nowrap;
-font-family: 'Baskerville', serif;
-font-size: 19px;
-font-style: italic;
-color: #939393;
-padding-bottom: 25px;
-/* padding-left: 20px; */
-top: -20px;
-position: relative;
+	white-space: nowrap;
+	color: #939393;
+	font-family: 'Baskerville', serif;
+	font-size: 16px;
+	font-style: italic;
+	padding-bottom: 25px;
+	top: -20px;
+	position: relative;
+	margin-left: 16px;
 }
 
 .subtitle {
@@ -64,6 +65,45 @@ position: relative;
 	color: #545454;
 }
 
+.subtitle.aggregate {
+	font-size: 16px;
+	color: #545454;
+	left: 39px;
+	top: 90px;
+	position: relative;
+	font-family: 'Baskerville', serif;
+}
+
+.subtitle.complementary {
+	font-size: 16px;
+	color: #545454;
+	font-family: 'Baskerville', serif;
+}
+
+.subtitle.complementary.baseing {
+	top: 31px;
+	left: 50px;
+}
+
+.col-sm-1.col-move {
+	position: relative;
+	top: 45px;
+	margin-right: 60px;
+}
+
+.subtitle.complementary.baseing.one-more {
+	top: 33px;
+	position: relative;
+	font-family: 'Baskerville', serif;
+	font-size: 1.2em;
+}
+
+.subtitle.aggregate.aggregate-one {
+	position: relative;
+	top: 93px;
+	left: 47px;
+}
+
 
 /*Panels*/
 
@@ -77,50 +117,6 @@ position: relative;
   font-family: 'Baskerville', serif;
   font-size: 1px;
 }
-
-
-
-/* rodrigo changes */
-
-.subtitle.aggregate {
-font-size: 16px;
-color: #545454;
-left: 39px;
-top: 90px;
-position: relative;
-font-family: 'Baskerville', serif;
-}
-
-.subtitle.complementary {
-font-size: 16px;
-color: #545454;
-font-family: 'Baskerville', serif;
-}
-
-.subtitle.complementary.baseing {
-top: 31px;
-left: 50px;
-}
-
-.col-sm-1.col-move {
-position: relative;
-top: 45px;
-margin-right: 60px;
-}
-
-.subtitle.complementary.baseing.one-more {
-top: 33px;
-position: relative;
-font-family: 'Baskerville', serif;
-font-size: 1.2em;
-}
-
-.subtitle.aggregate.aggregate-one {
-position: relative;
-top: 93px;
-left: 47px;
-}
-
 
 .imgBox { max-width: 142px; height: 18px; background: url(bracket12.jpg) no-repeat; }
 .imgBox:hover { max-width: 142px; height: 18px; background: url(bracket2.jpg) no-repeat; }
