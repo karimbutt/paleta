@@ -1,5 +1,11 @@
 /*Custom Palette*/
 
+.subtitle#custom {
+  font-size: 16px;
+  /*font-weight: 600;*/
+  color: #545454;
+}
+
 #floating-palette {
   position: fixed;
   z-index: 1000;
@@ -21,7 +27,7 @@ div.selected-colors {
 }
 
 #selected-colors-div{
-  height: 356px;
+  height: 500px;
   overflow: auto;
 }
 
@@ -41,7 +47,7 @@ svg {
 
 .color-row {
 
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #545454;
   padding: 6px 0 5px 0;
 
   .color-info {

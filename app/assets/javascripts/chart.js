@@ -87,8 +87,8 @@ $(document).ready(function(){
              )
 
            // Click event for complementary color
-          $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
-          $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
+          $('div#chosen-color').html('<span><svg height="80" width="80"><circle cx="40" cy="40" r="40" fill="' + d[0] + '" /></svg>') 
+          $('div#complementary-color').html('<span><svg height="80" width="80"><circle cx="40" cy="40" r="40" fill="' + d[4] + '" /></svg>')
 
            var hex = d[0]
 

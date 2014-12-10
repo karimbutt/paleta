@@ -58,26 +58,28 @@ div#site-title{
 	color: black;
 	font-weight: 400;
 	font-family: 'Baskerville', serif;
-	/*font-family: 'Baskerville', cursive;*/
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding-right: 20px;
   padding-left: 20px;
 	font-size: 100px;
 }
 
 div#site-subtitle{
-	color: black;
+	color: #545454;
 	font-weight: 400;
-	font-size: 20px;
-	font-family: 'Din', sans-serif;
-	margin-bottom: 20px;
+	font-size: 22px;
+  font-family: 'Garamond', serif;
+  font-style: italic;
+	/*font-family: 'Univers', sans-serif;*/
 }
 
 button#styled-choose-button{
 	background-color: white;
   border: 1px solid;
-  font-family: 'Din', sans-serif;
+  font-family: 'Baskerville', serif;
+  font-size: 16px;
+  /*font-family: 'Univers', sans-serif;*/
 	margin-left: 25%;
 	width: 50%;
   color: black;

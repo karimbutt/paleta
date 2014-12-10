@@ -21,7 +21,7 @@ div#board-show-subtitle {
 	white-space: nowrap;
 	color: #939393;
 	font-family: 'Baskerville', serif;
-	font-size: 16px;
+	font-size: 17px;
 	font-style: italic;
 	padding-bottom: 25px;
 	top: -20px;
@@ -34,14 +34,10 @@ div#board-show-subtitle {
 }
 
 .subtitle#suggested {
-	font-size: 18px;
 	color: #545454;
+	font-size: 16px;
+  /*font-weight: 600;*/
 	padding-bottom: 10px;
-}
-
-.subtitle#custom {
-	font-size: 18px;
-	color: #545454;
 }
 
 .instructions {
@@ -56,26 +52,18 @@ div#board-show-subtitle {
 }
 
 .subtitle.aggregate {
-	font-size: 14px;
+	font-size: 13px;
+	/*font-weight: 600;*/
 	color: #545454;
-}
-
-.subtitle.complementary {
-	font-size: 14px;
-	color: #545454;
-}
-
-.subtitle.aggregate {
-	font-size: 16px;
-	color: #545454;
-	left: 39px;
+	left: 44px;
 	top: 90px;
 	position: relative;
 	font-family: 'Baskerville', serif;
 }
 
 .subtitle.complementary {
-	font-size: 16px;
+	font-size: 13px;
+	/*font-weight: 600;*/
 	color: #545454;
 	font-family: 'Baskerville', serif;
 }
@@ -95,13 +83,13 @@ div#board-show-subtitle {
 	top: 33px;
 	position: relative;
 	font-family: 'Baskerville', serif;
-	font-size: 1.2em;
+	/*font-size: 1.2em;*/
 }
 
 .subtitle.aggregate.aggregate-one {
 	position: relative;
 	top: 93px;
-	left: 47px;
+	left: 51px;
 }
 
 
@@ -122,10 +110,10 @@ div#board-show-subtitle {
 .imgBox:hover { max-width: 142px; height: 18px; background: url(bracket2.jpg) no-repeat; }
 
 
-.row {
+/*.row {
 margin-left: 20px !important;
 margin-right: -15px;
-}
+}*/
 
 
 
