@@ -400,48 +400,6 @@ $(document).ready(function(){
     })
   });
 
-  // Adds base color of complementary color pair to custom palette
-  $('div#chosen-color').on('click', function(d){
-    $.ajax({
-      type: 'GET',
-      url: '/query',
-      dataType: "json",
-      success: function(response){
-        var hex = response.dataset[0][0][0]
-        var RGB = response.dataset[0][0][1]
-        var CMYK = response.dataset[0][0][3]
-          $('.selected-colors').append(
-               '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
-               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
-               )
-      }
-    })
-  });
-
-  // Adds complementary color of complementary color pair to custom palette
-  $('div#complementary-color').on('click', function(d){
-    $.ajax({
-      type: 'GET',
-      url: '/query',
-      dataType: "json",
-      success: function(response){
-        var hex = response.dataset[0][0][0]
-        var RGB = response.dataset[0][0][1]
-        var CMYK = response.dataset[0][0][3]
-        var complementaryHex = response.dataset[0][0][4]
-          $('.selected-colors').append(
-               '<div class="color-row"><div class="color-box" style="background: ' + complementaryHex + ';"></div><div class="color-info">' 
-               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
-               )
-      }
-    })
-  });
-
-  // Removes colors from custom palette
-  $('.selected-colors').on('click', '#delete', function(){
-    $(this).parent().remove();
-  });
-
 
   // Adds default set of tints/shades based on most prevalent color
   $.ajax({
@@ -483,5 +441,50 @@ $(document).ready(function(){
 
     $('div#complementary-color').append('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + defaultComplementaryColor + '" /></svg>');
   };
+
+
+  // Adds base color of complementary color pair to custom palette
+  $('div#chosen-color').on('click', function(d){
+    $.ajax({
+      type: 'GET',
+      url: '/query',
+      dataType: "json",
+      success: function(response){
+        var hex = response.dataset[0][0][0]
+        var RGB = response.dataset[0][0][1]
+        var CMYK = response.dataset[0][0][3]
+          $('.selected-colors').append(
+               '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
+               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
+               )
+      }
+    })
+  });
+
+
+  // Adds complementary color of complementary color pair to custom palette
+  $('div#complementary-color').on('click', function(d){
+    $.ajax({
+      type: 'GET',
+      url: '/query',
+      dataType: "json",
+      success: function(response){
+        var hex = response.dataset[0][0][0]
+        var RGB = response.dataset[0][0][1]
+        var CMYK = response.dataset[0][0][3]
+        var complementaryHex = response.dataset[0][0][4]
+          $('.selected-colors').append(
+               '<div class="color-row"><div class="color-box" style="background: ' + complementaryHex + ';"></div><div class="color-info">' 
+               + " Hex -> " + complementaryHex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
+               )
+      }
+    })
+  });
+
+
+  // Removes colors from custom palette
+  $('.selected-colors').on('click', '#delete', function(){
+    $(this).parent().remove();
+  });
 
 });
