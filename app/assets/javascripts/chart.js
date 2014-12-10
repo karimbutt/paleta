@@ -52,7 +52,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return 'Hex  ' + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; })
+      .html(function(d) { return 'HEX  ' + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; })
       .style('fill', 'white');
 
     chart.call(tip);
@@ -83,7 +83,7 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete" ><a href="#">×</a></span><div class="clearfix"></div></div>'
+             + " HEX -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete" ><a href="#">×</a></span><div class="clearfix"></div></div>'
              )
 
            // Click event for complementary color
@@ -159,7 +159,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return "Hex  " + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; });
+      .html(function(d) { return "HEX  " + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; });
 
     chart.call(tip);
 
@@ -187,12 +187,12 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete"><a href="#">×</a></span><div class="clearfix"></div></div>'
+             + " HEX -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete"><a href="#">×</a></span><div class="clearfix"></div></div>'
              )
 
-          // Adds complementary colors
-          $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
-          $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
+           // Adds complementary colors
+           $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
+           $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
 
 
           // $('div#chosen-color').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 29.73 29.73" style="enable-background:new'+ d[0] +';" xml:space="preserve"> <path d="M14.865,0C6.655,0,0,6.655,0,14.865c0,1.714,0.201,2.831,0.767,4.546c1.104,3.188,6.896-2.808,9.388,0.729  c2.492,3.536-5.62,6.64-0.18,8.764c2.475,0.601,3.175,0.827,4.89,0.827c8.21,0,14.865-6.655,14.865-14.865  C29.73,6.655,23.075,0,14.865,0z M22.077,4.955c1.695,0,3.07,1.17,3.07,2.614c0,1.442-1.375,2.613-3.07,2.613  s-3.07-1.171-3.07-2.613C19.007,6.125,20.381,4.955,22.077,4.955z M4.74,15.802c-1.695,0-3.069-1.171-3.069-2.614  c0-1.443,1.375-2.614,3.069-2.614c1.696,0,3.071,1.171,3.071,2.614C7.811,14.631,6.437,15.802,4.74,15.802z M8.335,9.784  c-1.695,0-3.07-1.17-3.07-2.614c0-1.444,1.375-2.614,3.07-2.614c1.695,0,3.07,1.17,3.07,2.614C11.405,8.614,10.03,9.784,8.335,9.784  z M12.078,4.189c0-1.443,1.374-2.615,3.07-2.615c1.695,0,3.069,1.172,3.069,2.615s-1.375,2.614-3.069,2.614  C13.452,6.803,12.078,5.632,12.078,4.189z M17.341,27.627c-1.696,0-3.069-1.17-3.069-2.613c0-1.444,1.374-2.614,3.069-2.614  c1.695,0,3.07,1.17,3.07,2.614C20.411,26.457,19.036,27.627,17.341,27.627z M23.48,23.155c-1.695,0-3.069-1.172-3.069-2.614  c0-1.443,1.374-2.614,3.069-2.614s3.07,1.171,3.07,2.614C26.55,21.983,25.176,23.155,23.48,23.155z M25.146,16.603  c-1.695,0-3.07-1.17-3.07-2.614c0-1.444,1.375-2.614,3.07-2.614c1.696,0,3.071,1.17,3.071,2.614  C28.217,15.433,26.843,16.603,25.146,16.603z"/></svg>')
@@ -260,7 +260,7 @@ $(document).ready(function(){
 
     var tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return 'Hex  ' + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; });
+      .html(function(d) { return 'HEX  ' + d[0] + '<br>RGB  ' + d[1] + '<br>CMYK  ' + d[3]; });
 
     chart.call(tip);
 
@@ -284,8 +284,12 @@ $(document).ready(function(){
          .on('click', function(d){
            $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + d[0] + ';"></div><div class="color-info">' 
-             + " Hex -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete"><a href="#">×</a></span><div class="clearfix"></div></div>'
+             + " HEX -> " + d[0] + '<br>' + " RGB -> " + d[1] + '<br>' + " CMYK -> " + d[3] + '</div>' + '<span id="delete"><a href="#">×</a></span><div class="clearfix"></div></div>'
              )
+
+           // Adds complementary colors
+           $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
+           $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
 
            var hex = d[0]
 
@@ -296,13 +300,13 @@ $(document).ready(function(){
              data: 'color[' + hex + ']', 
              success: function(response){
                $('.tints').html("");
-               response.dataset[0].forEach(function(color){
-                 $('.tints').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + color + '"></div>');
+               response.dataset[0].forEach(function(d){
+                 $('.tints').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                });
 
                $('.shades').html("");
-               response.dataset[1].forEach(function(color){
-                 $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + color + '"></div>');
+               response.dataset[1].forEach(function(d){
+                 $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                });
             } 
            })
@@ -394,11 +398,13 @@ $(document).ready(function(){
         var CMYK = response.dataset[1];
         $('.selected-colors').append(
              '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
-             + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
+             + " HEX -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
              )
+        // Need to add complementary colors
       }
     })
   });
+
 
 
   // Adds default set of tints/shades based on most prevalent color
@@ -455,7 +461,7 @@ $(document).ready(function(){
         var CMYK = response.dataset[0][0][3]
           $('.selected-colors').append(
                '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
-               + " Hex -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
+               + " HEX -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
                )
       }
     })
@@ -475,7 +481,7 @@ $(document).ready(function(){
         var complementaryHex = response.dataset[0][0][4]
           $('.selected-colors').append(
                '<div class="color-row"><div class="color-box" style="background: ' + complementaryHex + ';"></div><div class="color-info">' 
-               + " Hex -> " + complementaryHex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
+               + " HEX -> " + complementaryHex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
                )
       }
     })

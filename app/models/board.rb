@@ -159,7 +159,7 @@ class Board < ActiveRecord::Base
 		@all_tints << color
 
 	  counter = 0
-	  while counter < 10
+	  while counter < 9
 	    counter += 1
 	    red = color[0..1].to_i(16)
 	    green = color[2..3].to_i(16)
