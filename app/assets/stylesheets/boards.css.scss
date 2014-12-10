@@ -87,46 +87,46 @@ position: relative;
 /* rodrigo changes */
 
 .subtitle.aggregate {
-font-size: 19px;
+font-size: 17px;
 color: #000;
-left: 42px;
-top: 91px;
+left: 39px;
+top: 90px;
 position: relative;
+font-family: 'Baskerville', serif;
 }
 
 .subtitle.complementary {
 font-size: 19px;
 color: #000;
-font-family: gudea;
+font-family: 'Baskerville', serif;
 }
 .subtitle.complementary.baseing {
 top: 31px;
 left: 50px;
 }
 
-
 .col-sm-1.col-move {
 position: relative;
-top: 64px;
+top: 45px;
 margin-right: 60px;
 }
 
 .subtitle.complementary.baseing.one-more {
 top: 33px;
 position: relative;
-}
-
-.subtitle.aggregate.agregate-one {
-left: 48px;
-top: 105px;
+font-family: 'Baskerville', serif;
+font-size: 1.2em;
 }
 
 .subtitle.aggregate.aggregate-one {
 position: relative;
-top: 95px;
+top: 93px;
 left: 47px;
 }
 
+
+.imgBox { max-width: 142px; height: 18px; background: url(bracket12.jpg) no-repeat; }
+.imgBox:hover { max-width: 142px; height: 18px; background: url(bracket2.jpg) no-repeat; }
 
 
 
