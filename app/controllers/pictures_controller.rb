@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
 
   def create  
     @picture = Picture.create(picture_params)
-    url = "tmp/#{@picture.id}/#{@picture.image.filename}"
+    url = Rails.root + "tmp/#{@picture.id}/#{@picture.image.filename}"
     @picture.parse_colors(url)
 
     @board = Board.new
