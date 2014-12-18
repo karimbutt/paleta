@@ -163,7 +163,6 @@ $(document).ready(function(){
 
     chart.call(tip);
 
-    // Creates bars
     chart.selectAll('rect')  
          .data(dataset)      
          .enter()           
