@@ -18,5 +18,5 @@
 //= require tooltip
 //= require chart
 //= require pie-chart
-//= require picture
+//= require pictures
 
