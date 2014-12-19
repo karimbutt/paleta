@@ -15,6 +15,8 @@
 //= require d3
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
-
+//= require tooltip
+//= require chart
+//= require pie-chart
+//= require picture
 
