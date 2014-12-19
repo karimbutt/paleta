@@ -6,7 +6,6 @@ class Picture < ActiveRecord::Base
 
 
   def parse_colors(image_path)
-
     img =  Magick::Image.read(image_path).first
   	pixels_and_counts = img.quantize.color_histogram
 

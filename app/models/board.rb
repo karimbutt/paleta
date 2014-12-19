@@ -117,7 +117,7 @@ class Board < ActiveRecord::Base
     		palettes << colour_lovers_palettes[0]["colors"]
 	    end
 	  end
-	  palettes.reverse
+	  palettes.reverse[0..2]
 	end
 
 	# def colourlovers(colors)
