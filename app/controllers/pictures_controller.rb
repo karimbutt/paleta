@@ -7,7 +7,6 @@ class PicturesController < ApplicationController
   end
 
   def create  
-    binding.pry
     @picture = Picture.create(picture_params)
     url = @picture.image_url
     # url = Rails.root + "tmp/#{@picture.id}/#{@picture.image.filename}"
