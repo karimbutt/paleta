@@ -6,23 +6,23 @@ $(document).ready(function(){
     dataType: "json",
     success: function(response){
       // Data for aggregate
-      // var dataset = response.dataset[1];
-      // var rgb_dataset = dataset[0]
-      // var cmyk_dataset = dataset[1]
+      var dataset = response.dataset[1];
+      var rgb_dataset = dataset[0]
+      var cmyk_dataset = dataset[1]
 
       // Data for default (first) color
-      var dataset = response.dataset[0];
-      var rgb = dataset[0][5]
-      var cmyk = dataset[0][6]
+      // var dataset = response.dataset[0];
+      // var rgb = dataset[0][5]
+      // var cmyk = dataset[0][6]
 
-      buildCMYKPieChart(cmyk);
-      buildRGBPieChart(rgb);
+      buildCMYKPieChart(cmyk_dataset);
+      buildRGBPieChart(rgb_dataset);
     }
   });
 
 
   // CMYK PIE CHART
-  function buildCMYKPieChart(cmyk){
+  function buildCMYKPieChart(cmyk_dataset){
 
     var pie_chart = d3.select('.cmyk-pie-chart')
                       //.append('svg')
@@ -51,13 +51,19 @@ $(document).ready(function(){
                           'width' : w,
                           'height' : h
                           });
+
+    // does this need to happen?
+    // var cyan = cmyk[0].color
+    // var magenta = cmyk[1].color
+    // var yellow = cmyk[2].color
+    // var black = cmyk[3].color
    
     // var color = d3.scale.category10(); // Creates an ordinal scale of 10 different category colors
     var color = d3.scale.ordinal().domain(function(d){return d.value}).range(["cyan", "magenta", "yellow", "black"])
 
     // Use svg group elements for pie wedges
     var wedges = pieChart.selectAll('g')
-                         .data(pie(cmyk))
+                         .data(pie(cmyk_dataset))
                          .enter()
                          .append('g')
                          .attr('stroke', '#fff')
@@ -83,7 +89,7 @@ $(document).ready(function(){
   }
 
   // RGB PIE CHART
-  function buildRGBPieChart(rgb){
+  function buildRGBPieChart(rgb_dataset){
 
     var pie_chart = d3.select('.rgb-pie-chart')
                       //.append('svg')
@@ -123,16 +129,16 @@ $(document).ready(function(){
                           'height' : h
                           });
     
-    var red = rgb[0].color
-    var green = rgb[1].color
-    var blue = rgb[2].color
+    // var red = rgb[0].color
+    // var green = rgb[1].color
+    // var blue = rgb[2].color
 
     // var color = d3.scale.category10(); // Creates an ordinal scale of 10 different category colors
     var color = d3.scale.ordinal().domain(function(d){return d.value}).range(["red", "green", "blue"])
 
     // Use svg group elements for pie wedges
     var wedges = pieChart.selectAll('g')
-                         .data(pie(rgb))
+                         .data(pie(rgb_dataset))
                          .enter()
                          .append('g')
                          .attr('stroke', '#fff')

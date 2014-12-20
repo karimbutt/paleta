@@ -45,7 +45,6 @@ class Board < ActiveRecord::Base
 		self.save
 	end
 
-	# Not currently using
 	def aggregate_rgb(data_array)
 		total_elements = data_array.count
 
@@ -72,7 +71,6 @@ class Board < ActiveRecord::Base
 		[{color: "red", value: percent_red}, {color: "green", value: percent_green}, {color: "blue", value: percent_blue}]
 	end
 
-	# Not currently using
 	def aggregate_cmyk(data_array)
 		total_elements = data_array.count
 
