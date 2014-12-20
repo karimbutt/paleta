@@ -11,7 +11,31 @@ class Board < ActiveRecord::Base
 			prevalence = object.pixels_count.to_i
 			cmyk = found_color.cmyk
 			complementary = found_color.matching
-			value = [hex, rgb, prevalence, cmyk, complementary]
+
+			split_rbg = rgb.gsub("(","").gsub(")","").split(",")
+				red = split_rbg[0].to_f
+				green = split_rbg[1].to_f
+				blue = split_rbg[2].to_f
+				total = red + green + blue
+				percent_red = red / total
+				percent_green = green / total
+				percent_blue = blue / total
+
+			split_cmyk = cmyk.gsub("(","").gsub(")","").split(",")
+				cyan = split_cmyk[0].to_f
+				magenta = split_cmyk[1].to_f
+				yellow = split_cmyk[2].to_f
+				black = split_cmyk[3].to_f
+				total = cyan + magenta + yellow + black
+				percent_cyan = cyan / total
+				percent_magenta = magenta / total
+				percent_yellow = yellow / total
+				percent_black = black / total
+
+			rgb_for_pie = [{color: "red", value: percent_red}, {color: "green", value: percent_green}, {color: "blue", value: percent_blue}]
+			cmyk_for_pie = [{color: "cyan", value: percent_cyan}, {color: "magenta", value: percent_magenta}, {color: "yellow", value: percent_yellow}, {color: "black", value: percent_black}]
+
+			value = [hex, rgb, prevalence, cmyk, complementary, rgb_for_pie, cmyk_for_pie]
 		end
 	end
 
@@ -21,6 +45,7 @@ class Board < ActiveRecord::Base
 		self.save
 	end
 
+	# Not currently using
 	def aggregate_rgb(data_array)
 		total_elements = data_array.count
 
@@ -47,6 +72,7 @@ class Board < ActiveRecord::Base
 		[{color: "red", value: percent_red}, {color: "green", value: percent_green}, {color: "blue", value: percent_blue}]
 	end
 
+	# Not currently using
 	def aggregate_cmyk(data_array)
 		total_elements = data_array.count
 
@@ -148,8 +174,6 @@ class Board < ActiveRecord::Base
 	#   end
 	#   palettes
 	# end
-
-
 
 
 #http://stackoverflow.com/questions/6615002/given-an-rgb-value-how-do-i-create-a-tint-or-shade

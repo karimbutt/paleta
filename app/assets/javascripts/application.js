@@ -19,4 +19,3 @@
 //= require chart
 //= require pie-chart
 //= require pictures
-

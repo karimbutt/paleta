@@ -1,21 +1,28 @@
 $(document).ready(function(){
 
-    $.ajax({
+  $.ajax({
     type: 'GET',
     url: '/query',
     dataType: "json",
     success: function(response){
-      var dataset = response.dataset[1];
-      var rgb_dataset = dataset[0]
-      var cmyk_dataset = dataset[1]
-      buildCMYKPieChart(cmyk_dataset);
-      buildRGBPieChart(rgb_dataset);
+      // Data for aggregate
+      // var dataset = response.dataset[1];
+      // var rgb_dataset = dataset[0]
+      // var cmyk_dataset = dataset[1]
+
+      // Data for default (first) color
+      var dataset = response.dataset[0];
+      var rgb = dataset[0][5]
+      var cmyk = dataset[0][6]
+
+      buildCMYKPieChart(cmyk);
+      buildRGBPieChart(rgb);
     }
   });
 
 
-// CMYK PIE CHART
-  function buildCMYKPieChart(cmyk_dataset){
+  // CMYK PIE CHART
+  function buildCMYKPieChart(cmyk){
 
     var pie_chart = d3.select('.cmyk-pie-chart')
                       //.append('svg')
@@ -50,7 +57,7 @@ $(document).ready(function(){
 
     // Use svg group elements for pie wedges
     var wedges = pieChart.selectAll('g')
-                         .data(pie(cmyk_dataset))
+                         .data(pie(cmyk))
                          .enter()
                          .append('g')
                          .attr('stroke', '#fff')
@@ -64,18 +71,19 @@ $(document).ready(function(){
         wedges.append('path')
               .attr({
                      'fill' : function(d,i) {
+                      // why are the colors being reordered m, y, c, k??
+                      // seems to be start with the second one for both this and rgb
                        return color(i);
-                       // return 'black';
-
                     },
                     // pass in the arc generator for the 'd' attribute of the path,
                     // which is the path description
                      'd' : arc
               });
+
   }
 
-// RGB PIE CHART
-  function buildRGBPieChart(rgb_dataset){
+  // RGB PIE CHART
+  function buildRGBPieChart(rgb){
 
     var pie_chart = d3.select('.rgb-pie-chart')
                       //.append('svg')
@@ -115,16 +123,16 @@ $(document).ready(function(){
                           'height' : h
                           });
     
-    var red = rgb_dataset[0].color
-    var green = rgb_dataset[1].color
-    var blue = rgb_dataset[2].color
+    var red = rgb[0].color
+    var green = rgb[1].color
+    var blue = rgb[2].color
 
     // var color = d3.scale.category10(); // Creates an ordinal scale of 10 different category colors
     var color = d3.scale.ordinal().domain(function(d){return d.value}).range(["red", "green", "blue"])
 
     // Use svg group elements for pie wedges
     var wedges = pieChart.selectAll('g')
-                         .data(pie(rgb_dataset))
+                         .data(pie(rgb))
                          .enter()
                          .append('g')
                          .attr('stroke', '#fff')
@@ -138,9 +146,8 @@ $(document).ready(function(){
         wedges.append('path')
               .attr({
                      'fill' : function(d,i) {
+                       // why is this ordering the colors g, b, r??
                        return color(i);
-                       // return 'black';
-
                     },
                     // pass in the arc generator for the 'd' attribute of the path,
                     // which is the path description

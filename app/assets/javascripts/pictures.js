@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	$("#picture_submit_button").hide();
 

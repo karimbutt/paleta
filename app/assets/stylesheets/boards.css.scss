@@ -13,10 +13,6 @@ div#board-show-title {
 	padding-bottom: 5px;
 }
 
-.one-more {
-	padding-top: 14px;
-}
-
 div#board-show-subtitle {
 	white-space: nowrap;
 	color: #939393;
@@ -40,6 +36,10 @@ div#board-show-subtitle {
 	padding-bottom: 10px;
 }
 
+.one-more {
+	padding-top: 14px;
+}
+
 .instructions {
 	font-family: 'Baskerville', serif;
 	font-size: 16px;
@@ -53,7 +53,6 @@ div#board-show-subtitle {
 
 .subtitle.aggregate {
 	font-size: 13px;
-	/*font-weight: 600;*/
 	color: #545454;
 	left: 44px;
 	top: 90px;
@@ -63,7 +62,6 @@ div#board-show-subtitle {
 
 .subtitle.complementary {
 	font-size: 13px;
-	/*font-weight: 600;*/
 	color: #545454;
 	font-family: 'Baskerville', serif;
 }
@@ -83,7 +81,6 @@ div#board-show-subtitle {
 	top: 33px;
 	position: relative;
 	font-family: 'Baskerville', serif;
-	/*font-size: 1.2em;*/
 }
 
 .subtitle.aggregate.aggregate-one {
@@ -93,7 +90,6 @@ div#board-show-subtitle {
 }
 
 
-/*Panels*/
 
 .panel, .panel div {
   border: none !important;
@@ -110,15 +106,11 @@ div#board-show-subtitle {
 .imgBox:hover { max-width: 142px; height: 18px; background: image-url("bracket2.jpg") no-repeat; }
 
 
-/*.row {
-margin-left: 20px !important;
-margin-right: -15px;
-}*/
-
 .footer {
 	font-family: 'Baskerville', serif;
 	font-size: 12px; 
 	color: #939393;
+	padding-top: 30px;
 }
 
 

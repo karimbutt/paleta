@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'default_tint_shade' => 'boards#default_tint_shade'
     get 'default_complementary_pair' => 'boards#default_complementary_pair'
     post 'convert_colors' => 'boards#convert_colors'
+    post 'pie_chart' => 'boards#pie_chart'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

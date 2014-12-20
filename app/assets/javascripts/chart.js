@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  // makes sure this is only run when there are svg to work with
+  // Makes sure this is only run when there are svgs to work with
   if ( $('#bar-chart').length ) {
     $.ajax({
       type: 'GET',
@@ -24,7 +24,7 @@ $(document).ready(function(){
 
       // Creates svg element
       var chart = d3.select('.bar-chart')
-                    .append('svg') // Parent svg element will contain the chart
+                    .append('svg')         // Parent svg element will contain the chart
                     .attr('width', w)
                     .attr('height', h);
 
@@ -45,10 +45,10 @@ $(document).ready(function(){
             });
 
       var xScale = d3.scale.ordinal()
-                   .domain(barLabels) // Passes in a list of discreet 'labels' or categories
+                   .domain(barLabels)  // Passes in a list of discreet 'labels' or categories
                    // RangeBands divide passed in interval by the length of the domain (calculates %spacing if passed in)
                    // RangeRoundBands rounds calculation to the nearest whole pixel
-                   .rangeRoundBands([chartPadding,chartRight], 0.1); // Divides bands equally, with 10% spacing
+                   .rangeRoundBands([chartPadding,chartRight], 0.1);  // Divides bands equally, with 10% spacing
                    // .rangeRoundBands([-50,700], 0.1);
 
       var tip = d3.tip()
@@ -88,12 +88,11 @@ $(document).ready(function(){
                )
 
              // Click event for complementary color
-            $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
-            $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
-
-             var hex = d[0]
+             $('div#chosen-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[0] + '" /></svg>') 
+             $('div#complementary-color').html('<span><svg height="40" width="40"><circle cx="20" cy="20" r="20" fill="' + d[4] + '" /></svg>')
 
              // Updates tints/shades based on selected color
+             var hex = d[0]
              $.ajax({
                type: 'POST',
                url: '/tint_shade',
@@ -113,14 +112,13 @@ $(document).ready(function(){
 
              // Adds selected shades/tints to custom palette
              // $.ajax({
-             //  type: 'GET'
-             //  url:
-
-
+             //   type: 'GET'
+             //   url:
              // })
 
            });
     }
+
 
     // ZOOMED IN BAR CHART
     function buildMiniChart(dataset, start, end){
@@ -400,11 +398,9 @@ $(document).ready(function(){
                '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
                + " HEX -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
                )
-          // Need to add complementary colors
         }
       })
     });
-
 
 
     // Adds default set of tints/shades based on most prevalent color
@@ -450,42 +446,42 @@ $(document).ready(function(){
 
 
     // Adds base color of complementary color pair to custom palette
-    $('div#chosen-color').on('click', function(d){
-      $.ajax({
-        type: 'GET',
-        url: '/query',
-        dataType: "json",
-        success: function(response){
-          var hex = response.dataset[0][0][0]
-          var RGB = response.dataset[0][0][1]
-          var CMYK = response.dataset[0][0][3]
-            $('.selected-colors').append(
-                 '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
-                 + " HEX -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
-                 )
-        }
-      })
-    });
+    // $('div#chosen-color').on('click', function(d){
+    //   $.ajax({
+    //     type: 'GET',
+    //     url: '/query',
+    //     dataType: "json",
+    //     success: function(response){
+    //       var hex = response.dataset[0][0][0]
+    //       var RGB = response.dataset[0][0][1]
+    //       var CMYK = response.dataset[0][0][3]
+    //         $('.selected-colors').append(
+    //              '<div class="color-row"><div class="color-box" style="background: ' + hex + ';"></div><div class="color-info">' 
+    //              + " HEX -> " + hex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
+    //              )
+    //     }
+    //   })
+    // });
 
 
     // Adds complementary color of complementary color pair to custom palette
-    $('div#complementary-color').on('click', function(d){
-      $.ajax({
-        type: 'GET',
-        url: '/query',
-        dataType: "json",
-        success: function(response){
-          var hex = response.dataset[0][0][0]
-          var RGB = response.dataset[0][0][1]
-          var CMYK = response.dataset[0][0][3]
-          var complementaryHex = response.dataset[0][0][4]
-            $('.selected-colors').append(
-                 '<div class="color-row"><div class="color-box" style="background: ' + complementaryHex + ';"></div><div class="color-info">' 
-                 + " HEX -> " + complementaryHex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
-                 )
-        }
-      })
-    });
+    // $('div#complementary-color').on('click', function(d){
+    //   $.ajax({
+    //     type: 'GET',
+    //     url: '/query',
+    //     dataType: "json",
+    //     success: function(response){
+    //       var hex = response.dataset[0][0][0]
+    //       var RGB = response.dataset[0][0][1]
+    //       var CMYK = response.dataset[0][0][3]
+    //       var complementaryHex = response.dataset[0][0][4]
+    //         $('.selected-colors').append(
+    //              '<div class="color-row"><div class="color-box" style="background: ' + complementaryHex + ';"></div><div class="color-info">' 
+    //              + " HEX -> " + complementaryHex + '<br>' + " RGB -> " + RGB + '<br>' + " CMYK -> " + CMYK + '</div>' + '<span id="delete" href="#">×</span><div class="clearfix"></div></div>'
+    //              )
+    //     }
+    //   })
+    // });
 
 
     // Removes colors from custom palette
@@ -493,4 +489,5 @@ $(document).ready(function(){
       $(this).parent().remove();
     });
   }
+  
 });

@@ -1,7 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
-
   def new
     @picture = Picture.new
   end
@@ -17,7 +16,6 @@ class PicturesController < ApplicationController
     @picture.save
 
     redirect_to board_path(@board)
-    # redirect_to new_board_path
   end
 
 
@@ -29,4 +27,5 @@ class PicturesController < ApplicationController
     def picture_params
       params.require(:picture).permit(:image)
     end
+
 end

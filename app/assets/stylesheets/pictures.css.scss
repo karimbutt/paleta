@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*body {
-	background-image: image-url("blue-paint-texture-background.jpg");
-}*/
-
 img.bg {
   /* Set rules to fill background */
   min-height: 100%;
@@ -66,7 +62,7 @@ img.bg {
 }
 
 div#site-title{
-	color: black;
+	color: #000000;
 	font-weight: 400;
 	font-family: 'Baskerville', serif;
   margin-top: 50px;
@@ -77,13 +73,11 @@ div#site-title{
 }
 
 div#site-subtitle{
-  color: black;
-	/*color: #545454;*/
+  color: #000000;
 	font-weight: 400;
 	font-size: 22px;
   font-family: 'Garamond', serif;
   font-style: italic;
-	/*font-family: 'Univers', sans-serif;*/
 }
 
 button#styled-choose-button{
@@ -94,16 +88,13 @@ button#styled-choose-button{
   /*font-family: 'Univers', sans-serif;*/
 	margin-left: 25%;
 	width: 50%;
-  color: black;
+  color: #000000;
 
 }
 button#styled-choose-button:hover{
 	background-color: #ECB354;
-  color: black;
-	/*border-color: white;*/
+  color: #000000;
 }
-
-
 
 
 

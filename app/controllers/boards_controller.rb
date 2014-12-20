@@ -6,11 +6,11 @@ class BoardsController < ApplicationController
     @picture = @board.pictures.first
 
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
-       x.pixels_count.to_i
+      x.pixels_count.to_i
     end.reverse
 
-    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
-    @colour_lovers_palette = @board.colourlovers(@array_of_individual_hexes)
+    @array_of_individual_colors = @board.format(@sorted_picture_colors)
+    @colour_lovers_palette = @board.colourlovers(@array_of_individual_colors)
     @array_for_api = @board.format(@sorted_picture_colors)
   end
 
@@ -19,18 +19,15 @@ class BoardsController < ApplicationController
     @board = Board.last
     @board.set_board_picture
     @board.save
-
     @picture = @board.pictures.first
 
     @sorted_picture_colors = @picture.picture_colors.sort_by do |x|
-       x.pixels_count.to_i
+      x.pixels_count.to_i
     end.reverse
 
-    @array_of_individual_hexes = @board.format(@sorted_picture_colors)
-
-    @aggregate_rgb_cmyk = @board.aggregate_data(@array_of_individual_hexes)
-
-    @full_array_for_d3 = [@array_of_individual_hexes, @aggregate_rgb_cmyk]
+    @array_of_individual_colors = @board.format(@sorted_picture_colors)
+    @aggregate_rgb_cmyk = @board.aggregate_data(@array_of_individual_colors)
+    @full_array_for_d3 = [@array_of_individual_colors, @aggregate_rgb_cmyk]
 
     respond_to do |format|
       format.json { render :json => { dataset: @full_array_for_d3} }
@@ -58,7 +55,7 @@ class BoardsController < ApplicationController
     @shades.each do |shade|
       rgb = @picture.hex_to_rgb(shade)
       cmyk = @picture.rgb_to_cmyk(rgb)
-      new_shade = [shade,rgb, cmyk]
+      new_shade = [shade, rgb, cmyk]
       @shades_color_array << new_shade
     end
 
@@ -75,7 +72,6 @@ class BoardsController < ApplicationController
     @default_shades = @board.set_shade(@default_hex).reverse
     @picture = @board.pictures.first
 
-
     @tints_color_array = []
     @default_tints.each do |tint|
       rgb = @picture.hex_to_rgb(tint)
@@ -91,6 +87,7 @@ class BoardsController < ApplicationController
       new_shade = [shade,rgb, cmyk]
       @shades_color_array << new_shade
     end
+
     respond_to do |format|
       format.json { render :json => { dataset: [@tints_color_array, @shades_color_array] } }
     end
@@ -112,13 +109,12 @@ class BoardsController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_board
       @board = Board.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params[:board]
     end
+    
 end
