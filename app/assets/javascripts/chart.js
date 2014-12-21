@@ -15,10 +15,10 @@ $(document).ready(function(){
     });
 
 
-    // FULL BAR CHART
+    // HISTOGRAM
     function buildChart(dataset){
 
-      // Define dimensions of svg
+      // Defines dimensions of svg
       var h = 400,
           w = 800;
 
@@ -28,16 +28,12 @@ $(document).ready(function(){
                     .attr('width', w)
                     .attr('height', h);
 
-      var chartPadding = 0, // 10
-          chartBottom = h - chartPadding,
-          chartRight = w - chartPadding;
-
       // y value scale domain
       var maxValue = d3.max(dataset,function(d){ return d[2]; });
       var yScale = d3.scale
                    .linear()
                    .domain( [0,maxValue] )
-                   .range( [chartPadding, chartBottom] );
+                   .range( [0,h] );
 
       // x value scale (ordinal)
       var barLabels = dataset.map(function(d){
@@ -48,7 +44,7 @@ $(document).ready(function(){
                    .domain(barLabels)  // Passes in a list of discreet 'labels' or categories
                    // RangeBands divide passed in interval by the length of the domain (calculates %spacing if passed in)
                    // RangeRoundBands rounds calculation to the nearest whole pixel
-                   .rangeRoundBands([chartPadding,chartRight], 0.1);  // Divides bands equally, with 10% spacing
+                   .rangeRoundBands([0,w], 0.1);  // Divides bands equally, with 10% spacing
                    // .rangeRoundBands([-50,700], 0.1);
 
       var tip = d3.tip()
@@ -74,7 +70,7 @@ $(document).ready(function(){
                  },
                  'width': xScale.rangeBand(), // Gives bar width with space calculation built in
                  'height': function(d) {
-                     return yScale(d[2]) - chartPadding;
+                     return yScale(d[2]);
                  }
            })
            // Attaches an event listener to each bar for mouseover
@@ -132,11 +128,6 @@ $(document).ready(function(){
                     .append('svg') 
                     .attr('width', w)
                     .attr('height', h);
-                    
-
-      var chartPadding = 0, // 50
-          chartBottom = h - chartPadding,
-          chartRight = w - chartPadding;
 
       var maxValue = d3.max(dataset,function(d){ return d[2]; });
       var yScale = d3.scale
@@ -146,7 +137,7 @@ $(document).ready(function(){
       var yScale = d3.scale
                    .linear()
                    .domain( [0,maxValue] )
-                   .range( [chartPadding, chartBottom] );
+                   .range( [0,h] );
 
       var barLabels = dataset.map(function(datum){
                 return datum[0];
@@ -154,7 +145,7 @@ $(document).ready(function(){
 
       var xScale = d3.scale.ordinal()
                    .domain(barLabels) 
-                   .rangeRoundBands([chartPadding,chartRight], 0.1);
+                   .rangeRoundBands([0,w], 0.1);
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -177,7 +168,7 @@ $(document).ready(function(){
                  },
                  'width': xScale.rangeBand(), 
                  'height': function(d) {
-                     return yScale(d[2]) - chartPadding;
+                     return yScale(d[2]);
                  }
            })
            .on('mouseover', tip.show)
@@ -233,10 +224,6 @@ $(document).ready(function(){
       var dataset = dataset.slice(start, end);
 
       var chart = d3.select('.mini-set-bar-chart svg');
-                   
-      var chartPadding = 0
-          chartBottom = h - chartPadding,
-          chartRight = w - chartPadding;
 
       var maxValue = d3.max(dataset,function(d){ return d[2]; });
       var yScale = d3.scale
@@ -246,7 +233,7 @@ $(document).ready(function(){
       var yScale = d3.scale
                    .linear()
                    .domain( [0,maxValue] )
-                   .range( [chartPadding, chartBottom] );
+                   .range( [0,h] );
 
       var barLabels = dataset.map(function(datum){
                 return datum[0];
@@ -254,7 +241,7 @@ $(document).ready(function(){
 
       var xScale = d3.scale.ordinal()
                    .domain(barLabels) 
-                   .rangeRoundBands([chartPadding,chartRight], 0.1);
+                   .rangeRoundBands([0,w], 0.1);
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -274,7 +261,7 @@ $(document).ready(function(){
                  },
                  'width': xScale.rangeBand(), 
                  'height': function(d) {
-                     return yScale(d[2]) - chartPadding;
+                     return yScale(d[2]);
                  }
            })
            .on('mouseover', tip.show)
