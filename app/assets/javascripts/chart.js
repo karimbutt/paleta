@@ -6,17 +6,31 @@ $(document).ready(function(){
       url: '/query',
       dataType: "json",
       success: function(response){
-        var dataset = response.dataset[0];
+        // response => [250 colors, aggregate rgb/cmyk]
+        // single color => 
+        // [ "#9BA6B7",
+        //   "(155,166,183)",
+        //   42463, 
+        //   "(0.15,0.09,0.0,0.28)"
+        //   "#B6AB9A",
+        //   [ {color: "red",   value: 0.30753968253968256}, 
+        //     {color: "green", value: 0.32936507936507936},
+        //     {color: "blue",  value: 0.3630952380952381}    ],
+        //   [ {color: "cyan",    value: 0.28846153846153844},
+        //     {color: "magenta", value: 0.17307692307692307},
+        //     {color: "yellow",  value: 0},
+        //     {color: "black",   value: 0.5384615384615385}  ] ]
+        var allColors = response.dataset[0];
         var start = 0;
         var end = 50;
-        buildChart(dataset);
-        buildMiniChart(dataset, start, end);
+        buildChart(allColors);
+        buildMiniChart(allColors, start, end);
       }
     });
 
 
     // HISTOGRAM
-    function buildChart(dataset){
+    function buildChart(allColors){
 
       // Defines dimensions of svg
       var h = 400,
@@ -29,23 +43,20 @@ $(document).ready(function(){
                     .attr('height', h);
 
       // y value scale domain
-      var maxValue = d3.max(dataset,function(d){ return d[2]; });
+      var maxValue = d3.max(allColors,function(d){ return d[2]; });
       var yScale = d3.scale
                    .linear()
                    .domain( [0,maxValue] )
                    .range( [0,h] );
 
       // x value scale (ordinal)
-      var barLabels = dataset.map(function(d){
+      var domain = allColors.map(function(d){
                 return d[0];
             });
 
       var xScale = d3.scale.ordinal()
-                   .domain(barLabels)  // Passes in a list of discreet 'labels' or categories
-                   // RangeBands divide passed in interval by the length of the domain (calculates %spacing if passed in)
-                   // RangeRoundBands rounds calculation to the nearest whole pixel
+                   .domain(domain)
                    .rangeRoundBands([0,w], 0.1);  // Divides bands equally, with 10% spacing
-                   // .rangeRoundBands([-50,700], 0.1);
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -55,11 +66,10 @@ $(document).ready(function(){
       chart.call(tip);
 
       // Creates bars
-      chart.selectAll('rect')  // Returns empty selection
-           .data(dataset)      // Parses & counts data
-           .enter()            // Binds data to placeholders
-           .append('rect')     // Creates a rect svg element for every datum
-           // .style('stroke', '#000')    
+      chart.selectAll('rect')    // Returns empty selection
+           .data(allColors)      // Parses & counts data
+           .enter()              // Binds data to placeholders
+           .append('rect')       // Creates a rect svg element for every datum
            .style('fill', function(d){return d[0];})
            .attr({
                  'x': function(d) {
@@ -76,6 +86,7 @@ $(document).ready(function(){
            // Attaches an event listener to each bar for mouseover
            .on('mouseover', tip.show)
            .on('mouseout', tip.hide)
+
            // Adds clicked color to custom palette
            .on('click', function(d){
              $('.selected-colors').append(
@@ -94,13 +105,16 @@ $(document).ready(function(){
                url: '/tint_shade',
                data: 'color[' + hex + ']', 
                success: function(response){
+                 var tintsArray = response.dataset[0]
+                 var shadesArray = response.dataset[1]
+
                  $('.tints').html("");
-                 response.dataset[0].forEach(function(d){
+                 tintsArray.forEach(function(d){
                   $('.tints').append('<div class="tint" style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>')
                  });
 
                  $('.shades').html("");
-                 response.dataset[1].forEach(function(d){
+                 shadesArray.forEach(function(d){
                    $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                  });
               } 
@@ -116,20 +130,20 @@ $(document).ready(function(){
     }
 
 
-    // ZOOMED IN BAR CHART
-    function buildMiniChart(dataset, start, end){
+    // MINI HISTOGRAM
+    function buildMiniChart(allColors, start, end){
 
       var h = 150,
           w = 300;
 
-      var dataset = dataset.slice(start, end);
+      var allColors = allColors.slice(start, end);
 
       var chart = d3.select('.mini-set-bar-chart')
                     .append('svg') 
                     .attr('width', w)
                     .attr('height', h);
 
-      var maxValue = d3.max(dataset,function(d){ return d[2]; });
+      var maxValue = d3.max(allColors,function(d){ return d[2]; });
       var yScale = d3.scale
                    .linear()
                    .domain( [0,maxValue] );
@@ -139,12 +153,12 @@ $(document).ready(function(){
                    .domain( [0,maxValue] )
                    .range( [0,h] );
 
-      var barLabels = dataset.map(function(datum){
+      var domain = allColors.map(function(datum){
                 return datum[0];
             });
 
       var xScale = d3.scale.ordinal()
-                   .domain(barLabels) 
+                   .domain(domain) 
                    .rangeRoundBands([0,w], 0.1);
 
       var tip = d3.tip()
@@ -154,7 +168,7 @@ $(document).ready(function(){
       chart.call(tip);
 
       chart.selectAll('rect')  
-           .data(dataset)      
+           .data(allColors)      
            .enter()           
            .append('rect') 
            .style('stroke', '#000')    
@@ -196,13 +210,16 @@ $(document).ready(function(){
                url: '/tint_shade',
                data: 'color[' + hex + ']', 
                success: function(response){
+                 var tintsArray = response.dataset[0]
+                 var shadesArray = response.dataset[1]
+
                  $('.tints').html("");
-                 response.dataset[0].forEach(function(d){
+                 tintsArray.forEach(function(d){
                    $('.tints').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                  });
 
                  $('.shades').html("");
-                 response.dataset[1].forEach(function(d){
+                 shadesArray.forEach(function(d){
                    $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                  });
               } 
@@ -215,17 +232,17 @@ $(document).ready(function(){
     });
 
 
-    // Updates zoomed in chart based on selected range
-    function updateMiniChart(dataset, start, end){
+    // Updates MINI chart based on selected bracket
+    function updateMiniChart(allColors, start, end){
 
       var h = 150,
           w = 300;
 
-      var dataset = dataset.slice(start, end);
+      var allColors = allColors.slice(start, end);
 
       var chart = d3.select('.mini-set-bar-chart svg');
 
-      var maxValue = d3.max(dataset,function(d){ return d[2]; });
+      var maxValue = d3.max(allColors,function(d){ return d[2]; });
       var yScale = d3.scale
                    .linear()
                    .domain( [0,maxValue] );
@@ -235,12 +252,12 @@ $(document).ready(function(){
                    .domain( [0,maxValue] )
                    .range( [0,h] );
 
-      var barLabels = dataset.map(function(datum){
+      var domain = allColors.map(function(datum){
                 return datum[0];
             });
 
       var xScale = d3.scale.ordinal()
-                   .domain(barLabels) 
+                   .domain(domain) 
                    .rangeRoundBands([0,w], 0.1);
 
       var tip = d3.tip()
@@ -250,7 +267,7 @@ $(document).ready(function(){
       chart.call(tip);
 
       chart.selectAll('rect')  
-           .data(dataset)   
+           .data(allColors)   
            .style('fill', function(d){return d[0];})
            .attr({
                  'x': function(d) {
@@ -284,13 +301,16 @@ $(document).ready(function(){
                url: '/tint_shade',
                data: 'color[' + hex + ']', 
                success: function(response){
+                 var tintsArray = response.dataset[0]
+                 var shadesArray = response.dataset[1]
+
                  $('.tints').html("");
-                 response.dataset[0].forEach(function(d){
+                 tintsArray.forEach(function(d){
                    $('.tints').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                  });
 
                  $('.shades').html("");
-                 response.dataset[1].forEach(function(d){
+                 shadesArray.forEach(function(d){
                    $('.shades').append('<div style="width: 10%; height: 40px; position: relative; float: left; background-color: #' + d[0] + '"></div>');
                  });
               } 
@@ -300,16 +320,17 @@ $(document).ready(function(){
 
 
     // Handles toggling between sets of 50 colors
+    
     $('#first').click(function(){
       $.ajax({
         type: 'GET',
         url: '/query',
         dataType: "json",
         success: function(response){
-          var dataset = response.dataset[0];
+          var allColors = response.dataset[0];
           var start = 0;
           var end = 50;
-          updateMiniChart(dataset, start, end);
+          updateMiniChart(allColors, start, end);
         }    
       });
     })
@@ -320,10 +341,10 @@ $(document).ready(function(){
         url: '/query',
         dataType: "json",
         success: function(response){
-          var dataset = response.dataset[0];
+          var allColors = response.dataset[0];
           var start = 51;
           var end = 101;
-          updateMiniChart(dataset, start, end);
+          updateMiniChart(allColors, start, end);
         }    
       });
     })
@@ -334,10 +355,10 @@ $(document).ready(function(){
         url: '/query',
         dataType: "json",
         success: function(response){
-          var dataset = response.dataset[0];
+          var allColors = response.dataset[0];
           var start = 102;
           var end = 152;
-          updateMiniChart(dataset, start, end);
+          updateMiniChart(allColors, start, end);
         }    
       });
     })
@@ -348,10 +369,10 @@ $(document).ready(function(){
         url: '/query',
         dataType: "json",
         success: function(response){
-          var dataset = response.dataset[0];
+          var allColors = response.dataset[0];
           var start = 153;
           var end = 203;
-          updateMiniChart(dataset, start, end);
+          updateMiniChart(allColors, start, end);
         }    
       });
     })
@@ -362,10 +383,10 @@ $(document).ready(function(){
         url: '/query',
         dataType: "json",
         success: function(response){
-          var dataset = response.dataset[0];
+          var allColors = response.dataset[0];
           var start = 204;
           var end = 255;
-          updateMiniChart(dataset, start, end);
+          updateMiniChart(allColors, start, end);
         }    
       });
     })

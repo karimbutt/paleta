@@ -27,10 +27,10 @@ class BoardsController < ApplicationController
 
     @array_of_individual_colors = @board.format(@sorted_picture_colors)
     @aggregate_rgb_cmyk = @board.aggregate_data(@array_of_individual_colors)
-    @full_array_for_d3 = [@array_of_individual_colors, @aggregate_rgb_cmyk]
+    @full_array = [@array_of_individual_colors, @aggregate_rgb_cmyk]
 
     respond_to do |format|
-      format.json { render :json => { dataset: @full_array_for_d3} }
+      format.json { render :json => { dataset: @full_array} }
     end
   end
 
