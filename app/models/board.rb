@@ -2,7 +2,6 @@ class Board < ActiveRecord::Base
 	has_many :pictures
 	has_many :colors, through: :pictures
 
-
 	def format(objects)
 		objects.collect do |object|
 			found_color = Color.find(object.color_id)
@@ -105,7 +104,6 @@ class Board < ActiveRecord::Base
 	end
 
 	def colourlovers(colors)
-	  # colors[0]=""
 	  counter = 0
 	  url_colors = []
 	  palettes = []
@@ -127,16 +125,11 @@ class Board < ActiveRecord::Base
 	    	palettes << colour_lovers_palettes[0]["colors"]
 	    	palettes << colour_lovers_palettes[1]["colors"]
 	    	next
-    	elsif colour_lovers_palettes.size == 3
+    	elsif colour_lovers_palettes.size >= 3
     		palettes << colour_lovers_palettes[0]["colors"]
     		palettes << colour_lovers_palettes[1]["colors"]
     		palettes << colour_lovers_palettes[3]["colors"]
     		next
-  		elsif colour_lovers_palettes.size >= 4
-  			palettes << colour_lovers_palettes[0]["colors"]
-  			palettes << colour_lovers_palettes[1]["colors"]
-  			palettes << colour_lovers_palettes[3]["colors"]
-  			next
     	else
     		palettes << colour_lovers_palettes[0]["colors"]
 	    end
@@ -200,13 +193,11 @@ class Board < ActiveRecord::Base
 	  @all_tints
 	end
 
-#### board methods below
 
+	# Board methods
 	def set_shade(color_to_shade)
 	  color = sanatize_hex(color_to_shade)
-
 	  @all_tints =[]
-	  # @all_tints << color
 
 	  10.times do
 	    color = sanatize_hex(color)
@@ -280,8 +271,6 @@ class Board < ActiveRecord::Base
 	#   end
 	#   @all_tints
 	# end
-
-
 
 end
 
